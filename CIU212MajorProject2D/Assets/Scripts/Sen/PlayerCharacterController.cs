@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerCharacterController : MonoBehaviour {
 
 	public float movementSpeed = 10.0f;
+    public float jumpForce = 10;
 
 	private CharacterController characterController;
 	private Rigidbody2D senRigidbody;
-	private bool facingRight;
+	
+    private bool facingRight;
+
+    public bool movementControlInAir = false;
 
 	private Animator anim;
 
-	// Use this for initialization
 	void Start () 
 	{
 		characterController = GetComponent<CharacterController> ();
@@ -20,7 +23,6 @@ public class PlayerCharacterController : MonoBehaviour {
 		facingRight = true;
 	}
 
-	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		float horizontal = Input.GetAxis ("Horizontal");
