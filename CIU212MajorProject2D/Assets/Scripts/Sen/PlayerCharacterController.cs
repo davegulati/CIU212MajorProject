@@ -52,7 +52,7 @@ public class PlayerCharacterController : MonoBehaviour {
 
 	private void HandleMovement (float horizontal)
 	{
-        if (isGrounded)
+        if (isGrounded || movementControlInAir)
         {
             senRigidbody.velocity = new Vector2(horizontal * movementSpeed, senRigidbody.velocity.y);
         }
