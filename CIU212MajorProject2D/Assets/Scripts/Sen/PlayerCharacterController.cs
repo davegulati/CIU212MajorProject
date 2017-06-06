@@ -7,7 +7,6 @@ public class PlayerCharacterController : MonoBehaviour {
 	private float movementSpeed = 3.0f;
     private float jumpForce = 300.0f;
 
-	private CharacterController characterController;
 	private Rigidbody2D senRigidbody;
 	
     private bool facingRight;
@@ -27,7 +26,6 @@ public class PlayerCharacterController : MonoBehaviour {
 
 	void Start () 
 	{
-		characterController = GetComponent<CharacterController> ();
 		senRigidbody = GetComponent<Rigidbody2D> ();
 		facingRight = true;
 	}
@@ -55,22 +53,48 @@ public class PlayerCharacterController : MonoBehaviour {
         if (isGrounded || movementControlInAir)
         {
             senRigidbody.velocity = new Vector2(horizontal * movementSpeed, senRigidbody.velocity.y);
+            //anim.SetTrigger("Jump");
         }
 
         if (isGrounded && jump)
         { 
             isGrounded = false; 
             senRigidbody.AddForce(new Vector2(0, jumpForce));
+            //anim.SetTrigger("Jump");
         }
 	}
 
     private void HandleInput ()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("space was pressed"); 
+            Debug.Log("Space was pressed."); 
             jump = true;
         }
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			Debug.Log("LMB was clicked.");
+            Attack();
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			Debug.Log("RMB was clicked.");
+			Dodge();
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			Debug.Log("E was pressed.");
+            Interact();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			Debug.Log("Tab was pressed.");
+            ToggleInventory();
+		}
     }
 
 	private void Flip (float horizontal)
@@ -102,6 +126,29 @@ public class PlayerCharacterController : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void Attack ()
+    {
+        Debug.Log("Attack function called.");
+        //anim.SetTrigger("Attack");
+    }
+
+	private void Dodge()
+	{
+		Debug.Log("Dodge function called.");
+		//anim.SetTrigger("Dodge");
+	}
+
+    private void Interact ()
+    {
+		Debug.Log("Interact function called.");
+		//anim.SetTrigger("Interact");
+	}
+
+    private void ToggleInventory()
+    {
+        Debug.Log("ToggleInventory function called.");
     }
 
     private void ResetValues ()
