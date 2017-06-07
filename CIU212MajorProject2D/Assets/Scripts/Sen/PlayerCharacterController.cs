@@ -79,8 +79,11 @@ public class PlayerCharacterController : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("LMB was clicked.");
-            Attack();
+            Debug.Log("LMB was clicked.");
+            if (!isInventoryContainerVisible)
+            {
+                Attack();
+            }
 		}
 
 		if (Input.GetMouseButtonDown(1))
