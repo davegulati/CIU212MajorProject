@@ -23,16 +23,14 @@ public class PlayerCharacterController : MonoBehaviour {
     [SerializeField]
     private LayerMask whatIsGround;
 
-    //Inventory variables.
-    private bool isInventoryContainerVisible = false;
-    private GameObject panel_InventoryContainer;
+    //GameManager variables.
+    private GameManager gameManager;
 
 	void Start () 
 	{
 		senRigidbody = GetComponent<Rigidbody2D> ();
 		facingRight = true;
-        panel_InventoryContainer = GameObject.Find("Panel_InventoryContainer");
-        panel_InventoryContainer.SetActive(false);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
     void Update()
@@ -80,7 +78,7 @@ public class PlayerCharacterController : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))
 		{
             Debug.Log("LMB was clicked.");
-            if (!isInventoryContainerVisible)
+            if (gameManager.isInventoryContainerVisible)
             {
                 Attack();
             }
@@ -101,7 +99,7 @@ public class PlayerCharacterController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Tab))
 		{
 			Debug.Log("Tab was pressed.");
-            ToggleInventory();
+            gameManager.ToggleInventory();
 		}
     }
 
@@ -153,14 +151,6 @@ public class PlayerCharacterController : MonoBehaviour {
 		Debug.Log("Interact function called.");
 		//anim.SetTrigger("Interact");
 	}
-
-    private void ToggleInventory()
-    {
-        Debug.Log("ToggleInventory function called.");
-        isInventoryContainerVisible = !isInventoryContainerVisible;
-        panel_InventoryContainer.SetActive(isInventoryContainerVisible);
-        Debug.Log(isInventoryContainerVisible);
-    }
 
     private void ResetValues ()
     {
