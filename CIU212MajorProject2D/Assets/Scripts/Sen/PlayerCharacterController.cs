@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,14 +23,10 @@ public class PlayerCharacterController : MonoBehaviour {
     [SerializeField]
     private LayerMask whatIsGround;
 
-    //GameManager variables.
-    private GameManager gameManager;
-
 	void Start () 
 	{
 		senRigidbody = GetComponent<Rigidbody2D> ();
 		facingRight = true;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
     void Update()
@@ -75,15 +71,6 @@ public class PlayerCharacterController : MonoBehaviour {
             jump = true;
         }
 
-		if (Input.GetMouseButtonDown(0))
-		{
-            Debug.Log("LMB was clicked.");
-            if (gameManager.isInventoryContainerVisible)
-            {
-                Attack();
-            }
-		}
-
 		if (Input.GetMouseButtonDown(1))
 		{
 			Debug.Log("RMB was clicked.");
@@ -94,12 +81,6 @@ public class PlayerCharacterController : MonoBehaviour {
 		{
 			Debug.Log("E was pressed.");
             Interact();
-		}
-
-		if (Input.GetKeyDown(KeyCode.Tab))
-		{
-			Debug.Log("Tab was pressed.");
-            gameManager.ToggleInventory();
 		}
     }
 
@@ -134,12 +115,6 @@ public class PlayerCharacterController : MonoBehaviour {
         return false;
     }
 
-    private void Attack ()
-    {
-        Debug.Log("Attack function called.");
-        //anim.SetTrigger("Attack");
-    }
-
 	private void Dodge()
 	{
 		Debug.Log("Dodge function called.");
@@ -155,5 +130,15 @@ public class PlayerCharacterController : MonoBehaviour {
     private void ResetValues ()
     {
         jump = false;
+    }
+
+    public void FootstepRight ()
+    {
+        
+    }
+
+    public void FootstepLeft ()
+    {
+        
     }
 }

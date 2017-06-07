@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     //Inventory variables
     public bool isInventoryContainerVisible = false;
     private GameObject panel_InventoryContainer;
@@ -26,14 +25,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			Debug.Log("Tab was pressed.");
+			ToggleInventory();
+		}
     }
 
     public void ToggleInventory()
     {
         isInventoryContainerVisible = !isInventoryContainerVisible;
         panel_InventoryContainer.SetActive(isInventoryContainerVisible);
-
+        if (isInventoryContainerVisible)
+        {
+            Time.timeScale = 0;
+        }
+        else if (!isInventoryContainerVisible)
+        {
+            Time.timeScale = 1;
+        }
         isShopContainerVisible = false;
         panel_ShopContainer.SetActive(isShopContainerVisible);
     }
@@ -42,7 +52,14 @@ public class GameManager : MonoBehaviour
 	{
 		isShopContainerVisible = !isShopContainerVisible;
 		panel_ShopContainer.SetActive(isShopContainerVisible);
-
+		if (isShopContainerVisible)
+		{
+            Time.timeScale = 0;
+		}
+		else if (!isShopContainerVisible)
+		{
+            Time.timeScale = 1;
+		}
         isInventoryContainerVisible = false;
         panel_InventoryContainer.SetActive(isInventoryContainerVisible);
 	}
