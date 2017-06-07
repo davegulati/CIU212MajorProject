@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class PlayerCharacterController : MonoBehaviour {
 
+    //Sen's movement variables.
 	private float movementSpeed = 5.0f;
     private float jumpForce = 300.0f;
-
 	private Rigidbody2D senRigidbody;
-	
     private bool facingRight;
-
     public bool movementControlInAir = false;
 
+    //Sen's animation variables.
 	private Animator anim;
 
+    //Sen's jump variables.
     [SerializeField]
     private Transform[] groundPoints;
     private bool isGrounded;
     private float groundRadius = 0.2f;
     private bool jump;
-
     [SerializeField]
     private LayerMask whatIsGround;
+
+    //Inventory variables.
+    private bool isInventoryContainerVisible = false;
+    private GameObject panel_InventoryContainer;
 
 	void Start () 
 	{
 		senRigidbody = GetComponent<Rigidbody2D> ();
 		facingRight = true;
+        panel_InventoryContainer = GameObject.Find("Panel_InventoryContainer");
+        panel_InventoryContainer.SetActive(false);
 	}
 
     void Update()
@@ -149,6 +154,9 @@ public class PlayerCharacterController : MonoBehaviour {
     private void ToggleInventory()
     {
         Debug.Log("ToggleInventory function called.");
+        isInventoryContainerVisible = !isInventoryContainerVisible;
+        panel_InventoryContainer.SetActive(isInventoryContainerVisible);
+        Debug.Log(isInventoryContainerVisible);
     }
 
     private void ResetValues ()

@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: 13665cfc3194c4362affbb230587651e
+timeCreated: 1496812398
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fN86XVa-1_0
+    21300002: fN86XVa-1_1
+    21300004: fN86XVa-1_2
+    21300006: fN86XVa-1_3
+    21300008: fN86XVa-1_4
+    21300010: fN86XVa-1_5
+    21300012: fN86XVa-1_6
+    21300014: fN86XVa-1_7
+    21300016: fN86XVa-1_8
+    21300018: fN86XVa-1_9
+    21300020: fN86XVa-1_10
+    21300022: fN86XVa-1_11
+    21300024: fN86XVa-1_12
+    21300026: fN86XVa-1_13
+    21300028: fN86XVa-1_14
+    21300030: fN86XVa-1_15
+    21300032: fN86XVa-1_16
+    21300034: fN86XVa-1_17
+    21300036: fN86XVa-1_18
+    21300038: fN86XVa-1_19
+    21300040: fN86XVa-1_20
+    21300042: fN86XVa-1_21
+    21300044: fN86XVa-1_22
+    21300046: fN86XVa-1_23
+    21300048: fN86XVa-1_24
+    21300050: fN86XVa-1_25
+    21300052: fN86XVa-1_26
+    21300054: fN86XVa-1_27
+    21300056: fN86XVa-1_28
+    21300058: fN86XVa-1_29
+    21300060: fN86XVa-1_30
+    21300062: fN86XVa-1_31
+    21300064: fN86XVa-1_32
+    21300066: fN86XVa-1_33
+    21300068: fN86XVa-1_34
+    21300070: fN86XVa-1_35
+    21300072: fN86XVa-1_36
+    21300074: fN86XVa-1_37
+    21300076: fN86XVa-1_38
+    21300078: fN86XVa-1_39
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fN86XVa-1_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 286
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_4
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 286
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 286
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_7
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_8
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 286
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_9
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 286
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_10
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 214
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_11
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 214
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_12
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 214
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 214
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_14
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 214
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_15
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 214
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_16
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 214
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_17
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 214
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_18
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 214
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_19
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 214
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_20
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 148
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_21
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 150
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_22
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_23
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_24
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_25
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_26
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 96
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_27
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 96
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_28
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_29
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 96
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_30
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 98
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_31
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 30
+        width: 58
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_32
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 24
+        width: 42
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_33
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 24
+        width: 34
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_34
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 24
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_35
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 24
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_36
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 24
+        width: 34
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_37
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 24
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_38
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 24
+        width: 42
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fN86XVa-1_39
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 24
+        width: 42
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
