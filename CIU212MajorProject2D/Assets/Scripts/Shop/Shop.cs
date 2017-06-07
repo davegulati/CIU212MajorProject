@@ -16,14 +16,14 @@ public class Shop : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();	
 	}
 
     public void InventoryClicked ()
     {
-		panel_InventoryContainer.SetActive(true);
-		gameManager.isInventoryContainerVisible = true;
-		gameObject.SetActive(false);
+		gameManager.ToggleInventory();
+		gameManager.ToggleShop();
     }
 }
