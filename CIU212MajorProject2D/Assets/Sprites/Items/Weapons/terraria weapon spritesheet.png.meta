@@ -1,0 +1,1156 @@
+fileFormatVersion: 2
+guid: 8509e97d53e2ccc4d8b9ec89122640f1
+timeCreated: 1497154233
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: terraria weapon spritesheet_0
+    21300002: terraria weapon spritesheet_1
+    21300004: terraria weapon spritesheet_2
+    21300006: terraria weapon spritesheet_3
+    21300008: terraria weapon spritesheet_4
+    21300010: terraria weapon spritesheet_5
+    21300012: terraria weapon spritesheet_6
+    21300014: terraria weapon spritesheet_7
+    21300016: terraria weapon spritesheet_8
+    21300018: terraria weapon spritesheet_9
+    21300020: terraria weapon spritesheet_10
+    21300022: terraria weapon spritesheet_11
+    21300024: terraria weapon spritesheet_12
+    21300026: terraria weapon spritesheet_13
+    21300028: terraria weapon spritesheet_14
+    21300030: terraria weapon spritesheet_15
+    21300032: terraria weapon spritesheet_16
+    21300034: terraria weapon spritesheet_17
+    21300036: terraria weapon spritesheet_18
+    21300038: terraria weapon spritesheet_19
+    21300040: terraria weapon spritesheet_20
+    21300042: terraria weapon spritesheet_21
+    21300044: terraria weapon spritesheet_22
+    21300046: terraria weapon spritesheet_23
+    21300048: terraria weapon spritesheet_24
+    21300050: terraria weapon spritesheet_25
+    21300052: terraria weapon spritesheet_26
+    21300054: terraria weapon spritesheet_27
+    21300056: terraria weapon spritesheet_28
+    21300058: terraria weapon spritesheet_29
+    21300060: terraria weapon spritesheet_30
+    21300062: terraria weapon spritesheet_31
+    21300064: terraria weapon spritesheet_32
+    21300066: terraria weapon spritesheet_33
+    21300068: terraria weapon spritesheet_34
+    21300070: terraria weapon spritesheet_35
+    21300072: terraria weapon spritesheet_36
+    21300074: terraria weapon spritesheet_37
+    21300076: terraria weapon spritesheet_38
+    21300078: terraria weapon spritesheet_39
+    21300080: terraria weapon spritesheet_40
+    21300082: terraria weapon spritesheet_41
+    21300084: terraria weapon spritesheet_42
+    21300086: terraria weapon spritesheet_43
+    21300088: terraria weapon spritesheet_44
+    21300090: terraria weapon spritesheet_45
+    21300092: terraria weapon spritesheet_46
+    21300094: terraria weapon spritesheet_47
+    21300096: terraria weapon spritesheet_48
+    21300098: terraria weapon spritesheet_49
+    21300100: terraria weapon spritesheet_50
+    21300102: terraria weapon spritesheet_51
+    21300104: terraria weapon spritesheet_52
+    21300106: terraria weapon spritesheet_53
+    21300108: terraria weapon spritesheet_54
+    21300110: terraria weapon spritesheet_55
+    21300112: terraria weapon spritesheet_56
+    21300114: terraria weapon spritesheet_57
+    21300116: terraria weapon spritesheet_58
+    21300118: terraria weapon spritesheet_59
+    21300120: terraria weapon spritesheet_60
+    21300122: terraria weapon spritesheet_61
+    21300124: terraria weapon spritesheet_62
+    21300126: terraria weapon spritesheet_63
+    21300128: terraria weapon spritesheet_64
+    21300130: terraria weapon spritesheet_65
+    21300132: terraria weapon spritesheet_66
+    21300134: terraria weapon spritesheet_67
+    21300136: terraria weapon spritesheet_68
+    21300138: terraria weapon spritesheet_69
+    21300140: terraria weapon spritesheet_70
+    21300142: terraria weapon spritesheet_71
+    21300144: terraria weapon spritesheet_72
+    21300146: terraria weapon spritesheet_73
+    21300148: terraria weapon spritesheet_74
+    21300150: terraria weapon spritesheet_75
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 331
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 330
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 330
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 329
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 338
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 353
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 323
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 295
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 296
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 295
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 315
+        width: 48
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 326
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 294
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 285
+        width: 56
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 285
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 278
+        width: 47
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 248
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 246
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 245
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 245
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 245
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 244
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 217
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 223
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 268
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 191
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 232
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 228
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 228
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 216
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 196
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 190
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 184
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 191
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 190
+        width: 52
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 177
+        width: 63
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 169
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 164
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 164
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 189
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 137
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 137
+        width: 46
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 134
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 126
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 129
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 131
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 151
+        width: 68
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 134
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 130
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 101
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 124
+        width: 54
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 90
+        width: 53
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 101
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 56
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 51
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 52
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 58
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 57
+        width: 49
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 58
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 55
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 53
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 37
+        width: 54
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 29
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 58
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 55
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 12
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 11
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 11
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 9
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 10
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 8
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 5
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 5
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 1
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: terraria weapon spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
