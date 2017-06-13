@@ -11,6 +11,7 @@ public class Hazard_Spikes : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealth>().PlayerTakeDamage(damageAmount);
+			collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(collision.gameObject.transform.localScale.x * -3500, 100));
         }
     }
 }
