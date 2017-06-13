@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-
     //Sen's movement variables.
     private float movementSpeed = 5.0f;
     private float jumpForce = 500.0f;
@@ -73,19 +72,16 @@ public class PlayerCharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-			Debug.Log("Space was pressed.");
 			jump = true;
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("RMB was clicked.");
             Dodge();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E was pressed.");
             Interact();
         }
 
