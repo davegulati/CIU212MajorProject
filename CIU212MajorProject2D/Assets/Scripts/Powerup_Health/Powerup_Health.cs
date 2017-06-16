@@ -16,7 +16,6 @@ public class Powerup_Health : MonoBehaviour {
     private void Update()
     {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-        Debug.Log(distance);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
         {
             AwardHealth();
