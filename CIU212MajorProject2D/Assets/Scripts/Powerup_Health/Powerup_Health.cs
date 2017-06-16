@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class Powerup_Health : MonoBehaviour {
 
+    private GameObject sen;
+    private float activationRange = 0.8f;
     private float healthAwarded = 20.0f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-		if (collision.gameObject.tag == "Player")
-		{
-			collision.gameObject.GetComponent<PlayerHealth>().PlayerReceiveHealth(healthAwarded);
-			Destroy(gameObject);
-		}
+        sen = GameObject.Find("Sen");
+    }
+
+    private void Update()
+    {
+		float distance = Vector2.Distance(transform.position, sen.transform.position);
+        Debug.Log(distance);
+		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
+        {
+            AwardHealth();
+        }
+    }
+
+    private void AwardHealth ()
+    {
+        sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(healthAwarded);
+        Destroy(gameObject);
     }
 }

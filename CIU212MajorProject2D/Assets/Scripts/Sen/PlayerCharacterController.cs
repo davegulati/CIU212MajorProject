@@ -6,7 +6,6 @@ public class PlayerCharacterController : MonoBehaviour
 {
     //Sen's movement variables.
     private float movementSpeed = 5.0f;
-    private float jumpForce = 500.0f;
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;
     private bool facingRight;
@@ -24,10 +23,12 @@ public class PlayerCharacterController : MonoBehaviour
     private bool isGrounded;
     private float groundRadius = 0.2f;
     private bool jump;
+    private float jumpForce = 500.0f;
     [SerializeField]
     private LayerMask whatIsGround;
-    public bool doubleJumpUnlocked;
+    public bool doubleJumpUnlocked = false;
     public int doubleJump = 0;
+    private float doubleJumpForceMultiplier = 1.75f;
 
     void Start()
     {
@@ -39,8 +40,6 @@ public class PlayerCharacterController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        Debug.Log(doubleJumpUnlocked);
-        Debug.Log(doubleJump);
     }
 
     void FixedUpdate()
@@ -78,27 +77,13 @@ public class PlayerCharacterController : MonoBehaviour
                 {
                     if (doubleJump <= 0)
                     {
-						senRigidbody.AddForce(new Vector2(0, jumpForce / 1.5f));
+						senRigidbody.AddForce(new Vector2(0, jumpForce / doubleJumpForceMultiplier));
                         //anim.SetTrigger("Jump");
                         doubleJump = doubleJump + 1;
 					}
                 }
             }
         }
-
-        //if ((jump && isGrounded) || (jump && !isGrounded && doubleJumpUnlocked && doubleJump <= 0))
-        //{
-        //    isGrounded = false;
-        //    senRigidbody.AddForce(new Vector2(0, jumpForce));
-        //    //anim.SetTrigger("Jump");
-        //}
-
-        //if (jump && !isGrounded && doubleJumpUnlocked)
-        //{
-        //    senRigidbody.AddForce(new Vector2(0, jumpForce));
-        //    doubleJump = doubleJump + 1;
-        //}
-
     }
 
     private void HandleInput()
@@ -111,11 +96,6 @@ public class PlayerCharacterController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Dodge();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
         }
 
         if (Input.GetKeyDown(KeyCode.S))

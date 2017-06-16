@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class Powerup_DoubleJump : MonoBehaviour {
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    private GameObject sen;
+    private float activationRange = 0.8f;
+
+    private void Awake()
+    {
+        sen = GameObject.Find("Sen");
+    }
+
+	private void Update()
 	{
-		if (collision.gameObject.tag == "Player")
+		float distance = Vector2.Distance(transform.position, sen.transform.position);
+		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
 		{
-            collision.gameObject.GetComponent<PlayerCharacterController>().doubleJumpUnlocked = true;
-			Destroy(gameObject);
+			UnlockDoubleJump();
 		}
 	}
+
+    private void UnlockDoubleJump()
+    {
+		sen.GetComponent<PlayerCharacterController>().doubleJumpUnlocked = true;
+		Destroy(gameObject);
+    }
 }
