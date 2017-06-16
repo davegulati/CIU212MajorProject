@@ -26,6 +26,8 @@ public class PlayerCharacterController : MonoBehaviour
     private bool jump;
     [SerializeField]
     private LayerMask whatIsGround;
+    public bool doubleJumpUnlocked;
+    public int doubleJump = 0;
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class PlayerCharacterController : MonoBehaviour
     void Update()
     {
         HandleInput();
+        Debug.Log(doubleJumpUnlocked);
+        Debug.Log(doubleJump);
     }
 
     void FixedUpdate()
@@ -60,12 +64,41 @@ public class PlayerCharacterController : MonoBehaviour
             //anim.SetTrigger("Jump");
         }
 
-        if (isGrounded && jump)
+        if (jump)
         {
-            isGrounded = false;
-            senRigidbody.AddForce(new Vector2(0, jumpForce));
-            //anim.SetTrigger("Jump");
+            if (isGrounded)
+            {
+                isGrounded = false;
+                senRigidbody.AddForce(new Vector2(0, jumpForce));
+                //anim.SetTrigger("Jump");
+            }
+            else if (!isGrounded)
+            {
+                if (doubleJumpUnlocked)
+                {
+                    if (doubleJump <= 0)
+                    {
+						senRigidbody.AddForce(new Vector2(0, jumpForce / 1.5f));
+                        //anim.SetTrigger("Jump");
+                        doubleJump = doubleJump + 1;
+					}
+                }
+            }
         }
+
+        //if ((jump && isGrounded) || (jump && !isGrounded && doubleJumpUnlocked && doubleJump <= 0))
+        //{
+        //    isGrounded = false;
+        //    senRigidbody.AddForce(new Vector2(0, jumpForce));
+        //    //anim.SetTrigger("Jump");
+        //}
+
+        //if (jump && !isGrounded && doubleJumpUnlocked)
+        //{
+        //    senRigidbody.AddForce(new Vector2(0, jumpForce));
+        //    doubleJump = doubleJump + 1;
+        //}
+
     }
 
     private void HandleInput()
@@ -157,10 +190,16 @@ public class PlayerCharacterController : MonoBehaviour
         if (collision.gameObject.tag == "DropPlatform")
         {
             isTouchingDropPlatform = true;
+            doubleJump = 0;
         }
         else
         {
             isTouchingDropPlatform = false;
+        }
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            doubleJump = 0;
         }
     }
 
