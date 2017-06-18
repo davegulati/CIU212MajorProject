@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
-    public float playerHealth = 100.0f;
-    private float maxPlayerHealth = 100.0f;
+    private float playerHealth = 100.0f;
+    public float maxPlayerHealth = 100.0f;
     private Slider slider_Health;
 
 	// Use this for initialization
@@ -30,9 +30,9 @@ public class PlayerHealth : MonoBehaviour {
     {
         playerHealth = playerHealth + health;
         slider_Health.value = playerHealth / maxPlayerHealth;
-        if (playerHealth > 100.0f)
+        if (playerHealth > maxPlayerHealth)
         {
-            playerHealth = 100.0f;
+            playerHealth = maxPlayerHealth;
         }
     }
 }

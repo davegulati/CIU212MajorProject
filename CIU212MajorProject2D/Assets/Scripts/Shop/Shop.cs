@@ -24,7 +24,7 @@ public class Shop : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
 		{
-			ToggleShop();
+            ToggleShop();
 		}
 	}
 
