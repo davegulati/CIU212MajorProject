@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-
     //Sen's movement variables.
     private float movementSpeed = 5.0f;
-    private float jumpForce = 500.0f;
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;
     private bool facingRight;
@@ -25,32 +23,36 @@ public class PlayerCharacterController : MonoBehaviour
     private bool isGrounded;
     private float groundRadius = 0.2f;
     private bool jump;
+    private float jumpForce = 500.0f;
     [SerializeField]
     private LayerMask whatIsGround;
+    public bool doubleJumpUnlocked = false;
+    public int doubleJump = 0;
+    private float doubleJumpForceDivider = 1.0f; // The closer it is to 0, the higher the double-jump will be.
 
     void Start()
     {
-        senRigidbody = GetComponent<Rigidbody2D>();
+        senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
         facingRight = true;
-        senCollider = GetComponent<Collider2D>();
+        senCollider = GetComponent<Collider2D>(); // Get Sen's BoxCollider2D component.
     }
 
     void Update()
     {
-        HandleInput();
+        HandleInput(); // Handles player input.
     }
 
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
 
-        isGrounded = IsGrounded();
+        isGrounded = IsGrounded(); // Checks if Sen is grounded.
 
-        HandleMovement(horizontal);
+        HandleMovement(horizontal); // Handles player movement.
 
-        Flip(horizontal);
+        Flip(horizontal); // Flips Sen's sprite to the direction he is moving.
 
-        ResetValues();
+        ResetValues(); // Resets values
     }
 
     private void HandleMovement(float horizontal)
@@ -61,32 +63,40 @@ public class PlayerCharacterController : MonoBehaviour
             //anim.SetTrigger("Jump");
         }
 
-        if (isGrounded && jump)
+        if (jump)
         {
-            isGrounded = false;
-            senRigidbody.AddForce(new Vector2(0, jumpForce));
-            //anim.SetTrigger("Jump");
+            if (isGrounded)
+            {
+                isGrounded = false;
+                senRigidbody.AddForce(new Vector2(0, jumpForce));
+                //anim.SetTrigger("Jump");
+            }
+            else if (!isGrounded)
+            {
+                if (doubleJumpUnlocked)
+                {
+                    if (doubleJump <= 0)
+                    {
+						senRigidbody.AddForce(new Vector2(0, jumpForce / doubleJumpForceDivider));
+                        //anim.SetTrigger("Jump");
+                        doubleJump = doubleJump + 1;
+					}
+                }
+            }
         }
     }
 
+    // Handles player input.
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-			Debug.Log("Space was pressed.");
 			jump = true;
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("RMB was clicked.");
             Dodge();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("E was pressed.");
-            Interact();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -98,6 +108,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
+    // Flips Sen's sprite depending on which direction he is moving.
     private void Flip(float horizontal)
     {
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
@@ -110,6 +121,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
+    // Checks if Sen is grounded.
     private bool IsGrounded()
     {
         if (senRigidbody.velocity.y <= 0)
@@ -129,45 +141,57 @@ public class PlayerCharacterController : MonoBehaviour
         return false;
     }
 
+    // Sen's dodge mechanic.
     private void Dodge()
     {
         Debug.Log("Dodge function called.");
         //anim.SetTrigger("Dodge");
     }
 
+    // Sen's interaction mechanic.
     private void Interact()
     {
         Debug.Log("Interact function called.");
         //anim.SetTrigger("Interact");
     }
 
+    // Resets values.
     private void ResetValues()
     {
         jump = false;
     }
 
+    // When Sen's right foot hits the ground.
     public void FootstepRight()
     {
 
     }
-
+    // When Sen's left foot hits the ground.
     public void FootstepLeft()
     {
 
     }
 
+    // When Sen collides with something.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DropPlatform")
         {
             isTouchingDropPlatform = true;
+            doubleJump = 0;
         }
         else
         {
             isTouchingDropPlatform = false;
         }
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            doubleJump = 0;
+        }
     }
 
+    // When Sen exits the collider he collided with.
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DropPlatform")
@@ -176,6 +200,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
+    // When Sen exits the trigger he was overlapping with.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "DropPlatform")
