@@ -35,4 +35,14 @@ public class PlayerHealth : MonoBehaviour {
             playerHealth = maxPlayerHealth;
         }
     }
+
+    public void IncreaseMaxHealth (float amountToIncreaseBy)
+    {
+        maxPlayerHealth = maxPlayerHealth + amountToIncreaseBy;
+        slider_Health.value = playerHealth / maxPlayerHealth;
+		if (playerHealth > maxPlayerHealth)
+		{
+			playerHealth = maxPlayerHealth;
+		}
+    }
 }
