@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Loot : MonoBehaviour
 {
+
 	[System.Serializable]
 	public class DropItem
 	{
@@ -15,13 +16,13 @@ public class Loot : MonoBehaviour
 	public List <DropItem> LootTable = new List<DropItem>();
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
 	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	private void Update ()
 	{
 		
 	}
