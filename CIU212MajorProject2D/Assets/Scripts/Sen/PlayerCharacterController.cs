@@ -26,7 +26,7 @@ public class PlayerCharacterController : MonoBehaviour
     private float jumpForce = 500.0f;
     [SerializeField]
     private LayerMask whatIsGround;
-    public bool doubleJumpUnlocked = false;
+	public bool doubleJumpUnlocked = false;
     public int doubleJump = 0;
     private float doubleJumpForceDivider = 1.0f; // The closer it is to 0, the higher the double-jump will be.
 
