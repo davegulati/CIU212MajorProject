@@ -14,16 +14,40 @@ public class Loot : MonoBehaviour
 	}
 
 	public List <DropItem> LootTable = new List<DropItem>();
+	public int dropChance;
 
-	// Use this for initialization
-	private void Start ()
+	public void calculateLoot()
 	{
-		
-	}
-	
-	// Update is called once per frame
-	private void Update ()
-	{
-		
+		int calc_dropChance = Random.Range (0, 101);
+
+		if(calc_dropChance > dropChance)
+		{
+			Debug.Log ("Not loot dropped.");
+			return;
+		}
+
+		if (calc_dropChance <= dropChance)
+		{
+			int itemDrop = 0;
+
+			for (int i = 0; i < LootTable.Count; i++)
+			{
+				itemDrop += LootTable [i].dropRate;
+			}
+			Debug.Log ("Item Drop = " + itemDrop);
+
+			int randomValue = Random.Range (0, itemDrop);
+
+			for (int j = 0; j < LootTable.Count; j++)
+			{
+				if (randomValue <= LootTable [j].dropRate)
+				{
+					Instantiate(LootTable[j].item, transform.position, Quaternion.identity);
+					return;
+				}
+				randomValue -= LootTable [j].dropRate;
+				Debug.Log ("Random Value Decreased" + randomValue);
+			}
+		}
 	}
 }
