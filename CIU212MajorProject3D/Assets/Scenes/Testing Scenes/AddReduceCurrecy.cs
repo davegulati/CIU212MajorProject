@@ -7,22 +7,15 @@ public class AddReduceCurrecy : MonoBehaviour
 {
     public GameObject player;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    player.GetComponent<currencySystem>().addMoney(5);
-        //}
-
-        //if (Input.GetButtonDown("Fire2"))
-        //{
-        //    player.GetComponent<currencySystem>().subtractMoney(5);
-        //}
+     
     }
 
     public void OnMouseDown()
