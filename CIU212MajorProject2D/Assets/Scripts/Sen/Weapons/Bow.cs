@@ -23,7 +23,6 @@ public class Bow : MonoBehaviour {
     {
         sen = GameObject.Find("Sen");
         firePoint = gameObject.transform.Find("FirePoint");
-
 	}
 	
 	// Update is called once per frame
@@ -41,7 +40,17 @@ public class Bow : MonoBehaviour {
 		{
 			rotationOffset = 0;
 		}
-		transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
+
+        //transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
+        //transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
+        if (sen.transform.localScale.x > 0)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
+        }
+        else if (sen.transform.localScale.x < 0)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, 310, 70));
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,10 +63,9 @@ public class Bow : MonoBehaviour {
         {
             if (Input.GetMouseButton(0) && Time.time > timeToFire)
             {
-                timeToFire = Time.time + 1 / fireRate;
+				timeToFire = Time.time + 1 / fireRate;
                 ShootArrow();
             }
-                
         }
 	}
 
@@ -66,6 +74,6 @@ public class Bow : MonoBehaviour {
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
         RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 200, whatToHit);
-        Instantiate(arrow, firePoint.position, firePoint.rotation);
+		Instantiate(arrow, firePoint.position, firePoint.rotation);
     }
 }
