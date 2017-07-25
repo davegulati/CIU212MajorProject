@@ -2,7 +2,7 @@
 <doc>
   <members>
     <assembly>
-      <name>UnityEngine.PlaymodeTestsRunner</name>
+      <name>UnityEditor.Advertisements</name>
     </assembly>
   </members>
 </doc>

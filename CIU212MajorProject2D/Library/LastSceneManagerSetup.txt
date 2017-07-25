@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Mechanic Test Scenes/Chest System.unity
+- path: Assets/Scenes/Testing Scenes HH/ScriptTestingScene_HH.unity
   isLoaded: 1
   isActive: 1
