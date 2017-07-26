@@ -1,7 +1,7 @@
 [
 	{
 	"id": 0,
-	"title": "Steel Gloves",
+	"title": "FeelsBadMan",
 	"value": 6,
 	"stats": 
 		{
@@ -9,14 +9,14 @@
 		"defence": 4,
 		"vitality": 2
 		},
-	"description": "Gloves made from steel.",
+	"description": "Pepe feeling Bad",
 	"stackable": false,
 	"rarity": 2,
-	"slug": "steel_gloves"
+	"slug": "pepe"
 	},
 	{
 	"id": 1,
-	"title": "The Great Stick",
+	"title": "feelsgoodman",
 	"value": 543,
 	"stats": 
 		{
@@ -24,9 +24,9 @@
 		"defence": 2,
 		"vitality": 54
 		},
-	"description": "A stick thats pretty great.",
+	"description": "Pepe feeling good",
 	"stackable": true,
 	"rarity": 6,
-	"slug": "the_great_stick"
+	"slug": "feelsgoodman"
 	}
 ]
