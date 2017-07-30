@@ -5,25 +5,20 @@ using UnityEngine.UI;
 
 public class AddReduceCurrecy : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
+
 	// Use this for initialization
 	void Start ()
     {
-		
+		player = GameObject.Find ("Sen");
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-     
-    }
 
-    public void OnMouseDown()
-    {
-        player.GetComponent<currencySystem>().addMoney(10);
-    }
+//    public void OnMouseDown()
+//    {
+//        player.GetComponent<currencySystem>().addMoney(10);
+//    }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter2D()
     {
         if (gameObject.CompareTag("Money"))
         {
