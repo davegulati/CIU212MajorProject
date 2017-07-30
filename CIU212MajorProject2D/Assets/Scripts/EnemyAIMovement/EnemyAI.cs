@@ -36,7 +36,8 @@ public class EnemyAI : MonoBehaviour {
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
 		
-		if (target == null) {
+		if (target == null) 
+        {
 			Debug.LogError ("No Player found? PANIC!");
 			return;
 		}
@@ -47,8 +48,10 @@ public class EnemyAI : MonoBehaviour {
 		StartCoroutine (UpdatePath ());
 	}
 	
-	IEnumerator UpdatePath () {
-		if (target == null) {
+	IEnumerator UpdatePath () 
+    {
+		if (target == null) 
+        {
 			//TODO: Insert a player search here.
 			yield return false;
 		}
@@ -60,7 +63,8 @@ public class EnemyAI : MonoBehaviour {
 		StartCoroutine (UpdatePath());
 	}
 	
-	public void OnPathComplete (Path p) {
+	public void OnPathComplete (Path p) 
+    {
 		Debug.Log ("We got a path. Did it have an error? " + p.error);
 		if (!p.error) {
 			path = p;
@@ -68,7 +72,8 @@ public class EnemyAI : MonoBehaviour {
 		}
 	}
 	
-	void FixedUpdate () {
+	void FixedUpdate () 
+    {
 		if (target == null) {
 			//TODO: Insert a player search here.
 			return;
@@ -102,5 +107,13 @@ public class EnemyAI : MonoBehaviour {
 			return;
 		}
 	}
-	
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().PlayerTakeDamage(10);
+        }
+    }
+
 }
