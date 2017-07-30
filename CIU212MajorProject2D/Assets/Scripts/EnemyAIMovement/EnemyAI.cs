@@ -41,13 +41,19 @@ public class EnemyAI : MonoBehaviour {
 			Debug.LogError ("No Player found? PANIC!");
 			return;
 		}
-		
-		// Start a new path to the target position, return the result to the OnPathComplete method
+
+
+		 //Start a new path to the target position, return the result to the OnPathComplete method
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
 		
 		StartCoroutine (UpdatePath ());
 	}
-	
+		
+
+
+
+
+
 	IEnumerator UpdatePath () 
     {
 		if (target == null) 
