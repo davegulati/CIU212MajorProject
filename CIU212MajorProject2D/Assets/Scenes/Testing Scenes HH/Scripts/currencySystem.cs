@@ -13,7 +13,7 @@ public class currencySystem : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        money = 100;
+        money = 0;
         moneyCounter.text = "Money: " + money.ToString();
 	}
 	

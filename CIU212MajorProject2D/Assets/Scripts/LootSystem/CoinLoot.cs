@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondLoot : MonoBehaviour
+public class CoinLoot : MonoBehaviour
 {
 
 	[System.Serializable]
@@ -42,7 +42,7 @@ public class SecondLoot : MonoBehaviour
 			{
 				if (randomValue <= LootTable [j].dropRate)
 				{
-					Instantiate(LootTable[j].item, transform.position, Quaternion.identity);
+					Instantiate(LootTable[j].item, transform.localPosition, Quaternion.identity);
 					return;
 				}
 				randomValue -= LootTable [j].dropRate;

@@ -13,6 +13,12 @@ public class DontDestroyOnLoad : MonoBehaviour {
             Destroy(gameObject);
         }
 
+		GameObject[] canvas = GameObject.FindGameObjectsWithTag("Canvas");
+		if (canvas.Length > 1)
+		{
+			Destroy(gameObject);
+		}
+
         DontDestroyOnLoad(gameObject);
 	}
 }

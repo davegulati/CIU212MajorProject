@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenChest : MonoBehaviour
 {
-	private Loot lootTable;
+	private Loot loot;
 
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -12,7 +12,7 @@ public class OpenChest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		lootTable = GameObject.Find("LootManager").GetComponent<Loot>();
+		loot = GameObject.Find("LootManager").GetComponent<Loot>();
 
 		sen = GameObject.Find("Sen");
 	}
@@ -23,7 +23,7 @@ public class OpenChest : MonoBehaviour
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
 		{
-			lootTable.calculateLoot();
+			loot.calculateLoot();
 
 			OpenChestAnimation();
 		}

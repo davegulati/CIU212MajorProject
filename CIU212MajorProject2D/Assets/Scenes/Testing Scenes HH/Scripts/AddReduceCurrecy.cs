@@ -23,7 +23,7 @@ public class AddReduceCurrecy : MonoBehaviour
         if (gameObject.CompareTag("Money"))
         {
             gameObject.SetActive(false);
-            player.GetComponent<currencySystem>().addMoney(20);
+            player.GetComponent<currencySystem>().addMoney(50);
         }
     }
 }
