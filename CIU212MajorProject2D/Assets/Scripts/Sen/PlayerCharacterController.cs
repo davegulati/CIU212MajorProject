@@ -77,6 +77,7 @@ public class PlayerCharacterController : MonoBehaviour
                 {
                     if (doubleJump <= 0)
                     {
+                        senRigidbody.velocity = Vector2.zero;
 						senRigidbody.AddForce(new Vector2(0, jumpForce / doubleJumpForceDivider));
                         //anim.SetTrigger("Jump");
                         doubleJump = doubleJump + 1;

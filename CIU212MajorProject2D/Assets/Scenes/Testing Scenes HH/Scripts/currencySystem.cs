@@ -8,19 +8,14 @@ public class currencySystem : MonoBehaviour
 
     public int money;
 
-    public Text moneyCounter;
+    private Text moneyCounter;
 
 	// Use this for initialization
 	void Start ()
     {
+        moneyCounter = GameObject.Find("MoneyCounter").GetComponent<Text>();
         money = 0;
         moneyCounter.text = "Money: " + money.ToString();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
 	}
 
     public void addMoney(int moneyToAdd)
