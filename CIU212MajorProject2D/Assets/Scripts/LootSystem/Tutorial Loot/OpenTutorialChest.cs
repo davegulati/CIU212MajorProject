@@ -23,7 +23,7 @@ public class OpenTutorialChest : MonoBehaviour
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
 		{
-			tutorialLoot.calculateLoot();
+			tutorialLoot.CalculateLoot();
 
 			OpenChestAnimation();
 		}
