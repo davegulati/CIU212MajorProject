@@ -28,29 +28,29 @@ public class Bow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		difference.Normalize();
+		//Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		//difference.Normalize();
 
-		float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-		if (sen.transform.localScale.x < 0)
-		{
-			rotationOffset = 180;
-		}
-		else if (sen.transform.localScale.x > 0)
-		{
-			rotationOffset = 0;
-		}
+		//float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+		//if (sen.transform.localScale.x < 0)
+		//{
+		//	rotationOffset = 180;
+		//}
+		//else if (sen.transform.localScale.x > 0)
+		//{
+		//	rotationOffset = 0;
+		//}
 
-        //transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
-        //transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
-        if (sen.transform.localScale.x > 0)
-        {
-            transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
-        }
-        else if (sen.transform.localScale.x < 0)
-        {
-            transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, 310, 70));
-        }
+        ////transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
+        ////transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
+        //if (sen.transform.localScale.x > 0)
+        //{
+        //    transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
+        //}
+        //else if (sen.transform.localScale.x < 0)
+        //{
+        //    transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, 310, 70));
+        //}
 
         if (Input.GetMouseButtonDown(0))
         {

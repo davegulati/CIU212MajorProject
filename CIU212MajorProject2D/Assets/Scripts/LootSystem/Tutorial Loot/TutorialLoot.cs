@@ -16,8 +16,9 @@ public class TutorialLoot : MonoBehaviour
 	public List <DropItem> LootTable = new List<DropItem>();
 	public int dropChance;
 
-	public void calculateLoot()
+	public void CalculateLoot()
 	{
+        GameObject chest = GameObject.Find("TutorialChestOpen");
 		int calc_dropChance = Random.Range (0, 101);
 
 		if(calc_dropChance > dropChance)
@@ -42,7 +43,7 @@ public class TutorialLoot : MonoBehaviour
 			{
 				if (randomValue <= LootTable [j].dropRate)
 				{
-					Instantiate(LootTable[j].item, transform.position, Quaternion.identity);
+					Instantiate(LootTable[j].item, chest.transform.position, Quaternion.identity);
 					return;
 				}
 				randomValue -= LootTable [j].dropRate;

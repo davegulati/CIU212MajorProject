@@ -103,9 +103,14 @@ public class EnemyAI : MonoBehaviour {
 		//Direction to the next waypoint
 		Vector3 dir = ( path.vectorPath[currentWaypoint] - transform.position ).normalized;
 		dir *= speed * Time.fixedDeltaTime;
-		
-		//Move the AI
-		rb.AddForce (dir, fMode);
+
+        float distance = Vector2.Distance(transform.position, target.transform.position);
+        Debug.Log(distance);
+		if (distance < 5)
+        {
+            //Move the AI
+            rb.AddForce(dir, fMode);
+        }
 		
 		float dist = Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]);
 		if (dist < nextWaypointDistance) {
