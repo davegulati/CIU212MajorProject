@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Greybox/Tutorial Greybox.unity
+- path: Assets/Scenes/Greybox/Safe Zone Greybox.unity
   isLoaded: 1
   isActive: 1
