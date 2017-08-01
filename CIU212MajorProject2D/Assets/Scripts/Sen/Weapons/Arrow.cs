@@ -23,8 +23,11 @@ public class Arrow : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().DamageEnemy(40);
-            Destroy(gameObject);
+            if (collision.gameObject.GetComponent<GroundEnemy>() != null)
+            {
+                collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(40);
+                Destroy(gameObject);
+            }
         }
     }
 }

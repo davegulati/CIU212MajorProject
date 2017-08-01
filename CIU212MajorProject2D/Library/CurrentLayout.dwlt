@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -143,7 +143,7 @@ MonoBehaviour:
     y: 0
     width: 1440
     height: 817
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -324,18 +324,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Sen
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Sen
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/davegulati/Uni/CIU212/CIU212MajorProject/CIU212MajorProject2D
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 903}
-    m_SelectedIDs: fc290000
-    m_LastClickedID: 10748
+    scrollPos: {x: 0, y: 111}
+    m_SelectedIDs: ee250000
+    m_LastClickedID: 9710
     m_ExpandedIDs: 00000000ee250000a6260000f8260000c8270000022800000e280000182800005a28000064280000342900005229000054290000682900006c290000d2290000ea290000f0290000fc290000462a0000902a0000f62a0000f22c0000562d00005a3100005c31000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -480,9 +480,9 @@ MonoBehaviour:
     height: 475
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c2fbffff
-    m_LastClickedID: -1086
-    m_ExpandedIDs: dcfbffff00000000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: b8fbffffc2fbffffdcfbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -532,14 +532,14 @@ MonoBehaviour:
     width: 931
     height: 475
   m_SceneLighting: 1
-  lastFramingTime: 196.0348417376286
+  lastFramingTime: 380.3060809969902
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 10.995777, y: -0.03882508, z: 0}
+    m_Target: {x: 18.56, y: 1.03, z: 0}
     speed: 2
-    m_Value: {x: 10.995777, y: -0.03882508, z: 0}
+    m_Value: {x: 18.56, y: 1.03, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -566,9 +566,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.842146
+    m_Target: 8.056692
     speed: 2
-    m_Value: 10.842146
+    m_Value: 8.056692
   m_Ortho:
     m_Target: 1
     speed: 2
