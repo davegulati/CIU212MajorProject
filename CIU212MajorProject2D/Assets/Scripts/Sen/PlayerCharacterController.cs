@@ -30,6 +30,10 @@ public class PlayerCharacterController : MonoBehaviour
     public int doubleJump = 0;
     private float doubleJumpForceDivider = 1.0f; // The closer it is to 0, the higher the double-jump will be.
 
+    //Sen's dodge variables.
+    private Vector2 dodgeRightForce = new Vector2(6000, 0);
+    private Vector2 dodgeLeftForce = new Vector2(-6000, 0);
+
     void Start()
     {
         senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
@@ -95,10 +99,21 @@ public class PlayerCharacterController : MonoBehaviour
 			jump = true;
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKey(KeyCode.D) && Input.GetMouseButtonDown(1))
         {
-            Dodge();
+            if (isGrounded)
+            {
+                DodgeRight();
+            }
         }
+
+		if (Input.GetKey(KeyCode.A) && Input.GetMouseButtonDown(1))
+		{
+            if (isGrounded)
+            {
+                DodgeLeft();
+            }
+		}
 
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -142,12 +157,19 @@ public class PlayerCharacterController : MonoBehaviour
         return false;
     }
 
-    // Sen's dodge mechanic.
-    private void Dodge()
+    // Sen's dodge (right) mechanic.
+    private void DodgeRight()
     {
-        Debug.Log("Dodge function called.");
+        senRigidbody.AddForce(dodgeRightForce);
         //anim.SetTrigger("Dodge");
     }
+
+	// Sen's dodge (left) mechanic.
+	private void DodgeLeft()
+	{
+        senRigidbody.AddForce(dodgeLeftForce);
+		//anim.SetTrigger("Dodge");
+	}
 
     // Sen's interaction mechanic.
     private void Interact()
