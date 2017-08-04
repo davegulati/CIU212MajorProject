@@ -8,12 +8,18 @@ public class PlayerHealth : MonoBehaviour {
     private float playerHealth = 100.0f;
     public float maxPlayerHealth = 100.0f;
     private Slider slider_Health;
+    private SpriteRenderer spriteRenderer;
+    private bool isHurting = false;
+    private int hurtTime = 2;
+    private float flashDelay = 0.1f;
+    private Color isHurtingColor = new Color(255, 0, 0);
+    private Color normalColor = new Color(255, 255, 255);
 
-	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
         slider_Health = GameObject.Find("Slider_Health").GetComponent<Slider>();
         slider_Health.value = playerHealth / 100;
+        spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     public void PlayerTakeDamage(float damage)
@@ -23,6 +29,29 @@ public class PlayerHealth : MonoBehaviour {
         if (playerHealth <= 0)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            StartCoroutine(TimerDamageColor());
+        }
+    }
+
+    private IEnumerator TimerDamageColor ()
+    {
+        isHurting = true;
+        StartCoroutine(DamageColor());
+        yield return new WaitForSeconds(hurtTime);
+        isHurting = false;
+    }
+    private IEnumerator DamageColor()
+    {
+        isHurting = true;
+        while (isHurting)
+        {
+            spriteRenderer.color = isHurtingColor;
+            yield return new WaitForSeconds(flashDelay);
+			spriteRenderer.color = normalColor;
+            yield return new WaitForSeconds(flashDelay);
         }
     }
 
