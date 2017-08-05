@@ -39,11 +39,11 @@ public class PlayerHealth : MonoBehaviour {
     private IEnumerator TimerDamageColor ()
     {
         isHurting = true;
-        StartCoroutine(DamageColor());
+        StartCoroutine(FlashDamageColor());
         yield return new WaitForSeconds(hurtTime);
         isHurting = false;
     }
-    private IEnumerator DamageColor()
+    private IEnumerator FlashDamageColor()
     {
         isHurting = true;
         while (isHurting)

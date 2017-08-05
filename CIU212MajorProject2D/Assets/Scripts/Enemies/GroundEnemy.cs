@@ -8,10 +8,9 @@ public class GroundEnemy : MonoBehaviour {
     private float chaseRange = 5.0f;
     private float speed = 3.0f;
 
-	// Use this for initialization
 	void Awake () 
     {   
-        sen = GameObject.Find("Sen");		
+        sen = GameObject.Find("Sen");
 	}
 	
 	// Update is called once per frame
