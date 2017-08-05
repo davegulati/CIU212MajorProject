@@ -12,9 +12,12 @@ public class GroundEnemyHealth : MonoBehaviour {
 	private Color isHurtingColor = new Color(255, 0, 0);
 	private Color normalColor = new Color(255, 255, 255);
 
+	private CoinLoot coinLoot;
+
 	private void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
 	}
 
     public void DamageEnemy (int damage)
@@ -23,6 +26,7 @@ public class GroundEnemyHealth : MonoBehaviour {
         // Update enemy health slider.
         if (currentHealth <= 0)
         {
+			//coinLoot.calculateLoot();
             Destroy(gameObject);
         }
         else

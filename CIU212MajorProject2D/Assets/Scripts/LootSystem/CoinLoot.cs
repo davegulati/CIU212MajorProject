@@ -18,7 +18,8 @@ public class CoinLoot : MonoBehaviour
 
 	public void calculateLoot()
 	{
-		GameObject enemy = GameObject.Find("AlienSpaceship");
+		GameObject enemy = GameObject.Find("GroundEnemy");
+		GameObject chest = GameObject.Find("ChestOpen");
 		int calc_dropChance = Random.Range (0, 101);
 
 		if(calc_dropChance > dropChance)
@@ -43,7 +44,8 @@ public class CoinLoot : MonoBehaviour
 			{
 				if (randomValue <= LootTable [j].dropRate)
 				{
-					Instantiate(LootTable[j].item, enemy.transform.position, Quaternion.identity);
+					Instantiate(LootTable [j].item, enemy.transform.position, Quaternion.identity);
+					Instantiate(LootTable[j].item, chest.transform.position, Quaternion.identity);
 					return;
 				}
 				randomValue -= LootTable [j].dropRate;

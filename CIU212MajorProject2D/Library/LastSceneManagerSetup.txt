@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Mechanic Test Scenes/DavesTestScene.unity
+- path: Assets/Scenes/Greybox/SafeZoneGreybox.unity
   isLoaded: 1
   isActive: 1
