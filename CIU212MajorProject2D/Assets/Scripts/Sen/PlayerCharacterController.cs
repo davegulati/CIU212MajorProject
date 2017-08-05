@@ -30,6 +30,10 @@ public class PlayerCharacterController : MonoBehaviour
     public int doubleJump = 0;
     private float doubleJumpForceDivider = 1.0f; // The closer it is to 0, the higher the double-jump will be.
 
+    // Sen's weapon variables.
+    private GameObject axe;
+    private GameObject bow;
+
     //Sen's dodge variables.
     private Vector2 dodgeRightForce = new Vector2(6000, 0);
     private Vector2 dodgeLeftForce = new Vector2(-6000, 0);
@@ -39,6 +43,9 @@ public class PlayerCharacterController : MonoBehaviour
         senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
         facingRight = true;
         senCollider = GetComponent<Collider2D>(); // Get Sen's BoxCollider2D component.
+        axe = gameObject.transform.Find("Axe").gameObject;
+        bow = gameObject.transform.Find("Bow").gameObject;
+        bow.SetActive(false);
     }
 
     void Update()
@@ -122,6 +129,18 @@ public class PlayerCharacterController : MonoBehaviour
                 senCollider.isTrigger = true;
 			}
         }
+
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+            bow.SetActive(false);
+            axe.SetActive(true);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			bow.SetActive(true);
+			axe.SetActive(false);
+		}
     }
 
     // Flips Sen's sprite depending on which direction he is moving.

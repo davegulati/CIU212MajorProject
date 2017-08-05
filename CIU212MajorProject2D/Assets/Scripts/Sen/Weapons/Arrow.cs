@@ -9,11 +9,11 @@ public class Arrow : MonoBehaviour {
     [HideInInspector]
     public int speed = 10;
 
+    // Damage Amounts
     [HideInInspector]
-    public float damage = 0;
+    public int damageAmount_GroundEnemy = 40;
 
-    // Update is called once per frame
-    void Update ()
+	void Update ()
     {
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 		Destroy(gameObject, destroyAfterSeconds);
@@ -21,13 +21,14 @@ public class Arrow : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "GroundEnemy")
         {
-            if (collision.gameObject.GetComponent<GroundEnemy>() != null)
+            if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
             {
-                collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(40);
+                collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(damageAmount_GroundEnemy);
                 Destroy(gameObject);
             }
         }
+        Destroy(gameObject);
     }
 }

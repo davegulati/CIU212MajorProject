@@ -18,7 +18,7 @@ public class Hazard_Lava : MonoBehaviour {
 			collision.gameObject.GetComponent<Rigidbody2D>().AddForce(senForce);
 		}
 
-		if (collision.gameObject.tag == "Enemy")
+		if (collision.gameObject.tag == "GroundEnemy")
 		{
             if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
             {
