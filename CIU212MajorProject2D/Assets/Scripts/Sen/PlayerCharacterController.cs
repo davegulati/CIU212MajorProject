@@ -32,6 +32,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     // Sen's weapon variables.
     private GameObject axe;
+    private BoxCollider2D axeBC2D;
     private GameObject bow;
 
     //Sen's dodge variables.
@@ -44,6 +45,8 @@ public class PlayerCharacterController : MonoBehaviour
         facingRight = true;
         senCollider = GetComponent<Collider2D>(); // Get Sen's BoxCollider2D component.
         axe = gameObject.transform.Find("Axe").gameObject;
+        axeBC2D = axe.GetComponent<BoxCollider2D>();
+        axeBC2D.enabled = false;
         bow = gameObject.transform.Find("Bow").gameObject;
         bow.SetActive(false);
     }
@@ -101,6 +104,16 @@ public class PlayerCharacterController : MonoBehaviour
     // Handles player input.
     private void HandleInput()
     {
+        if (Input.GetMouseButtonDown(0) && axe.activeSelf & isGrounded)
+        {
+            axeBC2D.enabled = true;
+        }
+
+		if (Input.GetMouseButtonUp(0) && axe.activeSelf & isGrounded)
+		{
+            axeBC2D.enabled = false;
+		}
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
 			jump = true;

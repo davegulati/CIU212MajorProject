@@ -8,13 +8,6 @@ public class Axe : MonoBehaviour {
     [HideInInspector]
     public int damageAmount_GroundEnemy = 40;
 
-	void Update () 
-    {
-		if (Input.GetMouseButtonDown(0))
-		{
-			//Attack
-		}		
-	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
