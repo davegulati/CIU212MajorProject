@@ -18,7 +18,7 @@ public class Powerup_Stopwatch : MonoBehaviour {
     private void Update()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
+		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
             Time.timeScale = slowMotionTimeScale;
             StartCoroutine(ResetTimeAfterSeconds());

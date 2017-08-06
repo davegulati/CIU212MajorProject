@@ -6,6 +6,9 @@ public class OpenTutorialChest : MonoBehaviour
 {
 	private TutorialLoot tutorialLoot;
 
+	public GameObject combatTutorial;
+	public GameObject combatTutorialText;
+	public GameObject itemTutorial;
 	private GameObject sen;
 	private float activationRange = 1.4f;
 
@@ -21,9 +24,13 @@ public class OpenTutorialChest : MonoBehaviour
 	private void Update ()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
+		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
 			tutorialLoot.CalculateLoot();
+
+			Destroy(combatTutorial);
+			Destroy(combatTutorialText);
+			itemTutorial.SetActive(true);
 
 			OpenChestAnimation();
 		}
