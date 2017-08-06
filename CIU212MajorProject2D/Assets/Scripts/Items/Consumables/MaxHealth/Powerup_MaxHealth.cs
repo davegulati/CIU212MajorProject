@@ -15,7 +15,7 @@ public class Powerup_MaxHealth : MonoBehaviour {
 	private void Update()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
+		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
 			AwardHealth();
 		}
