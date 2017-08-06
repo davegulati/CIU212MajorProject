@@ -5,24 +5,29 @@ using UnityEngine.UI;
 
 public class TriggerDialogue : MonoBehaviour
 {
-//	public float range;
-//	private GameObject sen;
+	public float activationRange;
+	private GameObject sen;
 	public GameObject text;
 
 
-//	void Start ()
-//	{
-//		sen = GameObject.Find("Sen");
-//	}
-	
-	void OnTriggerEnter2D(Collider other)
+	void Start ()
 	{
-		text.SetActive(true);
+		sen = GameObject.Find("Sen");
 	}
 
-	void OnTriggerExit2D(Collider other)
+	void Update()
 	{
-		Destroy(text);
-		Destroy(gameObject);
+		float distance = Vector2.Distance(transform.position, sen.transform.position);
+		if(distance < activationRange)
+		{
+			text.SetActive(true);
+
+			if(distance > activationRange)
+			{
+				Destroy(text);
+				Destroy(gameObject);
+			}
+		}
 	}
+
 }

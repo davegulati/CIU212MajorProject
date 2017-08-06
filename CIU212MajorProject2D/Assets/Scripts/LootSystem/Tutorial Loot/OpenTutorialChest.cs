@@ -6,8 +6,8 @@ public class OpenTutorialChest : MonoBehaviour
 {
 	private TutorialLoot tutorialLoot;
 
-	public GameObject combatTutorial;
-	public GameObject combatTutorialText;
+	public GameObject chestTutorial;
+	public GameObject chestTutorialText;
 	public GameObject itemTutorial;
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -28,8 +28,8 @@ public class OpenTutorialChest : MonoBehaviour
 		{
 			tutorialLoot.CalculateLoot();
 
-			Destroy(combatTutorial);
-			Destroy(combatTutorialText);
+			Destroy(chestTutorial);
+			Destroy(chestTutorialText);
 			itemTutorial.SetActive(true);
 
 			OpenChestAnimation();
