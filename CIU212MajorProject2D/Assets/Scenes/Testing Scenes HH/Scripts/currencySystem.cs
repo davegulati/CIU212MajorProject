@@ -13,7 +13,7 @@ public class currencySystem : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        moneyCounter = GameObject.Find("Money Counter").GetComponent<Text>();
+        moneyCounter = GameObject.Find("MoneyCounter").GetComponent<Text>();
         money = 20;
         moneyCounter.text = "Money: " + money.ToString();
 	}
