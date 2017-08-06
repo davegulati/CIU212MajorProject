@@ -26,7 +26,7 @@ public class GroundEnemyHealth : MonoBehaviour {
         // Update enemy health slider.
         if (currentHealth <= 0)
         {
-			//coinLoot.calculateLoot();
+			coinLoot.calculateLoot();
             Destroy(gameObject);
         }
         else

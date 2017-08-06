@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Mechanic Test Scenes/Chest System.unity
+=======
+- path: Assets/Scenes/Greybox/TutorialGreybox.unity
+>>>>>>> c9a3151bad84d96dde643672df251048d3772263
   isLoaded: 1
   isActive: 1

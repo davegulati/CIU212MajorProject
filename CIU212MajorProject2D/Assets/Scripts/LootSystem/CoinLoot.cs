@@ -19,7 +19,7 @@ public class CoinLoot : MonoBehaviour
 	public void calculateLoot()
 	{
 		GameObject enemy = GameObject.Find("GroundEnemy");
-		GameObject chest = GameObject.Find("ChestOpen");
+		GameObject chest = GameObject.Find("TutorialChestOpen");
 		int calc_dropChance = Random.Range (0, 101);
 
 		if(calc_dropChance > dropChance)
