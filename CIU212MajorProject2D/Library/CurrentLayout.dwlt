@@ -89,8 +89,8 @@ MonoBehaviour:
     y: 0
     width: 379
     height: 573
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -252,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 1152
     height: 573
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -324,19 +324,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes/Mechanic Test Scenes
+    - Assets/Scenes/Testing Scenes HH/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Mechanic Test Scenes
+  - Assets/Scenes/Testing Scenes HH/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Quintero\Desktop\Major Project - Dye Hard\CIU212MajorProject\CIU212MajorProject2D
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 320}
-    m_SelectedIDs: 0a280000
-    m_LastClickedID: 10250
-    m_ExpandedIDs: 000000000a27000054270000be270000ee270000142800004c2800008c28000098280000a2280000ea280000f4280000c4290000e2290000e4290000f8290000fc290000642a00007e2a0000842a00008e2a0000202b0000822b0000762d0000e42d000064770000667700006877000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 432}
+    m_SelectedIDs: 0a2d0000
+    m_LastClickedID: 11530
+    m_ExpandedIDs: 000000000e2600006a260000d4260000042700002a27000062270000a2270000ae270000ba270000022800000c280000dc280000fa280000fc280000102900001429000086290000b2290000b8290000c2290000542a0000bc2a0000bc2c00002a2d000052310000543100005631000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -364,7 +364,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a27000054270000be270000ee270000142800004c2800008c28000098280000a2280000ea280000f4280000c4290000e2290000e4290000f8290000fc290000642a00007e2a0000842a00008e2a0000202b0000822b0000762d0000e42d0000647700006677000068770000
+    m_ExpandedIDs: 000000000e2600006a260000d4260000042700002a27000062270000a2270000ae270000ba270000022800000c280000dc280000fa280000fc280000102900001429000086290000b2290000b8290000c2290000542a0000bc2a0000bc2c00002a2d0000523100005431000056310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 3823ffffee8bffff2a8fffff18f8ffff00000000
+    m_ExpandedIDs: e48effffd6f9ffffdafbffff00000000fe51000016610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,7 +501,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
   m_ExpandedScenes:
-  - DavesTestScene
+  - Chest System
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -537,9 +537,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 18.56, y: 1.03, z: 0}
+    m_Target: {x: -3.8971493, y: 1.3836169, z: 0}
     speed: 2
-    m_Value: {x: 18.56, y: 1.03, z: 0}
+    m_Value: {x: -3.8971493, y: 1.3836169, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -566,9 +566,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.415564
+    m_Target: 10.353752
     speed: 2
-    m_Value: 9.415564
+    m_Value: 10.353752
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -43,7 +43,7 @@ public class Loot : MonoBehaviour
 			{
 				if (randomValue <= LootTable [j].dropRate)
 				{
-					Instantiate(LootTable[j].item, chest.transform.localPosition, Quaternion.identity);
+					Instantiate(LootTable[j].item, chest.transform.position, Quaternion.identity);
 					return;
 				}
 				randomValue -= LootTable [j].dropRate;
