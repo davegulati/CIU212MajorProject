@@ -39,6 +39,9 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector2 dodgeRightForce = new Vector2(6000, 0);
     private Vector2 dodgeLeftForce = new Vector2(-6000, 0);
 
+    // Enemy variables.
+    private GameObject[] enemies;
+
     void Start()
     {
         senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
@@ -49,6 +52,7 @@ public class PlayerCharacterController : MonoBehaviour
         axeBC2D.enabled = false;
         bow = gameObject.transform.Find("Bow").gameObject;
         bow.SetActive(false);
+        enemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
     }
 
     void Update()
@@ -142,6 +146,14 @@ public class PlayerCharacterController : MonoBehaviour
                 senCollider.isTrigger = true;
 			}
         }
+
+		if (Input.GetKeyDown(KeyCode.G))
+		{
+			foreach (GameObject enemy in enemies)
+			{
+				enemy.GetComponent<GroundEnemy>().Stun();
+			}
+		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
