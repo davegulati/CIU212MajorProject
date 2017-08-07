@@ -9,25 +9,20 @@ public class TriggerDialogue : MonoBehaviour
 	private GameObject sen;
 	public GameObject text;
 
-
-	void Start ()
+	private void Awake ()
 	{
 		sen = GameObject.Find("Sen");
 	}
 
-	void Update()
-	{
-		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if(distance < activationRange)
-		{
-			text.SetActive(true);
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        text.SetActive(true);
+    }
 
-			if(distance > activationRange)
-			{
-				Destroy(text);
-				Destroy(gameObject);
-			}
-		}
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		Destroy(text);
+		Destroy(gameObject);
 	}
 
 }
