@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour {
 
-	private GameObject sen;
-	private int rotationOffset = 0;
+	//private int rotationOffset = 0;
 
     [HideInInspector]
     public float fireRate = 1;
@@ -21,7 +20,6 @@ public class Bow : MonoBehaviour {
 	// Use this for initialization
 	private void Awake () 
     {
-        sen = GameObject.Find("Sen");
         firePoint = gameObject.transform.Find("FirePoint");
 	}
 	

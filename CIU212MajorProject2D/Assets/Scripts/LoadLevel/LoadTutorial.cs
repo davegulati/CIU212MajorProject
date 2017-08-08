@@ -18,7 +18,7 @@ public class LoadTutorial : MonoBehaviour
 	void Update ()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetKeyDown(KeyCode.E))
+		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
 			SceneManager.LoadScene("Tutorial Greybox");
 		}
