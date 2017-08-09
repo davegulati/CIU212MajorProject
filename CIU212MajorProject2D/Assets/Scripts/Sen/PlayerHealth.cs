@@ -22,11 +22,6 @@ public class PlayerHealth : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-    private void Update()
-    {
-        Debug.Log(playerHealth);
-    }
-
     public void PlayerTakeDamage(float damage)
     {
         playerHealth = playerHealth - damage;

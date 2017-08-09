@@ -9,11 +9,11 @@ public class Arrow : MonoBehaviour {
     [HideInInspector]
     public int speed = 10;
 
-    // Damage Amounts
-    [HideInInspector]
-    public int damageAmount_GroundEnemy = 40;
+    // Damage Amount
+	[HideInInspector]
+	public float current_DamageAmount = 30;
 
-	void Update ()
+    private void Update ()
     {
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 		Destroy(gameObject, destroyAfterSeconds);
@@ -25,7 +25,7 @@ public class Arrow : MonoBehaviour {
         {
             if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
             {
-                collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(damageAmount_GroundEnemy);
+                collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(current_DamageAmount);
                 Destroy(gameObject);
             }
         }

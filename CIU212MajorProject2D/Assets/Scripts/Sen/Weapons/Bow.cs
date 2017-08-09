@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour {
 
-	//private int rotationOffset = 0;
-
     [HideInInspector]
     public float fireRate = 1;
     [SerializeField]
@@ -17,39 +15,22 @@ public class Bow : MonoBehaviour {
     [SerializeField]
     private Transform arrow;
 
-	// Use this for initialization
+    [HideInInspector]
+    private float default_DamageAmount = 30.0f;
+    //[HideInInspector]
+    public float current_DamageAmount = 30.0f;
+
+	// Colors
+	private Color normalColor = new Color(255, 255, 255);
+	private Color enhancedColor = new Color(0, 255, 0);
+
 	private void Awake () 
     {
         firePoint = gameObject.transform.Find("FirePoint");
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
-		//Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		//difference.Normalize();
-
-		//float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-		//if (sen.transform.localScale.x < 0)
-		//{
-		//	rotationOffset = 180;
-		//}
-		//else if (sen.transform.localScale.x > 0)
-		//{
-		//	rotationOffset = 0;
-		//}
-
-        ////transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
-        ////transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
-        //if (sen.transform.localScale.x > 0)
-        //{
-        //    transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, -50, 70));
-        //}
-        //else if (sen.transform.localScale.x < 0)
-        //{
-        //    transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Clamp(rotZ + rotationOffset, 310, 70));
-        //}
-
         if (Input.GetMouseButtonDown(0))
         {
             if (fireRate == 0)
@@ -69,9 +50,22 @@ public class Bow : MonoBehaviour {
 
     private void ShootArrow ()
     {
-        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        //Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 200, whatToHit);
-		Instantiate(arrow, firePoint.position, firePoint.rotation);
+        //RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 200, whatToHit);
+        Transform spawmedArrpw = Instantiate(arrow, firePoint.position, firePoint.rotation);
+        spawmedArrpw.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
     }
+
+    public void EnhanceWeaponStats_Pill (float multiplier)
+    {
+		GetComponent<SpriteRenderer>().color = enhancedColor;
+		current_DamageAmount = default_DamageAmount * multiplier;
+    }
+
+	public void ResetWeaponStats()
+	{
+        GetComponent<SpriteRenderer>().color = normalColor;
+        current_DamageAmount = default_DamageAmount;
+	}
 }

@@ -6,7 +6,13 @@ public class Axe : MonoBehaviour {
 
     // Damage amounts
     [HideInInspector]
-    public int damageAmount_GroundEnemy = 40;
+    private float default_DamageAmount = 40;
+    [HideInInspector]
+    private float current_DamageAmount = 40;
+
+	// Colors
+	private Color normalColor = new Color(255, 255, 255);
+	private Color enhancedColor = new Color(0, 255, 0);
 
     // Ignore collisions
     private GameObject[] hazards;
@@ -34,13 +40,25 @@ public class Axe : MonoBehaviour {
 		}
     }
 
+    public void EnhanceWeaponStats_Pill (float multiplier)
+    {
+        GetComponent<SpriteRenderer>().color = enhancedColor;
+        current_DamageAmount = default_DamageAmount * multiplier;
+    }
+
+	public void ResetWeaponStats()
+	{
+        GetComponent<SpriteRenderer>().color = normalColor;
+        current_DamageAmount = default_DamageAmount;
+	}
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "GroundEnemy")
         {
 			if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
 			{
-				collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(damageAmount_GroundEnemy);
+				collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(current_DamageAmount);
 			}
         }
     }

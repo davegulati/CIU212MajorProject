@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerCharacterController : MonoBehaviour
 {
     //Sen's movement variables.
-    private float movementSpeed = 5.0f;
+    [HideInInspector]
+    public float movementSpeed = 5.0f;
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;
     private bool facingRight;

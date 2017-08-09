@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundEnemyHealth : MonoBehaviour {
 
-    private int currentHealth = 100;
+    private float currentHealth = 100;
     private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
 	private int hurtTime = 2;
@@ -20,7 +20,7 @@ public class GroundEnemyHealth : MonoBehaviour {
 		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
 	}
 
-    public void DamageEnemy (int damage)
+    public void DamageEnemy (float damage)
     {
         currentHealth = currentHealth - damage;
         // Update enemy health slider.

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Powerup_Stopwatch : MonoBehaviour {
 
     private GameObject sen;
+    private bool activated = false;
 	private float activationRange = 0.8f;
     private float normalTimeScale = 1.0f;
     private float slowMotionTimeScale = 0.4f;
@@ -18,16 +19,18 @@ public class Powerup_Stopwatch : MonoBehaviour {
     private void Update()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetButtonDown("Interact"))
+		if (distance < activationRange && Input.GetButtonDown("Interact") && !activated)
 		{
-            Time.timeScale = slowMotionTimeScale;
-            StartCoroutine(ResetTimeAfterSeconds());
+            StartCoroutine(SlowMotion());
 		}
 	}
 
-    IEnumerator ResetTimeAfterSeconds ()
+    IEnumerator SlowMotion ()
     {
+        Time.timeScale = slowMotionTimeScale;
+        GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(resetAfterSeconds);
         Time.timeScale = normalTimeScale;
+        Destroy(gameObject);
     }
 }
