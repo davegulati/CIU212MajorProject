@@ -12,12 +12,22 @@ public class Bow : MonoBehaviour {
     private float timeToFire = 0;
     private Transform firePoint;
 
+    // Normal arrow
     [SerializeField]
-    private Transform arrow;
+    private Transform normalArrow;
+
+    // Explosive arrow
+    [HideInInspector]
+    public bool explosiveArrowsUnlocked = false;
+	[SerializeField]
+	private Transform explosiveArrow;
+    private int explosionChance;
+	private int explosionChanceMin = 1;
+    private int explosionChanceMax = 10;
 
     [HideInInspector]
     private float default_DamageAmount = 30.0f;
-    //[HideInInspector]
+    [HideInInspector]
     public float current_DamageAmount = 30.0f;
 
 	// Colors
@@ -53,8 +63,25 @@ public class Bow : MonoBehaviour {
         //Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
         //RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 200, whatToHit);
-        Transform spawmedArrpw = Instantiate(arrow, firePoint.position, firePoint.rotation);
-        spawmedArrpw.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+        if (explosiveArrowsUnlocked)
+        {
+            explosionChance = Random.Range(explosionChanceMin, explosionChanceMax);
+			if (explosionChance == 6)
+			{
+				Transform spawmedArrow = Instantiate(explosiveArrow, firePoint.position, firePoint.rotation);
+				spawmedArrow.GetComponent<ExplosiveArrow>().current_DamageAmount = current_DamageAmount;
+			}
+            else
+            {
+				Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
+				spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+            }
+        }
+        else 
+        {
+			Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
+			spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+        }
     }
 
     public void EnhanceWeaponStats_Pill (float multiplier)
