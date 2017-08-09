@@ -6,7 +6,8 @@ public class Powerup_Potion : MonoBehaviour {
 
 	private GameObject sen;
 	private float activationRange = 0.8f;
-	private float healthAwarded = 50.0f;
+	private float healthAwarded;
+    private float healthDivider = 2.0f;
 
 	private void Awake()
 	{
@@ -24,6 +25,7 @@ public class Powerup_Potion : MonoBehaviour {
 
 	private void AwardHealth()
 	{
+        healthAwarded = sen.GetComponent<PlayerHealth>().maxPlayerHealth / healthDivider;
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(healthAwarded);
 		Destroy(gameObject);
 	}

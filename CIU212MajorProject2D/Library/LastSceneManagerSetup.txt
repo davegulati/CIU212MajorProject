@@ -1,4 +1,8 @@
 sceneSetups:
-- path: Assets/Scenes/Greybox/TutorialGreybox.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/Testing Scenes/Script_Testing_Scene_HH.unity
+=======
+- path: Assets/Scenes/Mechanic Test Scenes/DavesTestScene.unity
+>>>>>>> 1eab44d890f3ecf8ed0f13b60fb8e427acc9b3ff
   isLoaded: 1
   isActive: 1

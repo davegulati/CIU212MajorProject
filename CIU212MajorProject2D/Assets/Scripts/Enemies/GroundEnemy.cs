@@ -9,6 +9,8 @@ public class GroundEnemy : MonoBehaviour {
     private float speed = 3.0f;
     private bool isStunned = false;
     private int stunTime = 3;
+    private Color normalColor = new Color(255, 255, 255);
+    private Color stunnedColor = new Color(0, 0, 255);
 
 	void Awake () 
     {   
@@ -30,6 +32,7 @@ public class GroundEnemy : MonoBehaviour {
     public void Stun ()
     {
         isStunned = true;
+        GetComponent<SpriteRenderer>().color = stunnedColor;
         StartCoroutine(StunTimer());
     }
 
@@ -37,5 +40,6 @@ public class GroundEnemy : MonoBehaviour {
     {
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
+        GetComponent<SpriteRenderer>().color = normalColor;
     }
 }
