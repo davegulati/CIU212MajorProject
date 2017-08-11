@@ -26,7 +26,7 @@ public class Bow : MonoBehaviour {
     private int explosionChanceMax = 10;
 
     [HideInInspector]
-    private float default_DamageAmount = 30.0f;
+    public float default_DamageAmount = 30.0f;
     [HideInInspector]
     public float current_DamageAmount = 30.0f;
 
@@ -84,11 +84,17 @@ public class Bow : MonoBehaviour {
         }
     }
 
-    public void EnhanceWeaponStats_Pill (float multiplier)
+    public void EnhanceWeaponStats_VitaminC_Pill (float multiplier)
     {
 		GetComponent<SpriteRenderer>().color = enhancedColor;
 		current_DamageAmount = default_DamageAmount * multiplier;
     }
+
+	public void EnhanceWeaponStats_PowerAura (float multiplier)
+	{
+        default_DamageAmount *= multiplier;
+		current_DamageAmount *= multiplier;
+	}
 
 	public void ResetWeaponStats()
 	{

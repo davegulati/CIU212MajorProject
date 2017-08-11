@@ -6,9 +6,9 @@ public class Axe : MonoBehaviour {
 
     // Damage amounts
     [HideInInspector]
-    private float default_DamageAmount = 40;
+    public float default_DamageAmount = 40;
     [HideInInspector]
-    private float current_DamageAmount = 40;
+    public float current_DamageAmount = 40;
 
 	// Colors
 	private Color normalColor = new Color(255, 255, 255);
@@ -40,10 +40,16 @@ public class Axe : MonoBehaviour {
 		}
     }
 
-    public void EnhanceWeaponStats_Pill (float multiplier)
+    public void EnhanceWeaponStats_VitaminC_Pill (float multiplier)
     {
         GetComponent<SpriteRenderer>().color = enhancedColor;
         current_DamageAmount = default_DamageAmount * multiplier;
+    }
+
+    public void EnhanceWeaponStats_PowerAura (float multiplier)
+    {
+        default_DamageAmount *= multiplier;
+        current_DamageAmount *= multiplier;
     }
 
 	public void ResetWeaponStats()

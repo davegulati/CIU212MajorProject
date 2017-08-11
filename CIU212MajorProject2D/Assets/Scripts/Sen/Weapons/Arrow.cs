@@ -6,8 +6,7 @@ public class Arrow : MonoBehaviour {
 
     private float destroyAfterSeconds = 3.0f;
 
-    [HideInInspector]
-    public int speed = 10;
+    private int speed = 20;
 
     // Damage Amount
 	[HideInInspector]

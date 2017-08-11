@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pill : MonoBehaviour {
+public class VitaminC_Pill : MonoBehaviour {
 	
     private GameObject sen;
 	private float activationRange = 0.8f;
@@ -42,8 +42,8 @@ public class Pill : MonoBehaviour {
 	{
         readyForUse = false;
         GetComponent<SpriteRenderer>().color = useColor;
-		sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_Pill(damageMultiplier);
-        sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_Pill(damageMultiplier);
+		sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+        sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
 		StartCoroutine(ResetWeaponStats());
 	}
 

@@ -9,8 +9,7 @@ public class ExplosiveArrow : MonoBehaviour
 	public GameObject explosion;
 	private GameObject explosionSpawnPoint;
 
-	[HideInInspector]
-	public int speed = 10;
+	private int speed = 20;
 
 	// Damage Amount
 	[HideInInspector]

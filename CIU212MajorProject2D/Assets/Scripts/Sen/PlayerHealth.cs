@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour {
 
     private float playerHealth = 100.0f;
+    [HideInInspector]
     public float maxPlayerHealth = 100.0f;
     private Slider slider_Health;
     private SpriteRenderer spriteRenderer;
