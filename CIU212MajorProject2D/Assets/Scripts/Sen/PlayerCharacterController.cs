@@ -42,6 +42,8 @@ public class PlayerCharacterController : MonoBehaviour
 
     // Enemy variables.
     private GameObject[] enemies;
+    private GameObject closestEnemy;
+    private float stunRange = 6.0f;
 
     void Start()
     {
@@ -150,9 +152,11 @@ public class PlayerCharacterController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.G))
 		{
-			foreach (GameObject enemy in enemies)
+			FindClosestEnemy();
+			float distance = Vector2.Distance(transform.position, closestEnemy.transform.position);
+			if (distance < stunRange)
 			{
-				enemy.GetComponent<GroundEnemy>().Stun();
+				closestEnemy.GetComponent<GroundEnemy>().Stun();
 			}
 		}
 
@@ -239,6 +243,25 @@ public class PlayerCharacterController : MonoBehaviour
     {
 
     }
+
+	private GameObject FindClosestEnemy()
+	{
+		enemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
+		closestEnemy = null;
+		float distance = Mathf.Infinity;
+		Vector3 position = transform.position;
+		foreach (GameObject enemy in enemies)
+		{
+			Vector3 diff = enemy.transform.position - position;
+			float curDistance = diff.sqrMagnitude;
+			if (curDistance < distance)
+			{
+				closestEnemy = enemy;
+				distance = curDistance;
+			}
+		}
+		return closestEnemy;
+	}
 
     // When Sen collides with something.
     private void OnCollisionEnter2D(Collision2D collision)

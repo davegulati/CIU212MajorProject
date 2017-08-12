@@ -6,7 +6,6 @@ public class ArrowPowder : MonoBehaviour {
 
 	private GameObject sen;
 	private float activationRange = 0.8f;
-	private float senNewSpeed = 10.0f; // Default speed for Sen is 5.
 
     private void Awake()
     {
