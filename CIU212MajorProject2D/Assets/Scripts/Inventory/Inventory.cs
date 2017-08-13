@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour
 
     private RaycastHit hit;
     public LayerMask cullingmask;
+    private Vector3 forward;
 
     void Start()
     {
@@ -52,16 +53,16 @@ public class Inventory : MonoBehaviour
         }  
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-                if (other.transform.tag == "Item")
-                {
-                    ItemSelf newitem = hit.transform.GetComponent<ItemSelf>();
-                    //add new variables in itemself and update here for item stats
-                    SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
-                    Destroy(hit.transform.gameObject);
-                }
-        Debug.Log("Triggering");
+        if (other.transform.tag == "Item")
+        {
+            ItemSelf newitem = other.transform.GetComponent<ItemSelf>();
+            //add new variables in itemself and update here for item stats
+            SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
+            UpdateInventory();
+            Destroy(other.transform.gameObject);
+        }
     }
 
     public void SearchForSameItem(ITEM item, int count, float health)
