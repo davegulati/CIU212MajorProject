@@ -6,6 +6,7 @@ public class OpenChest : MonoBehaviour
 {
 	private Loot loot;
 	private SecondLoot secondLoot;
+	private CoinLoot coinLoot;
 
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -15,6 +16,7 @@ public class OpenChest : MonoBehaviour
 	{
 		loot = GameObject.Find("LootManager").GetComponent<Loot>();
 		secondLoot = GameObject.Find("LootManager").GetComponent<SecondLoot>();
+		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
 
 		sen = GameObject.Find("Sen");
 	}
@@ -25,8 +27,10 @@ public class OpenChest : MonoBehaviour
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
+			// TO DO: Calculate multiple loots together to make it pick one of several loot tables. Twice.
 			loot.calculateLoot();
 			secondLoot.calculateLoot();
+			coinLoot.calculateLoot();
 
 			OpenChestAnimation();
 		}

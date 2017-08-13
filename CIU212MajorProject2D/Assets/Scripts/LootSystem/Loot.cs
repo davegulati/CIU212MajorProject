@@ -43,6 +43,7 @@ public class Loot : MonoBehaviour
 			{
 				if (randomValue <= LootTable [j].dropRate)
 				{
+					// TO DO: Make it instantiate in a random direction/position with Rigid Body 2D.
 					Instantiate(LootTable[j].item, chest.transform.position, Quaternion.identity);
 					return;
 				}
