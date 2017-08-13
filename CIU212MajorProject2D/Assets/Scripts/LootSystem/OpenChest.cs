@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenChest : MonoBehaviour
 {
 	private Loot loot;
+	private SecondLoot secondLoot;
 
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -13,6 +14,7 @@ public class OpenChest : MonoBehaviour
 	void Start ()
 	{
 		loot = GameObject.Find("LootManager").GetComponent<Loot>();
+		secondLoot = GameObject.Find("LootManager").GetComponent<SecondLoot>();
 
 		sen = GameObject.Find("Sen");
 	}
@@ -24,6 +26,7 @@ public class OpenChest : MonoBehaviour
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
 			loot.calculateLoot();
+			secondLoot.calculateLoot();
 
 			OpenChestAnimation();
 		}
