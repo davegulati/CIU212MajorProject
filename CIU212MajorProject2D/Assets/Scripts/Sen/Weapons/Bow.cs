@@ -25,6 +25,10 @@ public class Bow : MonoBehaviour {
 	private int explosionChanceMin = 1;
     private int explosionChanceMax = 10;
 
+    // Steel Shot arrow
+    [SerializeField]
+    private Transform steelShotArrow;
+
     [HideInInspector]
     public float default_DamageAmount = 30.0f;
     [HideInInspector]
@@ -80,7 +84,7 @@ public class Bow : MonoBehaviour {
         else 
         {
 			Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
-			spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+			spawmedArrow.GetComponent<SteelShotArrow>().current_DamageAmount = current_DamageAmount;
         }
     }
 
