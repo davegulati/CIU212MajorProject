@@ -6,7 +6,7 @@ public class PlayerCharacterController : MonoBehaviour
 {
     //Sen's movement variables.
     [HideInInspector]
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 12.5f;
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;
     private bool facingRight;
@@ -24,7 +24,7 @@ public class PlayerCharacterController : MonoBehaviour
     private bool isGrounded;
     private float groundRadius = 0.2f;
     private bool jump;
-    private float jumpForce = 500.0f;
+    private float jumpForce = 600.0f;
     [SerializeField]
     private LayerMask whatIsGround;
 	public bool doubleJumpUnlocked = false;

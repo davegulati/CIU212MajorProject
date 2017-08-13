@@ -6,7 +6,7 @@ public class MechanicalBoots : MonoBehaviour {
 
 	private GameObject sen;
 	private float activationRange = 0.8f;
-    private float senNewSpeed = 10.0f; // Default speed for Sen is 5.
+    private float senNewSpeed = 15.0f; // Default speed for Sen is 12.5.
 
 	private void Awake()
 	{
