@@ -33,10 +33,10 @@ public class Inventory : MonoBehaviour
         if (items.Count == 0)
             AddGraphics();
 
-        for(int i = 0; i < Maxcount; i++)
-        {
-            AddItem(i, data.items[Random.Range(0, data.items.Count)], Random.Range(1, 1), 100);
-        }
+       // for(int i = 0; i < Maxcount; i++)
+       // {
+       //     AddItem(i, data.items[Random.Range(0, data.items.Count)], Random.Range(1, 1), 100);
+       // }
         UpdateInventory();
     }
 
