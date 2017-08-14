@@ -18,6 +18,8 @@ public class GroundEnemy : MonoBehaviour {
     private bool inZone = false;
     private GameObject[] patrolPoints;
     private bool senNoticed = false;
+    private int currentPatrolPoint = 0;
+    private float patrolFinishDistance = 1.0f;
 
 	void Awake () 
     {   
@@ -27,22 +29,37 @@ public class GroundEnemy : MonoBehaviour {
 	// Update is called once per frame
 	private void Update () 
     {
-		//float distance = Vector2.Distance(transform.position, sen.transform.position);
-		//if (distance < chaseRange && !isStunned)
-		//{
-		//          Vector2 position = new Vector2(transform.position.x, transform.position.y);
-		//          Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
-		//          transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
-		//}
-
-		if (inZone && !senNoticed)
+		float distance = Vector2.Distance(transform.position, sen.transform.position);
+		if (distance < chaseRange && !isStunned)
 		{
-			// patrol
+            senNoticed = true;
+		}
+        else if (distance > chaseRange)
+        {
+            senNoticed = false;
+        }
+
+		if (inZone && !senNoticed && !isStunned)
+		{
+			// Patrol
+			Vector2 position = new Vector2(transform.position.x, transform.position.y);
+			Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+			transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+			if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+            {
+                currentPatrolPoint++;
+                if (currentPatrolPoint >= patrolPoints.Length)
+                {
+                    currentPatrolPoint = 0;
+                }
+            }
 		}
 
-        if (senNoticed)
+        if (senNoticed && !isStunned)
         {
-            // Chase Sen
+			Vector2 position = new Vector2(transform.position.x, transform.position.y);
+			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
+			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
         }
 	}
 
@@ -66,7 +83,7 @@ public class GroundEnemy : MonoBehaviour {
 		for (int i = 0; i < patrolZone.transform.childCount; i++)
 		{
 			patrolPoints[i] = patrolZone.transform.GetChild(i).gameObject;
-            Debug.Log(patrolZone.transform.GetChild(i).gameObject.name);
+//            Debug.Log(patrolZone.transform.GetChild(i).gameObject.name);
 		}
     }
 
