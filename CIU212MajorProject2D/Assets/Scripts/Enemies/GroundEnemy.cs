@@ -8,6 +8,14 @@ public class GroundEnemy : MonoBehaviour {
     private float chaseRange = 5.0f;
     private float speed = 3.0f;
 
+    private GameObject[] rangedEnemies;
+
+    // Attack variables
+    private float attackDamage = 20.0f;
+    private float attackDistance = 2.5f;
+    private bool canAttack = true;
+    private float attackCooldown = 1.5f;
+
     // Stun variables
     private bool isStunned = false;
     private float stunTime = 1.5f;
@@ -24,17 +32,23 @@ public class GroundEnemy : MonoBehaviour {
 	void Awake () 
     {   
         sen = GameObject.Find("Sen");
+
+		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
+		foreach (GameObject rangedEnemy in rangedEnemies)
+		{
+			Physics2D.IgnoreCollision(rangedEnemy.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
+		}
 	}
 	
 	// Update is called once per frame
 	private void Update () 
     {
-		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < chaseRange && !isStunned)
+        float distanceToSen = Vector2.Distance(transform.position, sen.transform.position);
+		if (distanceToSen < chaseRange && !isStunned)
 		{
             senNoticed = true;
 		}
-        else if (distance > chaseRange)
+        else if (distanceToSen > chaseRange)
         {
             senNoticed = false;
         }
@@ -57,11 +71,35 @@ public class GroundEnemy : MonoBehaviour {
 
         if (senNoticed && !isStunned)
         {
+            // Chase Sen
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+
+            // Attack Sen
+			if (distanceToSen < attackDistance)
+			{
+				if (canAttack)
+				{
+					Attack();
+				}
+			}
         }
 	}
+
+    private void Attack ()
+    {
+        // TODO: Attack animation.
+        canAttack = false;
+        sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
+        StartCoroutine(AttackCooldown());
+    }
+
+    IEnumerator AttackCooldown ()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
 
     public void Stun ()
     {
