@@ -5,8 +5,8 @@ using UnityEngine;
 public class OpenChest : MonoBehaviour
 {
 	private Loot loot;
-	private SecondLoot secondLoot;
-	private ChestCoinLoot coinLoot;
+//	private SecondLoot secondLoot;
+//	private ChestCoinLoot coinLoot;
 
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -15,8 +15,8 @@ public class OpenChest : MonoBehaviour
 	void Start ()
 	{
 		loot = GameObject.Find("LootManager").GetComponent<Loot>();
-		secondLoot = GameObject.Find("LootManager").GetComponent<SecondLoot>();
-		coinLoot = GameObject.Find("LootManager").GetComponent<ChestCoinLoot>();
+//		secondLoot = GameObject.Find("LootManager").GetComponent<SecondLoot>();
+//		coinLoot = GameObject.Find("LootManager").GetComponent<ChestCoinLoot>();
 
 		sen = GameObject.Find("Sen");
 	}
@@ -29,8 +29,8 @@ public class OpenChest : MonoBehaviour
 		{
 			// TO DO: Calculate multiple loots together to make it pick one of several loot tables. Twice.
 			loot.calculateLoot();
-			secondLoot.calculateLoot();
-			coinLoot.calculateLoot();
+//			secondLoot.calculateLoot();
+//			coinLoot.calculateLoot();
 
 			OpenChestAnimation();
 		}

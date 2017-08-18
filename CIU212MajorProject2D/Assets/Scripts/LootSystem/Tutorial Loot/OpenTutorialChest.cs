@@ -5,7 +5,6 @@ using UnityEngine;
 public class OpenTutorialChest : MonoBehaviour
 {
 	private TutorialLoot tutorialLoot;
-    private ChestCoinLoot chestCoinLoot;
 
 	public GameObject chestTutorial;
 	public GameObject chestTutorialText;
@@ -17,7 +16,6 @@ public class OpenTutorialChest : MonoBehaviour
 	void Start ()
 	{
 		tutorialLoot = GameObject.Find ("LootManager").GetComponent<TutorialLoot>();
-        chestCoinLoot = GameObject.Find("LootManager").GetComponent<ChestCoinLoot>();
 
         sen = GameObject.Find("Sen");
 	}
@@ -29,7 +27,6 @@ public class OpenTutorialChest : MonoBehaviour
 		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
 			tutorialLoot.CalculateLoot();
-            chestCoinLoot.calculateLoot();
 
 			Destroy(chestTutorial);
 			Destroy(chestTutorialText);
