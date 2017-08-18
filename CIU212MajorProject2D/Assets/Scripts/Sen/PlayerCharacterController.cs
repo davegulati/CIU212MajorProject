@@ -108,6 +108,44 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
+ //   private void HandleMovement_METHOD2 (float horizontal)
+ //   {
+ //       Vector3 moveVector = Vector3.zero;
+ //       moveVector.x = Input.GetAxis("Horizontal");
+ //       moveVector.z = 0;
+ //       transform.Translate(moveVector * movementSpeed * Time.deltaTime);
+
+	//	if (isGrounded || movementControlInAir)
+	//    {
+	//        senRigidbody.velocity = new Vector2(horizontal * movementSpeed, senRigidbody.velocity.y);
+	//		//anim.SetTrigger("Jump");
+	//	}
+
+	//		if (jump)
+	//    {
+	//        if (isGrounded)
+	//        {
+	//            isGrounded = false;
+	//            senRigidbody.AddForce(new Vector2(0, jumpForce));
+	//            //anim.SetTrigger("Jump");
+	//        }
+	//        else if (!isGrounded)
+	//        {
+	//            if (doubleJumpUnlocked)
+	//            {
+	//                if (doubleJump <= 0)
+	//                {
+	//                    senRigidbody.velocity = Vector2.zero;
+	//                    senRigidbody.AddForce(new Vector2(0, jumpForce / doubleJumpForceDivider));
+	//                    //anim.SetTrigger("Jump");
+	//                    doubleJump = doubleJump + 1;
+	//                }
+	//            }
+	//        }
+	//    }
+
+	//}
+
     // Handles player input.
     private void HandleInput()
     {
