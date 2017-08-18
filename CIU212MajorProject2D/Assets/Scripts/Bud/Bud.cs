@@ -53,7 +53,7 @@ public class Bud : MonoBehaviour {
 
     public void UseActiveAbility ()
     {
-        Debug.Log("Bud's active ability not set!"); // For now.
+        Debug.Log("Bud's active ability not set!"); // For now. 
     }
 
     public void BudDespawn ()

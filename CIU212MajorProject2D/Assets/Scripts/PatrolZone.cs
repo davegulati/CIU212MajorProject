@@ -25,6 +25,16 @@ public class PatrolZone : MonoBehaviour {
 
             }
         }
+
+		if (collision.gameObject.tag == "RangedEnemy")
+		{
+			if (collision.gameObject.GetComponent<RangedEnemy>() != null)
+			{
+				collision.gameObject.GetComponent<RangedEnemy>().FindPatrolPoints(gameObject);
+				collision.gameObject.GetComponent<RangedEnemy>().JoinedZone();
+
+			}
+		}
     }
 
 	private void OnTriggerExit2D(Collider2D collision)
@@ -34,6 +44,14 @@ public class PatrolZone : MonoBehaviour {
 			if (collision.gameObject.GetComponent<GroundEnemy>() != null)
 			{
                 collision.gameObject.GetComponent<GroundEnemy>().LeftZone();
+			}
+		}
+
+		if (collision.gameObject.tag == "RangedEnemy")
+		{
+			if (collision.gameObject.GetComponent<RangedEnemy>() != null)
+			{
+				collision.gameObject.GetComponent<RangedEnemy>().LeftZone();
 			}
 		}
 	}
