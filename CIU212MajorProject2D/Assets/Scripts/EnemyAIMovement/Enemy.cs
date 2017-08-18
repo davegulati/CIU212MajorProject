@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	private CoinLoot coinLoot;
+	private EnemyCoinLoot coinLoot;
 
 	[System.Serializable]
 	public class EnemyStats
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
 	void Start()
 	{
-		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
+		coinLoot = GameObject.Find("LootManager").GetComponent<EnemyCoinLoot>();
 	}
 
 	private void Update()

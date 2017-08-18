@@ -12,12 +12,12 @@ public class GroundEnemyHealth : MonoBehaviour {
 	private Color isHurtingColor = new Color(255, 0, 0);
 	private Color normalColor = new Color(255, 255, 255);
 
-	private CoinLoot coinLoot;
+	private EnemyCoinLoot coinLoot;
 
 	private void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
+		coinLoot = GameObject.Find("LootManager").GetComponent<EnemyCoinLoot>();
 	}
 
     public void DamageEnemy (float damage)

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TriggerDialogue : MonoBehaviour
 {
-	public float activationRange;
 	private GameObject sen;
 	public GameObject text;
 

@@ -6,7 +6,7 @@ public class OpenChest : MonoBehaviour
 {
 	private Loot loot;
 	private SecondLoot secondLoot;
-	private CoinLoot coinLoot;
+	private ChestCoinLoot coinLoot;
 
 	private GameObject sen;
 	private float activationRange = 1.4f;
@@ -16,7 +16,7 @@ public class OpenChest : MonoBehaviour
 	{
 		loot = GameObject.Find("LootManager").GetComponent<Loot>();
 		secondLoot = GameObject.Find("LootManager").GetComponent<SecondLoot>();
-		coinLoot = GameObject.Find("LootManager").GetComponent<CoinLoot>();
+		coinLoot = GameObject.Find("LootManager").GetComponent<ChestCoinLoot>();
 
 		sen = GameObject.Find("Sen");
 	}
