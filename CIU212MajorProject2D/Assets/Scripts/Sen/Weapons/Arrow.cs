@@ -28,6 +28,15 @@ public class Arrow : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+
+		if (collision.gameObject.tag == "RangedEnemy")
+		{
+			if (collision.gameObject.GetComponent<RangedEnemyHealth>() != null)
+			{
+				collision.gameObject.GetComponent<RangedEnemyHealth>().DamageEnemy(current_DamageAmount);
+				Destroy(gameObject);
+			}
+		}
         Destroy(gameObject);
     }
 }
