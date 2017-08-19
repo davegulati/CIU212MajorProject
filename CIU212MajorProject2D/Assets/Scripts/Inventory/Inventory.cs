@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Inventory : MonoBehaviour
 
     public GameObject Gameobjectshow;
     public GameObject InventoryMainObject;
+
+    internal void SearchForSameItem()
+    {
+        throw new NotImplementedException();
+    }
+
     public int Maxcount;
 
     public Camera cam;
@@ -59,6 +66,14 @@ public class Inventory : MonoBehaviour
         {
             ItemSelf newitem = other.transform.GetComponent<ItemSelf>();
             //add new variables in itemself and update here for item stats
+            SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
+            UpdateInventory();
+            Destroy(other.transform.gameObject);
+        }
+        if(other.gameObject.tag == "ShopItem" + Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("awgaga");
+            ItemSelf newitem = other.transform.GetComponent<ItemSelf>();
             SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
             UpdateInventory();
             Destroy(other.transform.gameObject);
