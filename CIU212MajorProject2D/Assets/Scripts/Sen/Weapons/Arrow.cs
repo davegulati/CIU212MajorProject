@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour {
 
+    private GameObject sen;
     private float destroyAfterSeconds = 3.0f;
 
     private int speed = 20;
@@ -11,6 +12,12 @@ public class Arrow : MonoBehaviour {
     // Damage Amount
 	[HideInInspector]
 	public float current_DamageAmount = 30;
+
+    private void Awake()
+    {
+        sen = GameObject.Find("Sen");
+        Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
+    }
 
     private void Update ()
     {
