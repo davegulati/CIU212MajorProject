@@ -7,7 +7,7 @@ public class ItemSelf : MonoBehaviour
 
     public int ID;
     public int count;
-    public float health;
+    public int value;
 
     //private Inventory;
 

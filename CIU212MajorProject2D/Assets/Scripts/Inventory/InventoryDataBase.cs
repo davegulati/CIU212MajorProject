@@ -16,4 +16,5 @@ public class ITEM
     public int ID;
     public string name;
     public Sprite image;
+    public int value;
 }
