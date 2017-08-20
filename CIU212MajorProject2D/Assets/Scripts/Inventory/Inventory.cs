@@ -13,10 +13,8 @@ public class Inventory : MonoBehaviour
     public GameObject Gameobjectshow;
     public GameObject InventoryMainObject;
 
-    internal void SearchForSameItem()
-    {
-        throw new NotImplementedException();
-    }
+    public currencySystem currency;
+
 
     public int Maxcount;
 
@@ -31,19 +29,11 @@ public class Inventory : MonoBehaviour
 
     public GameObject Background;
 
-    private RaycastHit hit;
-    public LayerMask cullingmask;
-    private Vector3 forward;
-
     void Start()
     {
         if (items.Count == 0)
             AddGraphics();
 
-       // for(int i = 0; i < Maxcount; i++)
-       // {
-       //     AddItem(i, data.items[Random.Range(0, data.items.Count)], Random.Range(1, 1), 100);
-       // }
         UpdateInventory();
     }
 
@@ -66,21 +56,34 @@ public class Inventory : MonoBehaviour
         {
             ItemSelf newitem = other.transform.GetComponent<ItemSelf>();
             //add new variables in itemself and update here for item stats
-            SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
-            UpdateInventory();
-            Destroy(other.transform.gameObject);
-        }
-        if(other.gameObject.tag == "ShopItem" + Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("awgaga");
-            ItemSelf newitem = other.transform.GetComponent<ItemSelf>();
-            SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.health);
+            SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.value);
             UpdateInventory();
             Destroy(other.transform.gameObject);
         }
     }
 
-    public void SearchForSameItem(ITEM item, int count, float health)
+    void OnTriggerStay2D(Collider2D collision)
+    {
+         if (collision.gameObject.tag == "ShopItem" && Input.GetKey(KeyCode.E))
+        {
+            //does the player have enough mulla?
+            if (currency.money < itemself.value)
+            {
+                Debug.Log("Not Enough Money");
+            }
+            //if they do add item in inventory and subtract mulla
+            else if (currency.money > itemself.value)
+            {
+                ItemSelf newitem = collision.transform.GetComponent<ItemSelf>();
+                SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.value);
+                UpdateInventory();
+                Destroy(collision.transform.gameObject);
+                currency.subtractMoney(newitem.value);
+            }
+        }
+    }
+
+    public void SearchForSameItem(ITEM item, int count, int value)
     {
         for(int i = 0; i < Maxcount; i++)
         {
@@ -109,17 +112,17 @@ public class Inventory : MonoBehaviour
             {
                 if (items[i].ID == 0)
                 {
-                    AddItem(i, item, count, health);
+                    AddItem(i, item, count, value);
                     i = Maxcount;
                 }
             }
         }
     }
 
-    public void AddItem(int ID, ITEM item, int count, float health)
+    public void AddItem(int ID, ITEM item, int count, int value)
     {
         items[ID].ID = item.ID;
-        items[ID].health = health;
+        items[ID].value = item.value;
         items[ID].count = count;
         items[ID].ItemGameObj.GetComponent<Image>().sprite = item.image;
 
@@ -136,7 +139,7 @@ public class Inventory : MonoBehaviour
     public void AddInventoryItem (int ID, ItemInventory inv_item)
     {
         items[ID].ID = inv_item.ID;
-        items[ID].health = inv_item.health;
+        items[ID].value = inv_item.value;
         items[ID].count = inv_item.count;
         items[ID].ItemGameObj.GetComponent<Image>().sprite = data.items[inv_item.ID].image;
 
@@ -219,7 +222,7 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    AddItem(CurrentID, data.items[II.ID], II.count + currentitem.count - 64, II.health);
+                    AddItem(CurrentID, data.items[II.ID], II.count + currentitem.count - 64, II.value);
 
                     II.count = 64;
                 }
@@ -246,7 +249,7 @@ public class Inventory : MonoBehaviour
 
         New.ID = old.ID;
         New.ItemGameObj = old.ItemGameObj;
-        New.health = old.health;
+        New.value = old.value;
         New.count = old.count;
 
         return New;
@@ -259,6 +262,6 @@ public class ItemInventory
 {
     public int ID;
     public GameObject ItemGameObj;
-    public float health;
+    public int value;
     public int count;
 }
