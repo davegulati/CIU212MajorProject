@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour {
         slider_Health.value = playerHealth / 100;
         if (playerHealth <= 0)
         {
+            SceneManager.LoadScene("SafeZoneGreybox");
             Destroy(gameObject);
         }
         else
