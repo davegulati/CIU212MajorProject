@@ -10,7 +10,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;
     private bool facingRight;
-    public bool movementControlInAir = false;
+    private bool movementControlInAir = true;
 
     //Ground variables
     private bool isTouchingDropPlatform = false;
@@ -27,14 +27,16 @@ public class PlayerCharacterController : MonoBehaviour
     private float jumpForce = 600.0f;
     [SerializeField]
     private LayerMask whatIsGround;
-	public bool doubleJumpUnlocked = false;
-    public int doubleJump = 0;
+	private bool doubleJumpUnlocked = true;
+    private int doubleJump = 0;
     private float doubleJumpForceDivider = 1.0f; // The closer it is to 0, the higher the double-jump will be.
 
     // Sen's weapon variables.
     private GameObject axe;
     private BoxCollider2D axeBC2D;
     private GameObject bow;
+    [HideInInspector]
+    public bool stunUnlocked = false;
 
     //Sen's dodge variables.
     private Vector2 dodgeRightForce = new Vector2(6000, 0);
@@ -194,7 +196,10 @@ public class PlayerCharacterController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.G))
 		{
-			FindClosestEnemy();
+            if (stunUnlocked)
+            {
+                FindAndStunClosestEnemy();
+            }
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -281,7 +286,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     }
 
-	private void FindClosestEnemy()
+	private void FindAndStunClosestEnemy()
 	{
 		closestEnemy = null;
         FindClosestGroundEnemy();
