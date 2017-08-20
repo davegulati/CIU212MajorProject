@@ -28,7 +28,7 @@ public class currencySystem : MonoBehaviour
     {
         if(money - moneyToSubtract < 0)
         {
-            Debug.Log("Not Enough Money");
+           // Debug.Log("Not Enough Money");
         }
 
         else

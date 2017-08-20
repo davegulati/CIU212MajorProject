@@ -15,7 +15,6 @@ public class Inventory : MonoBehaviour
 
     public currencySystem currency;
 
-
     public int Maxcount;
 
     public Camera cam;
@@ -64,17 +63,18 @@ public class Inventory : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-         if (collision.gameObject.tag == "ShopItem" && Input.GetKey(KeyCode.E))
+        ItemSelf newitem = collision.transform.GetComponent<ItemSelf>();
+
+        if (collision.gameObject.tag == "ShopItem" && Input.GetKey(KeyCode.E))
         {
             //does the player have enough mulla?
-            if (currency.money < itemself.value)
+            if (currency.money < newitem.value)
             {
                 Debug.Log("Not Enough Money");
             }
             //if they do add item in inventory and subtract mulla
-            else if (currency.money > itemself.value)
+            else if (currency.money > newitem.value)
             {
-                ItemSelf newitem = collision.transform.GetComponent<ItemSelf>();
                 SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.value);
                 UpdateInventory();
                 Destroy(collision.transform.gameObject);
