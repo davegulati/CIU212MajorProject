@@ -14,7 +14,7 @@ public class currencySystem : MonoBehaviour
 	void Start ()
     {
         moneyCounter = GameObject.Find("MoneyCounter").GetComponent<Text>();
-        money = 20;
+        money = 0;
         moneyCounter.text = "Money: " + money.ToString();
 	}
 

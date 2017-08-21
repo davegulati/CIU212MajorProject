@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AddReduceCurrecy2 : MonoBehaviour
+public class AddReduceCurrency1 : MonoBehaviour
 {
     private GameObject player;
 
@@ -22,8 +22,9 @@ public class AddReduceCurrecy2 : MonoBehaviour
     {
         if (gameObject.CompareTag("Money"))
         {
-            gameObject.SetActive(false);
-            player.GetComponent<currencySystem>().addMoney(100);
+//            gameObject.SetActive(false);
+            Destroy(gameObject);
+            player.GetComponent<currencySystem>().addMoney(75);
         }
     }
 }
