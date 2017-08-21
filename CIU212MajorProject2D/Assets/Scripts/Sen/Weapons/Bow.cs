@@ -26,6 +26,8 @@ public class Bow : MonoBehaviour {
     private int explosionChanceMax = 10;
 
     // Steel Shot arrow
+    [HideInInspector]
+    public bool steelShotArrowsUnlocked = false;
     [SerializeField]
     private Transform steelShotArrow;
 

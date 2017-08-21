@@ -35,6 +35,7 @@ public class RangedEnemy : MonoBehaviour
 	void Awake()
 	{
 		sen = GameObject.Find("Sen");
+        Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
         firePoint = gameObject.transform.Find("FirePoint");
 
 		groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");

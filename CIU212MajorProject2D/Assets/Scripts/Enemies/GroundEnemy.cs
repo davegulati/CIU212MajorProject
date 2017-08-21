@@ -32,7 +32,7 @@ public class GroundEnemy : MonoBehaviour {
 	void Awake () 
     {   
         sen = GameObject.Find("Sen");
-
+		Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
 		foreach (GameObject rangedEnemy in rangedEnemies)
 		{
