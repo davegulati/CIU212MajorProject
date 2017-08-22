@@ -11,6 +11,8 @@ public class OpenChest : MonoBehaviour
 	private GameObject sen;
 	private float activationRange = 1.4f;
 
+    public GameObject buttonPrompt;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -25,6 +27,16 @@ public class OpenChest : MonoBehaviour
 	private void Update ()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
+        if(distance < activationRange)
+        {
+            buttonPrompt.SetActive(true);
+        }
+
+        if(distance > activationRange)
+        {
+            buttonPrompt.SetActive(false);
+        }
+
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
 			// TO DO: Calculate multiple loots together to make it pick one of several loot tables. Twice.

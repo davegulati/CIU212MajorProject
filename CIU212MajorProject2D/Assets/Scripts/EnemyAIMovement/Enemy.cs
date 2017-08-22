@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	private EnemyCoinLoot coinLoot;
 
 	[System.Serializable]
 	public class EnemyStats
@@ -13,11 +12,6 @@ public class Enemy : MonoBehaviour
 	}
 
 	public EnemyStats stats = new EnemyStats();
-
-	void Start()
-	{
-		coinLoot = GameObject.Find("LootManager").GetComponent<EnemyCoinLoot>();
-	}
 
 	private void Update()
 	{
@@ -32,8 +26,6 @@ public class Enemy : MonoBehaviour
 		stats.Health -= damage;
 		if (stats.Health <= 0)
 		{
-			coinLoot.calculateLoot();
-
 			Destroy(gameObject);
 		}
 	}

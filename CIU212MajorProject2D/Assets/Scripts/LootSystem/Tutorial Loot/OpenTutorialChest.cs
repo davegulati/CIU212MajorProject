@@ -12,6 +12,8 @@ public class OpenTutorialChest : MonoBehaviour
 	private GameObject sen;
 	private float activationRange = 1.4f;
 
+    public GameObject buttonPrompt;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -19,22 +21,32 @@ public class OpenTutorialChest : MonoBehaviour
 
         sen = GameObject.Find("Sen");
 	}
-	
-	// Update is called once per frame
-	private void Update ()
-	{
-		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetButtonDown("Interact"))
-		{
-			tutorialLoot.CalculateLoot();
 
-			Destroy(chestTutorial);
-			Destroy(chestTutorialText);
-			itemTutorial.SetActive(true);
+    // Update is called once per frame
+    private void Update()
+    {
+        float distance = Vector2.Distance(transform.position, sen.transform.position);
+        if (distance < activationRange)
+        {
+            buttonPrompt.SetActive(true);
+        }
 
-			OpenChestAnimation();
-		}
-	}
+        if (distance > activationRange)
+        {
+            buttonPrompt.SetActive(false);
+        }
+
+        if (distance < activationRange && Input.GetButtonDown("Interact"))
+        {
+            tutorialLoot.CalculateLoot();
+
+            Destroy(chestTutorial);
+            Destroy(chestTutorialText);
+            itemTutorial.SetActive(true);
+
+            OpenChestAnimation();
+        }
+    }
 
 	private void OpenChestAnimation()
 	{

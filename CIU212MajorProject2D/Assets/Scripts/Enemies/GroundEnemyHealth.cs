@@ -14,12 +14,9 @@ public class GroundEnemyHealth : MonoBehaviour {
 	private Color normalColor = new Color(255, 255, 255);
     private Slider healthSlider;
 
-	private EnemyCoinLoot coinLoot;
-
 	private void Awake () 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-		coinLoot = GameObject.Find("LootManager").GetComponent<EnemyCoinLoot>();
 		healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
         healthSlider.value = 100;
 	}
@@ -30,7 +27,6 @@ public class GroundEnemyHealth : MonoBehaviour {
         healthSlider.value = currentHealth / 100;
         if (currentHealth <= 0)
         {
-			coinLoot.calculateLoot();
             Destroy(gameObject);
         }
         else
