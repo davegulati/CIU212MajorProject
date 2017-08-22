@@ -7,6 +7,7 @@ public class SteelShotArrowItem : MonoBehaviour
     private GameObject sen;
 	private float activationRange = 0.8f;
 	private float amountToIncreaseBy = 30.0f;
+    private float notificationDuration = 3.0f;
 
 	private void Awake()
 	{
@@ -18,6 +19,7 @@ public class SteelShotArrowItem : MonoBehaviour
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
+            Notification.instance.Display("!", "Unlocked Steel Shot Arrows!", "Press 'I' to access your inventory.", notificationDuration);
 			UnlockSteelShotArrows();
 		}
 	}
