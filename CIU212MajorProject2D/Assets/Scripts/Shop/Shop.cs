@@ -5,9 +5,9 @@ using UnityEngine;
 public class Shop : MonoBehaviour {
 
     private GameObject sen;
-
+    private GameObject itemCanvas;
     private GameObject panel_ShopContainer;
-    public bool isShopContainerVisible = false;
+    private bool isShopContainerVisible = false;
     private float activationRange = 0.8f;
 
 	// Use this for initialization
@@ -16,16 +16,26 @@ public class Shop : MonoBehaviour {
         sen = GameObject.Find("Sen");
 		panel_ShopContainer = GameObject.Find("Panel_ShopContainer");
 		panel_ShopContainer.SetActive(isShopContainerVisible);
+        itemCanvas = transform.Find("ItemCanvas").gameObject;
+        itemCanvas.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-		if (distance < activationRange && Input.GetButtonDown("Interact"))
+		if (distance < activationRange)
 		{
-            ToggleShop();
+            itemCanvas.SetActive(true);
+            if (Input.GetButtonDown("Interact"))
+            {
+                ToggleShop();
+            }
 		}
+        else
+        {
+            itemCanvas.SetActive(false);
+        }
 	}
 
     public void ToggleShop ()

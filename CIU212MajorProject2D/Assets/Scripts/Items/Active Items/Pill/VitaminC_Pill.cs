@@ -5,6 +5,7 @@ using UnityEngine;
 public class VitaminC_Pill : MonoBehaviour {
 	
     private GameObject sen;
+    private GameObject itemCanvas;
 	private float activationRange = 0.8f;
     private float notificationDuration = 3.0f;
 
@@ -28,16 +29,26 @@ public class VitaminC_Pill : MonoBehaviour {
 	private void Awake()
 	{
 		sen = GameObject.Find("Sen");
+        itemCanvas = transform.Find("ItemCanvas").gameObject;
+        itemCanvas.SetActive(false);
 	}
 
 	private void Update()
 	{
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
-        if (distance < activationRange && Input.GetButtonDown("Interact") && readyForUse)
+        if (distance < activationRange)
 		{
-            Notification.instance.Display("!", "Obtained: Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
-			UsePill();
+            itemCanvas.SetActive(true);
+            if (Input.GetButtonDown("Interact") & readyForUse)
+            {
+				Notification.instance.Display("!", "Obtained: Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
+				UsePill();
+            }
 		}
+        else 
+        {
+            itemCanvas.SetActive(false);
+        }
 	}
 
 	private void UsePill()
