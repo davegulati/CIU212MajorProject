@@ -6,6 +6,7 @@ public class VitaminC_Pill : MonoBehaviour {
 	
     private GameObject sen;
 	private float activationRange = 0.8f;
+    private float notificationDuration = 3.0f;
 
     // Damage multiplier.
     private float damageMultiplier = 1.2f;
@@ -34,6 +35,7 @@ public class VitaminC_Pill : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
         if (distance < activationRange && Input.GetButtonDown("Interact") && readyForUse)
 		{
+			Notification.instance.Display("!", "Obtained Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
 			UsePill();
 		}
 	}

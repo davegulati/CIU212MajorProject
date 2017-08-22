@@ -26,20 +26,6 @@ public class Notification : MonoBehaviour {
         notification.SetActive(false);
     }
 
-    private void Start()
-    {
-        //notification.SetActive(false);
-    }
-
-    // Update is called once per frame
-    private void Update () 
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Display("!", "Testing Title", "Testing message wow!\nNewline test!", 3.0f);
-        }
-	}
-
     public void Display (string sign, string title, string message, float duration)
     {
         notification.SetActive(true);

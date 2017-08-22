@@ -7,6 +7,7 @@ public class Powerup_Stopwatch : MonoBehaviour {
     private GameObject sen;
     private bool activated = false;
 	private float activationRange = 0.8f;
+    private float notificationDuration = 3.0f;
     private float normalTimeScale = 1.0f;
     private float slowMotionTimeScale = 0.4f;
     private float resetAfterSeconds = 3.0f;
@@ -21,7 +22,8 @@ public class Powerup_Stopwatch : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact") && !activated)
 		{
-            StartCoroutine(SlowMotion());
+			Notification.instance.Display("!", "Obtained Stopwatch!", "Press 'I' to access your inventory.", notificationDuration);
+			StartCoroutine(SlowMotion());
 		}
 	}
 

@@ -6,6 +6,7 @@ public class Powerup_Potion : MonoBehaviour {
 
 	private GameObject sen;
 	private float activationRange = 0.8f;
+    private float notificationDuration = 3.0f;
 	private float healthAwarded;
     private float healthDivider = 2.0f;
 
@@ -19,6 +20,7 @@ public class Powerup_Potion : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
+			Notification.instance.Display("!", "Obtained Potion!", "Press 'I' to access your inventory.", notificationDuration);
 			AwardHealth();
 		}
 	}
