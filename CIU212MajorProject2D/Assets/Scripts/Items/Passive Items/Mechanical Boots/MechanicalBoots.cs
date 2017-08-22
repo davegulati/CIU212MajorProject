@@ -19,7 +19,7 @@ public class MechanicalBoots : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
-			Notification.instance.Display("!", "Obtained Mechanical Boots!", "Press 'I' to access your inventory.", notificationDuration);
+            Notification.instance.Display("!", "Obtained: Mechanical Boots!", "Press 'I' to access your inventory.", notificationDuration);
 			GiveSpeedBoost();
 		}
 	}

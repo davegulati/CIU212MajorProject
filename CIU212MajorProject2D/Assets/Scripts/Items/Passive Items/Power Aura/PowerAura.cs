@@ -19,7 +19,7 @@ public class PowerAura : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
-			Notification.instance.Display("!", "Obtained Power Aura!", "Press 'I' to access your inventory.", notificationDuration);
+            Notification.instance.Display("!", "Obtained: Power Aura!", "Press 'I' to access your inventory.", notificationDuration);
 			IncreaseDamage();
 		}
 	}

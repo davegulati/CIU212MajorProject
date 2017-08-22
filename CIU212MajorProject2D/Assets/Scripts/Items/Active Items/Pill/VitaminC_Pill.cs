@@ -35,7 +35,7 @@ public class VitaminC_Pill : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
         if (distance < activationRange && Input.GetButtonDown("Interact") && readyForUse)
 		{
-			Notification.instance.Display("!", "Obtained Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
+            Notification.instance.Display("!", "Obtained: Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
 			UsePill();
 		}
 	}

@@ -22,7 +22,7 @@ public class Powerup_Stopwatch : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact") && !activated)
 		{
-			Notification.instance.Display("!", "Obtained Stopwatch!", "Press 'I' to access your inventory.", notificationDuration);
+            Notification.instance.Display("!", "Obtained: Stopwatch!", "Press 'I' to access your inventory.", notificationDuration);
 			StartCoroutine(SlowMotion());
 		}
 	}

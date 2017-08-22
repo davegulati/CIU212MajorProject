@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArrowPowder : MonoBehaviour {
 
 	private GameObject sen;
+    private float notificationDuration = 3.0f;
 	private float activationRange = 0.8f;
 
     private void Awake()
@@ -17,6 +18,7 @@ public class ArrowPowder : MonoBehaviour {
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetButtonDown("Interact"))
 		{
+            Notification.instance.Display("!", "Unlocked: Explosive Arrows!", "Press 'I' to access your inventory.", notificationDuration);
 			UnlockExplosiveArrows();
 		}
 	}

@@ -19,7 +19,7 @@ public class SteelShotArrowItem : MonoBehaviour
 		float distance = Vector2.Distance(transform.position, sen.transform.position);
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.R))
 		{
-            Notification.instance.Display("!", "Unlocked Steel Shot Arrows!", "Press 'I' to access your inventory.", notificationDuration);
+            Notification.instance.Display("!", "Unlocked: Steel Shot Arrows!", "Press 'I' to access your inventory.", notificationDuration);
 			UnlockSteelShotArrows();
 		}
 	}
