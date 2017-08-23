@@ -26,7 +26,7 @@ public class Powerup_Potion : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Obtained: Potion!", "Press 'I' to access your inventory.", notificationDuration);
+				Notification.instance.Display("!", "ITEM OBTAINED", "Potion", "Replenish half of Sen's max health.", "Press 'I' to access your inventory.", notificationDuration);
 				AwardHealth();
             }
 		}

@@ -24,7 +24,7 @@ public class ArrowPowder : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Unlocked: Explosive Arrows!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM UNLOCKED", "Explosive Arrows", "Chance of firing explosive arrows.", "Press 'I' to access your inventory.", notificationDuration);
 				UnlockExplosiveArrows();
             }
 		}

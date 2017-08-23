@@ -25,7 +25,7 @@ public class SteelShotArrowItem : MonoBehaviour
             itemCanvas.SetActive(true);
             if (Input.GetKeyDown(KeyCode.R))
             {
-				Notification.instance.Display("!", "Unlocked: Steel Shot Arrows!", "Press 'I' to access your inventory.", notificationDuration);
+				Notification.instance.Display("!", "ITEM UNLOCKED", "Steel Shot Arrows", "Arrows that pierce through multiple enemies.", "Press 'I' to access your inventory.", notificationDuration);
 				UnlockSteelShotArrows();
             }
 		}

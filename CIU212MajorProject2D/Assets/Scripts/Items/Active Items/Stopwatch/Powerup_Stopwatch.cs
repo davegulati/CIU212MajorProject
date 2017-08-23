@@ -28,7 +28,7 @@ public class Powerup_Stopwatch : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact") && !activated)
             {
-				Notification.instance.Display("!", "Obtained: Stopwatch!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "Stopwatch", "Slow down time for a few seconds.", "Press 'I' to access your inventory.", notificationDuration);
 				StartCoroutine(SlowMotion());
             }
 		}
