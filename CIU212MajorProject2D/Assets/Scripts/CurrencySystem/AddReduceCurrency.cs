@@ -23,7 +23,7 @@ public class AddReduceCurrency : MonoBehaviour
             if (gameObject.CompareTag("Money"))
             {
                 Destroy(gameObject);
-                currency.addMoney(50);
+                currency.addMoney(Random.Range(20, 50));
             }
         }
     }

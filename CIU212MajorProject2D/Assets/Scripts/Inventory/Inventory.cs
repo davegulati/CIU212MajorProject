@@ -65,8 +65,9 @@ public class Inventory : MonoBehaviour
     {
         ItemSelf newitem = collision.transform.GetComponent<ItemSelf>();
 
-        if (collision.gameObject.tag == "ShopItem" && Input.GetKey(KeyCode.E))
+        if (collision.gameObject.tag == "ShopItem" && Input.GetButton("Interact"))
         {
+            Debug.Log("gadasg");
             //does the player have enough mulla?
             if (currency.money < newitem.value)
             {
@@ -76,9 +77,9 @@ public class Inventory : MonoBehaviour
             else if (currency.money > newitem.value)
             {
                 SearchForSameItem(data.items[newitem.ID], newitem.count, newitem.value);
-                UpdateInventory();
                 Destroy(collision.transform.gameObject);
                 currency.subtractMoney(newitem.value);
+                UpdateInventory();
             }
         }
     }
