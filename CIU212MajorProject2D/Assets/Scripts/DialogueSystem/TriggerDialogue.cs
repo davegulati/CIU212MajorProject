@@ -13,15 +13,21 @@ public class TriggerDialogue : MonoBehaviour
 		sen = GameObject.Find("Sen");
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        text.SetActive(true);
+        if (other.gameObject.tag == "Player")
+        {
+            text.SetActive(true);
+        }
     }
 
-	private void OnTriggerExit2D(Collider2D collision)
+	private void OnTriggerExit2D(Collider2D other)
 	{
-		Destroy(text);
-		Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(text);
+            Destroy(gameObject);
+        }
 	}
 
 }

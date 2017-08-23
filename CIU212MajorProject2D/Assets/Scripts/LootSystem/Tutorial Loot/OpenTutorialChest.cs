@@ -38,13 +38,12 @@ public class OpenTutorialChest : MonoBehaviour
 
         if (distance < activationRange && Input.GetButtonDown("Interact"))
         {
+            OpenChestAnimation();
             tutorialLoot.CalculateLoot();
 
             Destroy(chestTutorial);
             Destroy(chestTutorialText);
             itemTutorial.SetActive(true);
-
-            OpenChestAnimation();
         }
     }
 
