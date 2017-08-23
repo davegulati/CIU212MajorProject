@@ -25,7 +25,7 @@ public class MechanicalBoots : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Obtained: Mechanical Boots!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "Mechanical Boots", "Increases Sen's movement speed.", "Press 'I' to access your inventory.", notificationDuration);
 				GiveSpeedBoost();
             }
 		}

@@ -41,7 +41,7 @@ public class VitaminC_Pill : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact") & readyForUse)
             {
-				Notification.instance.Display("!", "Obtained: Vitamin C Pill!", "Press 'I' to access your inventory.", notificationDuration);
+				Notification.instance.Display("!", "ITEM OBTAINED", "Vitamin C Pill", "Increased damage for certain amount of time.", "Press 'I' to access your inventory.", notificationDuration);
 				UsePill();
             }
 		}

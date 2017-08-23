@@ -24,7 +24,7 @@ public class Stun : MonoBehaviour
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Unlocked: Stun!", "Press 'I' to access your inventory.", notificationDuration);
+				Notification.instance.Display("!", "ITEM UNLOCKED", "Stun", "Stun the nearest enemy for a few seconds.", "Press 'I' to access your inventory.", notificationDuration);
 				UnlockStunning();
             }
         }

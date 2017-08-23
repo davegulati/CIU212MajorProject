@@ -25,7 +25,7 @@ public class Powerup_Health : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-                Notification.instance.Display("!", "Obtained: Health!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "Health", "Replenish 20 health.", "Press 'I' to access your inventory.", notificationDuration);
                 AwardHealth();
             }
         }

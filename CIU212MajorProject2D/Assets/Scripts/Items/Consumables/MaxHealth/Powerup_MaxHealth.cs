@@ -24,7 +24,7 @@ public class Powerup_MaxHealth : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Obtained: Max Health!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "Max Health", "Fully replenish Sen's health.", "Press 'I' to access your inventory.", notificationDuration);
 				AwardHealth();
             }
 		}

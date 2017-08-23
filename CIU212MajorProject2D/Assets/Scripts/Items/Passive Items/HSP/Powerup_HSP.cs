@@ -25,7 +25,7 @@ public class Powerup_HSP : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetKeyDown(KeyCode.R))
             {
-				Notification.instance.Display("!", "Obtained: HSP!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "HSP", "Increase Sen's max health.", "Press 'I' to access your inventory.", notificationDuration);
 				IncreaseMaxHealth();
             }
 		}

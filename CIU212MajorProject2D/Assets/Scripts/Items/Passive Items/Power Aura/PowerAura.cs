@@ -25,7 +25,7 @@ public class PowerAura : MonoBehaviour {
             itemCanvas.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-				Notification.instance.Display("!", "Obtained: Power Aura!", "Press 'I' to access your inventory.", notificationDuration);
+                Notification.instance.Display("!", "ITEM OBTAINED", "Power Aura", "Increased damage on all weapons.", "Press 'I' to access your inventory.", notificationDuration);
 				IncreaseDamage();
             }
 		}
