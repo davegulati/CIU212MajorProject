@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LiveShop : MonoBehaviour {
-
-    //[SerializeField]
+    
     public GameObject[] allItems;
+    public GameObject[] itemSlots;
     private GameObject generatedItem;
     private int index;
 
-    private int item;
-
-    private void Start()
+    private void Awake()
     {
         GenerateItems();
     }
 
-    public GameObject GenerateItems()
+    public void GenerateItems()
     {
-		index = Random.Range(0, allItems.Length);
-		generatedItem = allItems[index];
-        return generatedItem;
+        foreach (GameObject itemSlot in itemSlots)
+        {
+			index = Random.Range(0, allItems.Length);
+			generatedItem = allItems[index];
+            itemSlot.GetComponent<ItemSlot>().AddItem(generatedItem);
+        }
     }
 }

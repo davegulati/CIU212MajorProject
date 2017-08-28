@@ -7,48 +7,54 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
     private GameObject itemInfoPopup;
-    private GameObject itemPurchasedPopup;
     private GameObject generatedItem;
 
     private void Awake()
     {
         itemInfoPopup = transform.Find("ItemInfoPopup").gameObject;
         itemInfoPopup.SetActive(false);
-		itemPurchasedPopup = transform.Find("ItemPurchasedPopup").gameObject;
-		itemPurchasedPopup.SetActive(false);
-        GenerateItem();
     }
 
-    public void AddItem (string name, string description, int price)
+    public void AddItem (GameObject item)
     {
-        gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = "$" + price.ToString();
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = name;
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = description;
-        gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = generatedItem.GetComponent<SpriteRenderer>().sprite;
-    }
-
-    private void GenerateItem()
-    {
-        generatedItem = GameObject.Find("LiveShop").GetComponent<LiveShop>().GenerateItems();
-        AddItem(generatedItem.name, generatedItem.name + " description...", Random.Range(1, 10));
+        generatedItem = item;
+        gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = "$" + Random.Range(1, 10).ToString();
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = item.name;
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.name + " description";
+        gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
     }
 
     public void OnPointerEnter(PointerEventData eventData) // On mouseover enter
 	{
-        itemInfoPopup.SetActive(true);
+        if (itemInfoPopup != null)
+        {
+            itemInfoPopup.SetActive(true);
+        }
 	}
 
 	public void OnPointerExit(PointerEventData eventData) // On mouseover exit
 	{
-		itemInfoPopup.SetActive(false);
-        itemPurchasedPopup.SetActive(false);
+        if (itemInfoPopup != null)
+        {
+			itemInfoPopup.SetActive(false);
+		}
 	}
 
 
-	public void BuyItem()
+	private void BuyItem()
     {
-        Debug.Log("Bought item in " + gameObject.name);
-        itemInfoPopup.SetActive(false);
-        itemPurchasedPopup.SetActive(true);
+		Notification.instance.Display("!", "ITEM PURCHASED", generatedItem.name, generatedItem.name + " description", "Press 'I' to access your inventory", 3.0f);
+		// Add to inventory
+		RemoveItemFromSlot();
+    }
+
+    private void RemoveItemFromSlot()
+    {
+		generatedItem = null;
+		gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = null;
+		gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().enabled = false;
+		gameObject.transform.Find("ItemButton").GetComponent<Button>().interactable = false;
+        gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().enabled = false;
+		Destroy(itemInfoPopup);
     }
 }
