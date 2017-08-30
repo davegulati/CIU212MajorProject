@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
     private GameObject itemInfoPopup;
-    private GameObject generatedItem;
+    [HideInInspector]
+    public GameObject generatedItem;
 
     private void Awake()
     {

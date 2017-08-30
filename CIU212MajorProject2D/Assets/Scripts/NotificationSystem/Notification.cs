@@ -32,6 +32,11 @@ public class Notification : MonoBehaviour {
 
     public void Display (string sign, string title, string heading, string description, string message, float duration)
     {
+        if (notification.activeSelf)
+        {
+            StopAllCoroutines();
+        }
+
 		notification.SetActive(true);
         anim.CrossFade(start.name);
         text_Sign.text = sign;

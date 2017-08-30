@@ -6,22 +6,30 @@ using UnityEngine.UI;
 public class LiveShop : MonoBehaviour {
     
     public GameObject[] allItems;
+    public List<GameObject> allItemsList;
     public GameObject[] itemSlots;
+
     private GameObject generatedItem;
     private int index;
 
     private void Awake()
     {
-        GenerateItems();
+		AddItemsToSlots();
     }
 
-    public void GenerateItems()
+    public void AddItemsToSlots()
     {
         foreach (GameObject itemSlot in itemSlots)
         {
-			index = Random.Range(0, allItems.Length);
-			generatedItem = allItems[index];
+            GenerateNewItem();
             itemSlot.GetComponent<ItemSlot>().AddItem(generatedItem);
         }
+    }
+
+    private void GenerateNewItem ()
+    {
+		index = Random.Range(0, allItemsList.Count);
+		generatedItem = allItemsList[index];
+        allItemsList.RemoveAt(index);
     }
 }
