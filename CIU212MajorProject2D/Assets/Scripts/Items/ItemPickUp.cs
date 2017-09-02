@@ -6,7 +6,12 @@ public class ItemPickUp : InteractableItem {
 
     public Item item;
 
-	public override void Interact()
+    private void Start()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = item.itemSprite;
+    }
+
+    public override void Interact()
     {
         PickUp();
     }

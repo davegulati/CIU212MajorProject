@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class InteractableItem : MonoBehaviour {
-
+    
     protected GameObject sen;
     public float activationRange = 0.8f;
     private GameObject itemCanvas;
@@ -21,6 +21,7 @@ public class InteractableItem : MonoBehaviour {
 			itemCanvas.SetActive(true);
 			if (Input.GetButtonDown("Interact"))
 			{
+                Debug.Log("Interacting...");
                 Interact();
 			}
 		}
