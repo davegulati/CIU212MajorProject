@@ -6,7 +6,8 @@ public class InventorySystem : MonoBehaviour {
 
     public static InventorySystem instance;
     public List<Item> items = new List<Item>();
-    private int space = 15;
+    private int space_ActiveItems = 2;
+    private int space_PassiveItems = 4;
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -23,10 +24,21 @@ public class InventorySystem : MonoBehaviour {
 
     public bool Add (Item item)
     {
-        if (items.Count >= space)
+        if (item.activeItem)
         {
-            Debug.Log("Not enough room!");
-            return false;
+			if (items.Count >= space_ActiveItems)
+			{
+				Debug.Log("Not enough room!");
+				return false;
+			}
+        }
+        else if (item.passiveItem)
+        {
+			if (items.Count >= space_PassiveItems)
+			{
+				Debug.Log("Not enough room!");
+				return false;
+			}
         }
 
         items.Add(item);

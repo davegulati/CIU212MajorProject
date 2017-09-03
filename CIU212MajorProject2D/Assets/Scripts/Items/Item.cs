@@ -14,7 +14,7 @@ public class Item : ScriptableObject
     public bool passiveItem = false;
 
     [Header("Usage Settings")]
-    public string onUseDescription = "When item is used";
+    public string onUseDialogue = "When item is used";
 
 	[Header("Inventory Settings")]
 	public bool canBeStored = true;

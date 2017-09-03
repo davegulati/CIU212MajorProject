@@ -27,9 +27,10 @@ public class ItemPickUp : InteractableItem {
 				Destroy(gameObject);
 			}
         }
-        else
+        else if (item.consumableItem)
         {
             item.Use();
+            Destroy(gameObject);
         }
     }
 }
