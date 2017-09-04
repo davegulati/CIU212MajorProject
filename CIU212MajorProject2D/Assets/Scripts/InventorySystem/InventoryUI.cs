@@ -5,16 +5,18 @@ public class InventoryUI : MonoBehaviour {
     private GameObject inventory;
     private Transform itemsParent;
     InventorySystem inventorySystem;
-    InventorySlot[] slots;
+    InventorySlot[] activeItemSlots;
+	InventorySlot[] passiveItemSlots;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
         inventory = transform.Find("Inventory").gameObject;
         inventorySystem = InventorySystem.instance;
         inventorySystem.onItemChangedCallback += UpdateUI;
         itemsParent = gameObject.transform.Find("Inventory").transform.Find("ItemsParent");
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        inventory.SetActive(false);
+        activeItemSlots = itemsParent.transform.Find("ActiveItemSlots").GetComponentsInChildren<InventorySlot>();
+		passiveItemSlots = itemsParent.transform.Find("PassiveItemSlots").GetComponentsInChildren<InventorySlot>();
+		inventory.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -28,16 +30,28 @@ public class InventoryUI : MonoBehaviour {
 
     private void UpdateUI()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < activeItemSlots.Length; i++)
         {
-            if (i < inventorySystem.items.Count)
+            if (i < inventorySystem.activeItems.Count)
             {
-                slots[i].AddItem(inventorySystem.items[i]);
+                activeItemSlots[i].AddItem(inventorySystem.activeItems[i]);
             }
             else
             {
-                slots[i].ClearSlot();
+                activeItemSlots[i].ClearSlot();
             }
         }
+
+		for (int i = 0; i < passiveItemSlots.Length; i++)
+		{
+			if (i < inventorySystem.passiveItems.Count)
+			{
+				passiveItemSlots[i].AddItem(inventorySystem.passiveItems[i]);
+			}
+			else
+			{
+				passiveItemSlots[i].ClearSlot();
+			}
+		}
     }
 }

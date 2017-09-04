@@ -5,8 +5,9 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour {
 
     public static InventorySystem instance;
-    public List<Item> items = new List<Item>();
-    private int space_ActiveItems = 2;
+    public List<Item> activeItems = new List<Item>();
+	public List<Item> passiveItems = new List<Item>();
+	private int space_ActiveItems = 2;
     private int space_PassiveItems = 4;
 
     public delegate void OnItemChanged();
@@ -26,35 +27,66 @@ public class InventorySystem : MonoBehaviour {
     {
         if (item.activeItem)
         {
-			if (items.Count >= space_ActiveItems)
+			if (activeItems.Count >= space_ActiveItems)
 			{
-				Debug.Log("Not enough room!");
+				Debug.Log("Not enough room for another active item!");
+                Notification.instance.Display("!", "INVENTORY FULL!", "Not enough room!", "Maximum number of active items reached!", "", 3.0f);
 				return false;
 			}
+            else if (activeItems.Count < space_ActiveItems)
+            {
+                activeItems.Add(item);
+				if (onItemChangedCallback != null)
+				{
+					onItemChangedCallback.Invoke();
+				}
+				return true;
+            }
         }
         else if (item.passiveItem)
         {
-			if (items.Count >= space_PassiveItems)
+			if (passiveItems.Count >= space_PassiveItems)
 			{
-				Debug.Log("Not enough room!");
+				Debug.Log("Not enough room for another passive item!");
+				Notification.instance.Display("!", "INVENTORY FULL!", "Not enough room!", "Maximum number of passive items reached!", "", 3.0f);
 				return false;
+			}
+			else if (passiveItems.Count < space_PassiveItems)
+			{
+				passiveItems.Add(item);
+				if (onItemChangedCallback != null)
+				{
+					onItemChangedCallback.Invoke();
+				}
+				return true;
 			}
         }
 
-        items.Add(item);
-        if (onItemChangedCallback != null)
-        {
-            onItemChangedCallback.Invoke();
-        }
+        //items.Add(item);
+        //if (onItemChangedCallback != null)
+        //{
+        //    onItemChangedCallback.Invoke();
+        //}
         return true;
     }
 
     public void Remove(Item item)
     {
-        items.Remove(item);
-		if (onItemChangedCallback != null)
-		{
-			onItemChangedCallback.Invoke();
-		}
+        if (item.activeItem)
+        {
+			activeItems.Remove(item);
+			if (onItemChangedCallback != null)
+			{
+				onItemChangedCallback.Invoke();
+			}
+        }
+        else if (item.passiveItem)
+        {
+			passiveItems.Remove(item);
+			if (onItemChangedCallback != null)
+			{
+				onItemChangedCallback.Invoke();
+			}
+        }
     }
 }

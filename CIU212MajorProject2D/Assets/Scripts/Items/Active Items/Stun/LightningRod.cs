@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stun : MonoBehaviour
+public class LightningRod : MonoBehaviour
 {
 	private GameObject sen;
     private GameObject itemCanvas;
