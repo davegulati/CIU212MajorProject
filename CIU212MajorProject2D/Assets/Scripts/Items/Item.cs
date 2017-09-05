@@ -7,6 +7,7 @@ public class Item : ScriptableObject
 	public string itemName = "New item";
     public string itemDescription = "Item description";
     public Sprite itemSprite = null;
+    public GameObject itemPrefab;
 
     [Header("Item Type - Select ONLY one.")]
 	public bool activeItem = false;
@@ -22,5 +23,10 @@ public class Item : ScriptableObject
     public virtual void Use()
     {
         Debug.Log("Using " + itemName);
+    }
+
+    public virtual void Drop()
+    {
+        Debug.Log(itemName + " dropped.");
     }
 }

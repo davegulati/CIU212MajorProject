@@ -20,10 +20,11 @@ public class ItemPickUp : InteractableItem {
     {
         if (item.canBeStored)
         {
-			Debug.Log("Picking up " + item.itemName + ("."));
+			Debug.Log("Picking up " + item.itemName + ("..."));
 			bool wasPickedUp = InventorySystem.instance.Add(item);
 			if (wasPickedUp)
 			{
+                Debug.Log("Picked up " + item.itemName + ".");
 				Destroy(gameObject);
 			}
         }

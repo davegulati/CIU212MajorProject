@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerCharacterController : MonoBehaviour
 {
@@ -66,8 +67,8 @@ public class PlayerCharacterController : MonoBehaviour
 
     void Update()
     {
-        HandleInput(); // Handles player input.
-    }
+		HandleInput(); // Handles player input.
+	}
 
     void FixedUpdate()
     {

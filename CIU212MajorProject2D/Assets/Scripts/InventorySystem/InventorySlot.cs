@@ -41,7 +41,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnRemoveButton ()
     {
-        Notification.instance.Display("!", "ITEM REMOVED", item.itemName, null, null, 3.0f);
+        Notification.instance.Display("!", "ITEM DROPPED", item.itemName, null, null, 3.0f);
         itemInfoPopup.SetActive(false);
         itemNameText.gameObject.SetActive(false);
         itemDescriptionText.gameObject.SetActive(false);

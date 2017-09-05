@@ -9,6 +9,7 @@ public class InventorySystem : MonoBehaviour {
 	public List<Item> passiveItems = new List<Item>();
 	private int space_ActiveItems = 2;
     private int space_PassiveItems = 4;
+    private GameObject sen;
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -21,6 +22,7 @@ public class InventorySystem : MonoBehaviour {
             return;
         }
 		instance = this;
+        sen = GameObject.Find("Sen");
 	}
 
     public bool Add (Item item)
@@ -68,6 +70,8 @@ public class InventorySystem : MonoBehaviour {
     {
         if (item.activeItem)
         {
+            Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+            item.Drop();
 			activeItems.Remove(item);
 			if (onItemChangedCallback != null)
 			{
@@ -75,7 +79,9 @@ public class InventorySystem : MonoBehaviour {
 			}
         }
         else if (item.passiveItem)
-        {
+		{
+			Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+			item.Drop();
 			passiveItems.Remove(item);
 			if (onItemChangedCallback != null)
 			{
