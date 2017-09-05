@@ -61,12 +61,6 @@ public class InventorySystem : MonoBehaviour {
 				return true;
 			}
         }
-
-        //items.Add(item);
-        //if (onItemChangedCallback != null)
-        //{
-        //    onItemChangedCallback.Invoke();
-        //}
         return true;
     }
 
