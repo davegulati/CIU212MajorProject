@@ -7,7 +7,7 @@ public class InventorySystem : MonoBehaviour {
     public static InventorySystem instance;
     public List<Item> activeItems = new List<Item>();
 	public List<Item> passiveItems = new List<Item>();
-	private int space_ActiveItems = 2;
+	private int space_ActiveItems = 1;
     private int space_PassiveItems = 4;
     private GameObject sen;
 

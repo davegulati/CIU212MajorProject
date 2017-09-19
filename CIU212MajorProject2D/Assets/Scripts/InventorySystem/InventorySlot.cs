@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-    Item item;
+    [HideInInspector]
+    public Item item;
     private Image icon;
     private Button removeButton;
     private GameObject itemInfoPopup;
