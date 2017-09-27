@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Undefined Item")]
 public class Item : ScriptableObject
 {
 	[Header("Main Settings")]
@@ -14,7 +14,7 @@ public class Item : ScriptableObject
     public bool consumableItem = false;
     public bool passiveItem = false;
 
-    [Header("Usage Settings")]
+    [Header("Item usage Settings")]
     public string onUseDialogue = "When item is used";
 
 	[Header("Inventory Settings")]
@@ -22,11 +22,11 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-        Debug.Log("Using " + itemName);
+        Debug.Log("Using " + itemName + "...");
     }
 
     public virtual void Drop()
     {
         Debug.Log(itemName + " dropped.");
-    }
+    } 
 }

@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Item item;
     private Image icon;
     private Button removeButton;
+    private Button itemButton;
     private GameObject itemInfoPopup;
     private Text itemNameText;
     private Text itemDescriptionText;
@@ -16,6 +17,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         icon = gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>();
         removeButton = transform.Find("RemoveButton").GetComponent<Button>();
+        itemButton = gameObject.transform.Find("ItemButton").GetComponent<Button>();
         itemInfoPopup = transform.Find("ItemInfoPopup").gameObject;
         itemNameText = itemInfoPopup.transform.Find("Text_Name").GetComponent<Text>();
 		itemDescriptionText = itemInfoPopup.transform.Find("Text_Description").GetComponent<Text>();
@@ -62,6 +64,17 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 itemDescriptionText.gameObject.SetActive(false);
                 InventorySystem.instance.Remove(item);
             }
+
+			if (item.activeItem)
+			{
+				Notification.instance.Display("!", "ITEM USED", item.itemName, item.onUseDialogue, null, 3.0f);
+				item.Use();
+				itemInfoPopup.SetActive(false);
+				itemNameText.gameObject.SetActive(false);
+				itemDescriptionText.gameObject.SetActive(false);
+                itemButton.interactable = false;
+				InventorySystem.instance.Use(item);
+			}
         }
     }
 
