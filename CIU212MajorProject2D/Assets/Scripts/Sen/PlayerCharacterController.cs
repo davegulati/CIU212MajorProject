@@ -51,6 +51,11 @@ public class PlayerCharacterController : MonoBehaviour
     private GameObject closestRE;
     private float stunRange = 6.0f;
 
+    // Sen's inventory variables.
+    private InventorySlot activeInventorySlot1;
+    private InventorySlot activeInventorySlot2;
+
+
     void Start()
     {
         senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
@@ -63,6 +68,8 @@ public class PlayerCharacterController : MonoBehaviour
         bow.SetActive(false);
         groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
 		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
+        activeInventorySlot1 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot1").GetComponent<InventorySlot>();
+		activeInventorySlot2 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot2").GetComponent<InventorySlot>();
 	}
 
     void Update()
@@ -213,6 +220,16 @@ public class PlayerCharacterController : MonoBehaviour
 		{
 			bow.SetActive(true);
 			axe.SetActive(false);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Q))
+		{
+            activeInventorySlot1.UseItem();
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			activeInventorySlot2.UseItem();
 		}
     }
 

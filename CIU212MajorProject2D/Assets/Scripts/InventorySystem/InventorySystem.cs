@@ -66,7 +66,7 @@ public class InventorySystem : MonoBehaviour {
         return true;
     }
 
-    public void Remove(Item item)
+    public void Remove (Item item)
     {
         if (item.activeItem)
         {
@@ -89,4 +89,25 @@ public class InventorySystem : MonoBehaviour {
 			}
         }
     }
+
+	public void Use (Item item)
+	{
+		if (item.activeItem)
+		{
+			if (onItemChangedCallback != null)
+			{
+				onItemChangedCallback.Invoke();
+			}
+		}
+		else if (item.passiveItem)
+		{
+			Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+			item.Drop();
+			passiveItems.Remove(item);
+			if (onItemChangedCallback != null)
+			{
+				onItemChangedCallback.Invoke();
+			}
+		}
+	}
 }
