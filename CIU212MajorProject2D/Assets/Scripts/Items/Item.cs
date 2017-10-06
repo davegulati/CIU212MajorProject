@@ -3,7 +3,8 @@
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/Undefined Item")]
 public class Item : ScriptableObject
 {
-	[Header("Main Settings")]
+    [Header("Main Settings")]
+    public int itemID = 0;
 	public string itemName = "New item";
     public string itemDescription = "Item description";
     public Sprite itemSprite = null;
@@ -22,7 +23,7 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-        Debug.Log("Using " + itemName + "...");
+        ItemsManager.instance.Use(this);
     }
 
     public virtual void Drop()
