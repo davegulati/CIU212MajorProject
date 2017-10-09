@@ -34,12 +34,12 @@ public class bossMovementController : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
-        if (distance < 5f)
-        { 
-           // StartCoroutine("Attack");
-
-            return;
+        if (distance < 1f)
+        {
+           // yield return StopCoroutine("Patrol");
+            Attack();
         }
+
     }
 
 
@@ -70,18 +70,15 @@ public class bossMovementController : MonoBehaviour
                 transform.localScale = Vector3.one;
 
 
-            yield return null;
+              yield return null;
 
 
         }
     }
 
-    IEnumerator Attack()
-    {
-        while (true)
-        {
+    void Attack()
+    {     
             gameObject.transform.position += transform.forward * speed * Time.deltaTime;
-        }
     }
 
 
