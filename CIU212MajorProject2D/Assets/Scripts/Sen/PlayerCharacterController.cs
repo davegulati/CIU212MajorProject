@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerCharacterController : MonoBehaviour
 {
+    public static PlayerCharacterController instance;
+
     //Sen's movement variables.
     [HideInInspector]
     public float movementSpeed = 12.5f;
@@ -55,6 +57,10 @@ public class PlayerCharacterController : MonoBehaviour
     private InventorySlot activeInventorySlot1;
     private InventorySlot activeInventorySlot2;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

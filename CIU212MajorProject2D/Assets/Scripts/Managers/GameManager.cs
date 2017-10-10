@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     // Load scene variables.
     private GameObject loadingScreen;
+    [Header("Loading Screen Variables")]
     public Sprite[] loadingImages;
     public string[] loadingTips;
     private AsyncOperation operation;
