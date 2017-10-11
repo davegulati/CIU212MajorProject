@@ -30,32 +30,28 @@ public class VitaminC_Pill : InteractableItem {
     //}
 
     public void Use()
+	{
+        readyForUse = false;
+        GetComponent<SpriteRenderer>().color = useColor;
+        sen = GameObject.Find("Sen");
+		sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+        sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+		StartCoroutine(ResetWeaponStats());
+	}
+
+	IEnumerator ResetWeaponStats()
+	{
+		yield return new WaitForSeconds(useTime);
+		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
+		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
+        StartCoroutine(PillCooldown());
+	}
+
+    IEnumerator PillCooldown ()
     {
-        Debug.Log("im so tired");
+        GetComponent<SpriteRenderer>().color = cooldownColor;
+        yield return new WaitForSeconds(cooldownTime);
+        readyForUse = true;
+        GetComponent<SpriteRenderer>().color = normalColor;
     }
- //   public void Use()
-	//{
- //       readyForUse = false;
- //       GetComponent<SpriteRenderer>().color = useColor;
- //       sen = GameObject.Find("Sen");
-	//	sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
- //       sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
-	//	StartCoroutine(ResetWeaponStats());
-	//}
-
-	//IEnumerator ResetWeaponStats()
-	//{
-	//	yield return new WaitForSeconds(useTime);
-	//	sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
-	//	sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
- //       StartCoroutine(PillCooldown());
-	//}
-
-    //IEnumerator PillCooldown ()
-    //{
-    //    GetComponent<SpriteRenderer>().color = cooldownColor;
-    //    yield return new WaitForSeconds(cooldownTime);
-    //    readyForUse = true;
-    //    GetComponent<SpriteRenderer>().color = normalColor;
-    //}
 }

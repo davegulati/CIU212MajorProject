@@ -8,12 +8,34 @@ public class ItemsManager : MonoBehaviour {
 
     protected GameObject sen;
 
-    // Live shop variables.
+    // LIVE SHOP VARIABLES:
 	public GameObject[] allItemsArray;
 	public List<GameObject> allItemsList;
 	private GameObject[] itemSlots = new GameObject[4];
 	private GameObject generatedItem;
 	private int index;
+
+    // ITEM VARIABLES:
+
+    // Powerup_Stopwatch (Active)
+	private float normalTimeScale = 1.0f;
+	private float slowMotionTimeScale = 0.4f;
+	private float resetAfterSeconds = 3.0f;
+
+	// Powerup_Potion (Active)
+    private float powerup_Potion_HealthAwarded;
+	private float healthDivider = 2.0f;
+
+    // Powerup_VitaminC_Pill (Active)
+    private float damageMultiplier = 1.2f;
+    private int useTime = 5;
+    private int cooldownTime = 8;
+    private bool readyForUse = true;
+
+	// Powerup_Health (Consumable)
+	private float powerup_Health_HealthAwarded = 20.0f;
+
+
 
 	private void Awake()
     {
@@ -56,16 +78,81 @@ public class ItemsManager : MonoBehaviour {
     {
         if (item.itemID == 0)
         {
-            Instantiate(item.itemPrefab, transform.position, Quaternion.identity);
-			allItemsArray[0].GetComponent<Powerup_Potion>().enabled = true;
-			allItemsArray[0].GetComponent<Powerup_Potion>().Use();
+            Powerup_Potion();
         }
 
 		if (item.itemID == 1)
 		{
-			Instantiate(item.itemPrefab, transform.position, Quaternion.identity);
-			allItemsArray[1].GetComponent<Powerup_Stopwatch>().enabled = true;
-			allItemsArray[1].GetComponent<Powerup_Stopwatch>().Use();
+            StartCoroutine(Powerup_Stopwatch());
+		}
+
+		if (item.itemID == 2)
+		{
+			// LIGHTING ROD
+		}
+
+		if (item.itemID == 3)
+		{
+			Powerup_VitaminC_Pill();
+		}
+
+		if (item.itemID == 4)
+		{
+			Powerup_Health();
+		}
+
+		if (item.itemID == 5)
+		{
+			Powerup_MaxHealth();
 		}
     }
+
+	IEnumerator Powerup_Stopwatch()
+	{
+		Time.timeScale = slowMotionTimeScale;
+		//GetComponent<SpriteRenderer>().enabled = false;
+		yield return new WaitForSeconds(resetAfterSeconds);
+		Time.timeScale = normalTimeScale;
+	}
+
+    private void Powerup_Potion ()
+    {
+		powerup_Potion_HealthAwarded = sen.GetComponent<PlayerHealth>().maxPlayerHealth / healthDivider;
+		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Potion_HealthAwarded);
+    }
+
+	private void Powerup_VitaminC_Pill()
+	{
+        if (readyForUse)
+        {
+			readyForUse = false;
+			sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+			sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+			StartCoroutine(Powerup_VitaminC_Pill_ResetWeaponStats());
+        }
+	}
+
+	IEnumerator Powerup_VitaminC_Pill_ResetWeaponStats()
+	{
+		yield return new WaitForSeconds(useTime);
+		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
+		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
+		StartCoroutine(Powerup_VitaminC_Pill_Cooldown());
+	}
+
+	IEnumerator Powerup_VitaminC_Pill_Cooldown()
+	{
+		yield return new WaitForSeconds(cooldownTime);
+		readyForUse = true;
+	}
+
+    private void Powerup_Health ()
+    {
+		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Health_HealthAwarded);
+	}
+
+    private void Powerup_MaxHealth ()
+    {
+		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(sen.GetComponent<PlayerHealth>().maxPlayerHealth);
+	}
 }
