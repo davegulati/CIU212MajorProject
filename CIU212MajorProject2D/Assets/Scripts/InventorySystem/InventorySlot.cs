@@ -48,6 +48,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         itemInfoPopup.SetActive(false);
         itemNameText.gameObject.SetActive(false);
         itemDescriptionText.gameObject.SetActive(false);
+        item.Drop();
         InventorySystem.instance.Remove(item);
     }
 

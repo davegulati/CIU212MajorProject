@@ -17,25 +17,39 @@ public class ItemsManager : MonoBehaviour {
 
     // ITEM VARIABLES:
 
+    // Global
+    private float useTime;
+    private float coolDownTime;
+    private bool activeItemBeingUsed = false;
+
     // Powerup_Stopwatch (Active)
-	private float normalTimeScale = 1.0f;
-	private float slowMotionTimeScale = 0.4f;
-	private float resetAfterSeconds = 3.0f;
+    private float powerup_Stopwatch_NormalTimeScale = 1.0f;
+    private float powerup_Stopwatch_SlowMotionTimeScale = 0.4f;
+    private float powerup_Stopwatch_UseTime = 3.0f;
+    private float powerup_Stopwatch_CooldownTime = 12.5f;
+    private bool using_Powerup_Stopwatch = false;
 
 	// Powerup_Potion (Active)
     private float powerup_Potion_HealthAwarded;
-	private float healthDivider = 2.0f;
+    private float powerup_Potion_HealthDivider = 2.0f;
 
     // Powerup_VitaminC_Pill (Active)
-    private float damageMultiplier = 1.2f;
-    private int useTime = 5;
-    private int cooldownTime = 8;
-    private bool readyForUse = true;
+    private float powerup_VitaminC_Pill_DamageMultiplier = 1.2f;
+    private int powerup_VitaminC_Pill_UseTime = 5;
+    private int powerup_VitaminC_Pill_CooldownTime = 8;
+    private bool powerup_VitaminC_Pill_ReadyForUse = true;
 
 	// Powerup_Health (Consumable)
 	private float powerup_Health_HealthAwarded = 20.0f;
 
+    // Powerup_MechanicalBoots (Passive)
+    private float powerup_MechanicalBoots_SpeedBoost = 10.0f;
 
+    // Powerup_PowerAura (Passive)
+    private float powerup_PowerAura_DamageMultiplier = 1.15f;
+
+    // Powerup_HSP (Passive)
+    private float powerup_HSP_HealthToIncreaseBy = 30.0f;
 
 	private void Awake()
     {
@@ -58,7 +72,7 @@ public class ItemsManager : MonoBehaviour {
         AddItemsToSlots();
     }
 
-	public void AddItemsToSlots()
+    public void AddItemsToSlots()
 	{
 		foreach (GameObject itemSlot in itemSlots)
 		{
@@ -74,16 +88,16 @@ public class ItemsManager : MonoBehaviour {
 		allItemsList.RemoveAt(index);
 	}
 
-    public void Use(Item item)
+    public void Use (Item item)
     {
         if (item.itemID == 0)
         {
-            Powerup_Potion();
+            UsePowerup_Potion(item);
         }
 
 		if (item.itemID == 1)
 		{
-            StartCoroutine(Powerup_Stopwatch());
+            StartCoroutine(UsePowerup_Stopwatch(item));
 		}
 
 		if (item.itemID == 2)
@@ -93,48 +107,151 @@ public class ItemsManager : MonoBehaviour {
 
 		if (item.itemID == 3)
 		{
-			Powerup_VitaminC_Pill();
+            UsePowerup_VitaminC_Pill(item);
 		}
 
 		if (item.itemID == 4)
 		{
-			Powerup_Health();
+            UsePowerup_Health(item);
 		}
 
 		if (item.itemID == 5)
 		{
-			Powerup_MaxHealth();
+            UsePowerup_MaxHealth(item);
+		}
+
+		if (item.itemID == 6)
+		{
+            UsePowerup_ArrowPowder(item);
+		}
+
+		if (item.itemID == 7)
+		{
+            UsePowerup_MechanicalBoots(item);
+		}
+
+		if (item.itemID == 8)
+		{
+            UsePowerup_PowerAura(item);
+		}
+
+        if (item.itemID == 9)
+        {
+            UsePowerup_HSP(item);
+        }
+
+		if (item.itemID == 10)
+		{
+            UsePowerup_SteelShot(item);
 		}
     }
 
-	IEnumerator Powerup_Stopwatch()
+	public void Drop (Item item)
 	{
-		Time.timeScale = slowMotionTimeScale;
-		//GetComponent<SpriteRenderer>().enabled = false;
-		yield return new WaitForSeconds(resetAfterSeconds);
-		Time.timeScale = normalTimeScale;
+		if (item.itemID == 0)
+		{
+			DropPowerup_Potion();
+		}
+
+		if (item.itemID == 1)
+		{
+			DropPowerup_Stopwatch();
+		}
+
+		if (item.itemID == 2)
+		{
+			// DROP LIGHTING ROD
+		}
+
+		if (item.itemID == 3)
+		{
+			DropPowerup_VitaminC_Pill();
+		}
+
+		if (item.itemID == 4)
+		{
+			DropPowerup_Health();
+		}
+
+		if (item.itemID == 5)
+		{
+			DropPowerup_MaxHealth();
+		}
+
+		if (item.itemID == 6)
+		{
+			DropPowerup_ArrowPowder();
+		}
+
+		if (item.itemID == 7)
+		{
+			DropPowerup_MechanicalBoots();
+		}
+
+		if (item.itemID == 8)
+		{
+			DropPowerup_PowerAura();
+		}
+
+		if (item.itemID == 9)
+		{
+			DropPowerup_HSP();
+		}
+
+		if (item.itemID == 10)
+		{
+			DropPowerup_SteelShot();
+		}
 	}
 
-    private void Powerup_Potion ()
-    {
-		powerup_Potion_HealthAwarded = sen.GetComponent<PlayerHealth>().maxPlayerHealth / healthDivider;
+	private void UsePowerup_Potion(Item item)
+	{
+		powerup_Potion_HealthAwarded = sen.GetComponent<PlayerHealth>().maxPlayerHealth / powerup_Potion_HealthDivider;
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Potion_HealthAwarded);
+	}
+
+    private void DropPowerup_Potion ()
+    {
+        
     }
 
-	private void Powerup_VitaminC_Pill()
+	IEnumerator UsePowerup_Stopwatch(Item item)
 	{
-        if (readyForUse)
+        if (!using_Powerup_Stopwatch)
         {
-			readyForUse = false;
-			sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
-			sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(damageMultiplier);
+            using_Powerup_Stopwatch = true;
+			Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
+            yield return new WaitForSeconds(powerup_Stopwatch_UseTime);
+			Time.timeScale = powerup_Stopwatch_NormalTimeScale;
+            InvokeRepeating("ActiveAbilityTimer", 0, 1);
+        }
+	}
+
+    IEnumerator Powerup_Stopwatch_Cooldown ()
+    {
+        yield return new WaitForSeconds(powerup_Stopwatch_CooldownTime);
+        using_Powerup_Stopwatch = false;
+    }
+
+    private void DropPowerup_Stopwatch ()
+    {
+        Time.timeScale = powerup_Stopwatch_NormalTimeScale;
+    }
+
+	private void UsePowerup_VitaminC_Pill(Item item)
+	{
+        if (powerup_VitaminC_Pill_ReadyForUse)
+        {
+			powerup_VitaminC_Pill_ReadyForUse = false;
+			sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(powerup_VitaminC_Pill_DamageMultiplier);
+			sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(powerup_VitaminC_Pill_DamageMultiplier);
 			StartCoroutine(Powerup_VitaminC_Pill_ResetWeaponStats());
         }
 	}
 
 	IEnumerator Powerup_VitaminC_Pill_ResetWeaponStats()
 	{
-		yield return new WaitForSeconds(useTime);
+		yield return new WaitForSeconds(powerup_VitaminC_Pill_UseTime);
 		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
 		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
 		StartCoroutine(Powerup_VitaminC_Pill_Cooldown());
@@ -142,17 +259,83 @@ public class ItemsManager : MonoBehaviour {
 
 	IEnumerator Powerup_VitaminC_Pill_Cooldown()
 	{
-		yield return new WaitForSeconds(cooldownTime);
-		readyForUse = true;
+		yield return new WaitForSeconds(powerup_VitaminC_Pill_CooldownTime);
+		powerup_VitaminC_Pill_ReadyForUse = true;
 	}
 
-    private void Powerup_Health ()
+    private void DropPowerup_VitaminC_Pill ()
+    {
+        
+    }
+
+    private void UsePowerup_Health (Item item)
     {
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Health_HealthAwarded);
 	}
 
-    private void Powerup_MaxHealth ()
+    private void DropPowerup_Health ()
+    {
+        
+    }
+
+    private void UsePowerup_MaxHealth (Item item)
     {
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(sen.GetComponent<PlayerHealth>().maxPlayerHealth);
 	}
+
+    private void DropPowerup_MaxHealth ()
+    {
+        
+    }
+
+	private void UsePowerup_ArrowPowder (Item item)
+	{
+		sen.transform.Find("Bow").GetComponent<Bow>().explosiveArrowsUnlocked = true;
+	}
+
+	private void DropPowerup_ArrowPowder()
+	{
+
+	}
+
+    private void UsePowerup_MechanicalBoots (Item item)
+    {
+        sen.GetComponent<PlayerCharacterController>().movementSpeed = powerup_MechanicalBoots_SpeedBoost;
+    }
+
+    private void DropPowerup_MechanicalBoots ()
+    {
+        
+    }
+
+    private void UsePowerup_PowerAura (Item item)
+    {
+        sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_PowerAura(powerup_PowerAura_DamageMultiplier);
+        sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_PowerAura(powerup_PowerAura_DamageMultiplier);
+    }
+
+    private void DropPowerup_PowerAura ()
+    {
+        
+    }
+
+    private void UsePowerup_HSP (Item item)
+    {
+        sen.GetComponent<PlayerHealth>().IncreaseMaxHealth(powerup_HSP_HealthToIncreaseBy);
+    }
+
+    private void DropPowerup_HSP ()
+    {
+        
+    }
+
+    private void UsePowerup_SteelShot (Item item)
+    {
+		sen.transform.Find("Bow").GetComponent<Bow>().steelShotArrowsUnlocked = true;
+	}
+
+    private void DropPowerup_SteelShot ()
+    {
+        
+    }
 }

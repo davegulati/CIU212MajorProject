@@ -28,6 +28,6 @@ public class Item : ScriptableObject
 
     public virtual void Drop()
     {
-        Debug.Log(itemName + " dropped.");
+        ItemsManager.instance.Drop(this);
     } 
 }
