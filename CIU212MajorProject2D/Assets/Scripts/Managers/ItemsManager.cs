@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class ItemsManager : MonoBehaviour {
 	private int index;
 
     // ITEM VARIABLES:
+
+    // Item UI Variables
+    private Image activeItemPopup_Icon;
+    private Image activeItemPopup_Radial;
 
     // Powerup_Stopwatch (Active)
     private float powerup_Stopwatch_NormalTimeScale = 1.0f;
@@ -65,6 +70,10 @@ public class ItemsManager : MonoBehaviour {
 		itemSlots[2] = GameObject.Find("LiveShop").transform.Find("Canvas_LiveShop").transform.Find("BG").transform.Find("ItemSlotsBG").transform.Find("ItemSlot3").gameObject;
 		itemSlots[3] = GameObject.Find("LiveShop").transform.Find("Canvas_LiveShop").transform.Find("BG").transform.Find("ItemSlotsBG").transform.Find("ItemSlot4").gameObject;
         AddItemsToSlots();
+
+        activeItemPopup_Icon = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1").transform.Find("Icon").GetComponent<Image>();
+        activeItemPopup_Radial = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1").transform.Find("Radial").GetComponent<Image>();
+        activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
     public void AddItemsToSlots()
@@ -216,7 +225,7 @@ public class ItemsManager : MonoBehaviour {
         {
             item.beingUsed = true;
             StartCoroutine(StartActiveAbilityUseTimer(item));
-			Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
+			//Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
             yield return new WaitForSeconds(item.useTime);
 			Time.timeScale = powerup_Stopwatch_NormalTimeScale;
         }
@@ -336,12 +345,16 @@ public class ItemsManager : MonoBehaviour {
 
     IEnumerator StartActiveAbilityUseTimer (Item item)
     {
-        int useTime = item.useTime;
-        while (useTime > 0)
+        float useTime = 0;
+		activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(true);
+		activeItemPopup_Icon.sprite = item.itemSprite;
+        activeItemPopup_Radial.sprite = item.itemSprite;
+        activeItemPopup_Radial.fillAmount = 0;
+        activeItemPopup_Radial.color = Color.green;
+        while (useTime < item.useTime)
         {
-            useTime = useTime - 1;
-            Debug.Log(useTime);
-            // Update UI
+            useTime = useTime + 1;
+            activeItemPopup_Radial.fillAmount = useTime / item.useTime;
             yield return new WaitForSeconds(1);
         }
 
@@ -350,13 +363,14 @@ public class ItemsManager : MonoBehaviour {
 
     IEnumerator StartActiveAbilityCooldownTimer (Item item)
     {
-        Debug.Log("wow!");
-		int cooldownTime = item.cooldownTime;
-		while (cooldownTime > 0)
+		float cooldownTime = 0;
+		activeItemPopup_Radial.fillAmount = 1;
+        activeItemPopup_Radial.color = Color.blue;
+		while (cooldownTime < item.cooldownTime)
 		{
-			cooldownTime = cooldownTime - 1;
-			Debug.Log(cooldownTime);
-			// Update UI
+			cooldownTime = cooldownTime + 1;
+            // Update UI
+            activeItemPopup_Radial.fillAmount = cooldownTime / item.cooldownTime;
 			yield return new WaitForSeconds(1);
 		}
 

@@ -16,8 +16,9 @@ public class Item : ScriptableObject
     public bool passiveItem = false;
 
 	[Header("Active Item Settings - If item is Active item")]
-	public int useTime = 0;
-    public int cooldownTime = 0;
+	public float useTime = 0;
+    public float cooldownTime = 0;
+    [HideInInspector]
     public bool beingUsed = false;
 
     [Header("Item usage Settings")]
@@ -25,6 +26,11 @@ public class Item : ScriptableObject
 
 	[Header("Inventory Settings")]
 	public bool canBeStored = true;
+
+	private void OnEnable()
+	{
+		beingUsed = false;
+	}
 
     public virtual void Use()
     {
@@ -34,5 +40,5 @@ public class Item : ScriptableObject
     public virtual void Drop()
     {
         ItemsManager.instance.Drop(this);
-    } 
+    }
 }
