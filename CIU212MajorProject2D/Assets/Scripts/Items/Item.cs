@@ -15,6 +15,11 @@ public class Item : ScriptableObject
     public bool consumableItem = false;
     public bool passiveItem = false;
 
+	[Header("Active Item Settings - If item is Active item")]
+	public int useTime = 0;
+    public int cooldownTime = 0;
+    public bool beingUsed = false;
+
     [Header("Item usage Settings")]
     public string onUseDialogue = "When item is used";
 

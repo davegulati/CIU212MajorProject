@@ -17,11 +17,6 @@ public class ItemsManager : MonoBehaviour {
 
     // ITEM VARIABLES:
 
-    // Global
-    private float useTime;
-    private float coolDownTime;
-    private bool activeItemBeingUsed = false;
-
     // Powerup_Stopwatch (Active)
     private float powerup_Stopwatch_NormalTimeScale = 1.0f;
     private float powerup_Stopwatch_SlowMotionTimeScale = 0.4f;
@@ -217,13 +212,13 @@ public class ItemsManager : MonoBehaviour {
 
 	IEnumerator UsePowerup_Stopwatch(Item item)
 	{
-        if (!using_Powerup_Stopwatch)
+        if (!item.beingUsed)
         {
-            using_Powerup_Stopwatch = true;
+            item.beingUsed = true;
+            StartCoroutine(StartActiveAbilityUseTimer(item));
 			Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
-            yield return new WaitForSeconds(powerup_Stopwatch_UseTime);
+            yield return new WaitForSeconds(item.useTime);
 			Time.timeScale = powerup_Stopwatch_NormalTimeScale;
-            InvokeRepeating("ActiveAbilityTimer", 0, 1);
         }
 	}
 
@@ -337,5 +332,34 @@ public class ItemsManager : MonoBehaviour {
     private void DropPowerup_SteelShot ()
     {
         
+    }
+
+    IEnumerator StartActiveAbilityUseTimer (Item item)
+    {
+        int useTime = item.useTime;
+        while (useTime > 0)
+        {
+            useTime = useTime - 1;
+            Debug.Log(useTime);
+            // Update UI
+            yield return new WaitForSeconds(1);
+        }
+
+        StartCoroutine(StartActiveAbilityCooldownTimer(item));
+    }
+
+    IEnumerator StartActiveAbilityCooldownTimer (Item item)
+    {
+        Debug.Log("wow!");
+		int cooldownTime = item.cooldownTime;
+		while (cooldownTime > 0)
+		{
+			cooldownTime = cooldownTime - 1;
+			Debug.Log(cooldownTime);
+			// Update UI
+			yield return new WaitForSeconds(1);
+		}
+
+        item.beingUsed = false;
     }
 }
