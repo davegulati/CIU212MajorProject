@@ -19,15 +19,12 @@ public class ItemsManager : MonoBehaviour {
     // ITEM VARIABLES:
 
     // Item UI Variables
-    private Image activeItemPopup_Icon;
-    private Image activeItemPopup_Radial;
+    private ActiveItemPopup activeItemPopup1;
+    private ActiveItemPopup activeItemPopup2;
 
     // Powerup_Stopwatch (Active)
     private float powerup_Stopwatch_NormalTimeScale = 1.0f;
     private float powerup_Stopwatch_SlowMotionTimeScale = 0.4f;
-    private float powerup_Stopwatch_UseTime = 3.0f;
-    private float powerup_Stopwatch_CooldownTime = 12.5f;
-    private bool using_Powerup_Stopwatch = false;
 
 	// Powerup_Potion (Active)
     private float powerup_Potion_HealthAwarded;
@@ -35,9 +32,6 @@ public class ItemsManager : MonoBehaviour {
 
     // Powerup_VitaminC_Pill (Active)
     private float powerup_VitaminC_Pill_DamageMultiplier = 1.2f;
-    private int powerup_VitaminC_Pill_UseTime = 5;
-    private int powerup_VitaminC_Pill_CooldownTime = 8;
-    private bool powerup_VitaminC_Pill_ReadyForUse = true;
 
 	// Powerup_Health (Consumable)
 	private float powerup_Health_HealthAwarded = 20.0f;
@@ -71,10 +65,9 @@ public class ItemsManager : MonoBehaviour {
 		itemSlots[3] = GameObject.Find("LiveShop").transform.Find("Canvas_LiveShop").transform.Find("BG").transform.Find("ItemSlotsBG").transform.Find("ItemSlot4").gameObject;
         AddItemsToSlots();
 
-        activeItemPopup_Icon = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1").transform.Find("Icon").GetComponent<Image>();
-        activeItemPopup_Radial = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1").transform.Find("Radial").GetComponent<Image>();
-        activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(false);
-    }
+        activeItemPopup1 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1_Parent").GetComponent<ActiveItemPopup>();
+		activeItemPopup2 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup2_Parent").GetComponent<ActiveItemPopup>();
+	}
 
     public void AddItemsToSlots()
 	{
@@ -111,7 +104,7 @@ public class ItemsManager : MonoBehaviour {
 
 		if (item.itemID == 3)
 		{
-            UsePowerup_VitaminC_Pill(item);
+            StartCoroutine(UsePowerup_VitaminC_Pill(item));
 		}
 
 		if (item.itemID == 4)
@@ -224,47 +217,30 @@ public class ItemsManager : MonoBehaviour {
         if (!item.beingUsed)
         {
             item.beingUsed = true;
-            StartCoroutine(StartActiveAbilityUseTimer(item));
-			//Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
+            ActivateActiveAbility(item);
+			Time.timeScale = powerup_Stopwatch_SlowMotionTimeScale;
             yield return new WaitForSeconds(item.useTime);
 			Time.timeScale = powerup_Stopwatch_NormalTimeScale;
         }
 	}
-
-    IEnumerator Powerup_Stopwatch_Cooldown ()
-    {
-        yield return new WaitForSeconds(powerup_Stopwatch_CooldownTime);
-        using_Powerup_Stopwatch = false;
-    }
 
     private void DropPowerup_Stopwatch ()
     {
         Time.timeScale = powerup_Stopwatch_NormalTimeScale;
     }
 
-	private void UsePowerup_VitaminC_Pill(Item item)
+	IEnumerator UsePowerup_VitaminC_Pill(Item item)
 	{
-        if (powerup_VitaminC_Pill_ReadyForUse)
+        if (!item.beingUsed)
         {
-			powerup_VitaminC_Pill_ReadyForUse = false;
+			item.beingUsed = true;
+            ActivateActiveAbility(item);
 			sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_VitaminC_Pill(powerup_VitaminC_Pill_DamageMultiplier);
 			sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_VitaminC_Pill(powerup_VitaminC_Pill_DamageMultiplier);
-			StartCoroutine(Powerup_VitaminC_Pill_ResetWeaponStats());
+			yield return new WaitForSeconds(item.useTime);
+			sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
+			sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
         }
-	}
-
-	IEnumerator Powerup_VitaminC_Pill_ResetWeaponStats()
-	{
-		yield return new WaitForSeconds(powerup_VitaminC_Pill_UseTime);
-		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
-		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
-		StartCoroutine(Powerup_VitaminC_Pill_Cooldown());
-	}
-
-	IEnumerator Powerup_VitaminC_Pill_Cooldown()
-	{
-		yield return new WaitForSeconds(powerup_VitaminC_Pill_CooldownTime);
-		powerup_VitaminC_Pill_ReadyForUse = true;
 	}
 
     private void DropPowerup_VitaminC_Pill ()
@@ -343,37 +319,45 @@ public class ItemsManager : MonoBehaviour {
         
     }
 
-    IEnumerator StartActiveAbilityUseTimer (Item item)
+    private void ActivateActiveAbility (Item item)
     {
-        float useTime = 0;
-		activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(true);
-		activeItemPopup_Icon.sprite = item.itemSprite;
-        activeItemPopup_Radial.sprite = item.itemSprite;
-        activeItemPopup_Radial.fillAmount = 0;
-        activeItemPopup_Radial.color = Color.green;
-        while (useTime < item.useTime)
+        if (!activeItemPopup1.InitiateActiveAbility(item))
         {
-            useTime = useTime + 1;
-            activeItemPopup_Radial.fillAmount = useTime / item.useTime;
-            yield return new WaitForSeconds(1);
+            activeItemPopup2.InitiateActiveAbility(item);
         }
-
-        StartCoroutine(StartActiveAbilityCooldownTimer(item));
     }
 
-    IEnumerator StartActiveAbilityCooldownTimer (Item item)
-    {
-		float cooldownTime = 0;
-		activeItemPopup_Radial.fillAmount = 1;
-        activeItemPopup_Radial.color = Color.blue;
-		while (cooldownTime < item.cooldownTime)
-		{
-			cooldownTime = cooldownTime + 1;
-            // Update UI
-            activeItemPopup_Radial.fillAmount = cooldownTime / item.cooldownTime;
-			yield return new WaitForSeconds(1);
-		}
+  //  IEnumerator StartActiveAbilityUseTimer (Item item)
+  //  {
+  //      float useTime = 0;
+		//activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(true);
+		//activeItemPopup_Icon.sprite = item.itemSprite;
+  //      activeItemPopup_Radial.sprite = item.itemSprite;
+  //      activeItemPopup_Radial.fillAmount = 0;
+  //      activeItemPopup_Radial.color = useColor;
+  //      while (useTime < item.useTime)
+  //      {
+  //          useTime = useTime + 1;
+  //          activeItemPopup_Radial.fillAmount = useTime / item.useTime;
+  //          yield return new WaitForSeconds(1);
+  //      }
 
-        item.beingUsed = false;
-    }
+  //      StartCoroutine(StartActiveAbilityCooldownTimer(item));
+  //  }
+
+  //  IEnumerator StartActiveAbilityCooldownTimer (Item item)
+  //  {
+		//float cooldownTime = item.cooldownTime;
+		//activeItemPopup_Radial.fillAmount = 1;
+  //      activeItemPopup_Radial.color = cooldownColor;
+		//while (cooldownTime > 0)
+		//{
+		//	cooldownTime = cooldownTime - 1;
+  //          // Update UI
+  //          activeItemPopup_Radial.fillAmount = cooldownTime / item.cooldownTime;
+		//	yield return new WaitForSeconds(1);
+		//}
+
+    //    item.beingUsed = false;
+    //}
 }
