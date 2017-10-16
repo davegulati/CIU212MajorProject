@@ -5,15 +5,18 @@ using UnityEngine;
 public class bossAttack : MonoBehaviour
 {
     private GameObject sen;
+    public GameObject attackHitbox1;
+    public GameObject attackHitbox2;
 
     //place holder boss health for testing
     private float Jarek_BossHealth = 100;
-    private float attackCooldown = 6.0f;
-    private float attackDamage = 10.0f;
+    public float attackCooldown = 6.0f;
+    public float attackDamage = 10.0f;
+    public float attackDelay = 2.0f;
 
     public GameObject Poison_Launcher;
     public GameObject Poison;
-    private float Poison_Forward_Force = 90.0f;
+    public float Poison_Forward_Force = 90.0f;
 
     // Use this for initialization
     void Start()
@@ -31,37 +34,58 @@ public class bossAttack : MonoBehaviour
 
     IEnumerator AttackPattern()
     {
-        while (Jarek_BossHealth > 100.0f)
+        while (true)
         {
-            SlashAttack();
-            yield return new WaitForSeconds(attackCooldown);
-            {
-
-                while (Jarek_BossHealth > 80.0f)
+                if (Jarek_BossHealth > 75.0f)
                 {
-                    PoisonLaunch();
+                Debug.Log("Started");
+                    yield return new WaitForSeconds(attackDelay);
+                    SlashAttack();
                     yield return new WaitForSeconds(attackCooldown);
-                }
 
-                while (Jarek_BossHealth > 60.0f)
-                {
+                    yield return new WaitForSeconds(attackDelay);
                     StabAttack();
                     yield return new WaitForSeconds(attackCooldown);
-                }
+            }
 
-                if (Jarek_BossHealth > 0.0f)
+                if (Jarek_BossHealth > 50.0f)
+                {
+                    yield return new WaitForSeconds(attackDelay);
+                    PoisonLaunch();
+                    yield return new WaitForSeconds(attackCooldown);
+
+                    yield return new WaitForSeconds(attackDelay);
+                    SlashAttack();
+                    yield return new WaitForSeconds(attackCooldown);
+
+                    yield return new WaitForSeconds(attackDelay);
+                    SlashAttack();
+                    yield return new WaitForSeconds(attackCooldown);
+            }
+
+                while (Jarek_BossHealth > 25.0f)
+                {
+                    yield return new WaitForSeconds(attackDelay);
+                    StabAttack();
+                    yield return new WaitForSeconds(attackCooldown);
+
+                    yield return new WaitForSeconds(attackDelay);
+                    PoisonLaunch();
+                    yield return new WaitForSeconds(attackCooldown);
+            }
+
+                if (Jarek_BossHealth <= 1.0f)
                 {
                     Destroy(this.gameObject);
                     yield return null;
                 }
-            }
+                yield return null;
         }
-        yield return null;
     }
 
     void SlashAttack()
     {
-        
+        attackHitbox1.SetActive(true);
     }
 
     void PoisonLaunch()
@@ -80,7 +104,7 @@ public class bossAttack : MonoBehaviour
 
     void StabAttack()
     {
-
+        attackHitbox2.SetActive(true);
     }
 
     void OnCollisionEnter2D(Collision2D other)
