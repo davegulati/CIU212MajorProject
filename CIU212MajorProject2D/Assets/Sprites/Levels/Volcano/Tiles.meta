@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:CIU212MajorProject2D/Assets/Sprites/Levels/Volcano/Tiles.meta
 guid: 15e781613fd6c6c44a38da3359761eb8
 folderAsset: yes
 timeCreated: 1508144831
+=======
+guid: 6fd748531d3304e43a8881ed8b4601fc
+folderAsset: yes
+timeCreated: 1508138611
+>>>>>>> fd804691b5567e3899931831a482e6da4d77a286:CIU212MajorProject2D/Assets/Sprites/Levels/Volcano/Tiles.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
