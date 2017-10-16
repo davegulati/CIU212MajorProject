@@ -8,7 +8,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [HideInInspector]
     public Item item;
     private Image icon;
-    private Image radial;
 	private Color useColor = new Color(0, 255, 0, 0.5f);
 	private Color cooldownColor = new Color(0, 0, 255, 0.5f);
     private Button removeButton;
@@ -20,7 +19,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Awake()
     {
         icon = gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>();
-		radial = gameObject.transform.Find("ItemButton").transform.Find("Radial").GetComponent<Image>();
 		removeButton = transform.Find("RemoveButton").GetComponent<Button>();
         itemButton = gameObject.transform.Find("ItemButton").GetComponent<Button>();
         itemInfoPopup = transform.Find("ItemInfoPopup").gameObject;
@@ -111,40 +109,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		itemInfoPopup.SetActive(false);
         itemNameText.gameObject.SetActive(false);
         itemDescriptionText.gameObject.SetActive(false);
-	}
-
-	IEnumerator DisplayUseProgress(Item item)
-	{
-        radial.enabled = true;
-		float useTime = 0;
-		radial.sprite = item.itemSprite;
-		radial.fillAmount = 0;
-		radial.color = useColor;
-		while (useTime < item.useTime)
-		{
-			useTime = useTime + 1;
-			radial.fillAmount = useTime / item.useTime;
-			yield return new WaitForSeconds(1);
-		}
-
-		StartCoroutine(DisplayCooldownProgress(item));
-	}
-
-    IEnumerator DisplayCooldownProgress(Item item)
-	{
-		float cooldownTime = item.cooldownTime;
-		radial.fillAmount = 1;
-		radial.color = cooldownColor;
-		while (cooldownTime > 0)
-		{
-			cooldownTime = cooldownTime - 1;
-			// Update UI
-			radial.fillAmount = cooldownTime / item.cooldownTime;
-			yield return new WaitForSeconds(1);
-		}
-
-        radial.enabled = false;
-        itemButton.interactable = true;
 	}
 
     public void UpdateSlot ()
