@@ -98,7 +98,6 @@ public class Bow : MonoBehaviour {
 
 	public void EnhanceWeaponStats_PowerAura (float multiplier)
 	{
-        base_DamageAmount *= multiplier;
 		current_DamageAmount *= multiplier;
 	}
 

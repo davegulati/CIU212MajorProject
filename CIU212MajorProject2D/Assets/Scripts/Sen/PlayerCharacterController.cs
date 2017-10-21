@@ -9,6 +9,8 @@ public class PlayerCharacterController : MonoBehaviour
 
     //Sen's movement variables.
     [HideInInspector]
+    public float baseMovementSpeed = 12.5f;
+    [HideInInspector]
     public float movementSpeed = 12.5f;
     private Rigidbody2D senRigidbody;
     private Collider2D senCollider;

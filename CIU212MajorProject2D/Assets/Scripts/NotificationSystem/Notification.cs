@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Notification : MonoBehaviour {
 
+    // Normal notification
     private Text text_Sign;
     private Text text_Title;
     private Text text_Heading;
@@ -14,6 +15,9 @@ public class Notification : MonoBehaviour {
     private Animation anim;
     public AnimationClip start;
     public AnimationClip finish;
+
+    // Small notification
+    private Text notification_Small;
 
     public static Notification instance;
 
@@ -28,6 +32,8 @@ public class Notification : MonoBehaviour {
         text_Message = notification.transform.Find("Image_Body").transform.Find("Text_Message").GetComponent<Text>();
         anim = notification.GetComponent<Animation>();
         notification.SetActive(false);
+        notification_Small = transform.Find("Notification_Small").GetComponent<Text>();
+        notification_Small.gameObject.SetActive(false);
     }
 
     public void Display (string sign, string title, string heading, string description, string message, float duration)
@@ -50,6 +56,18 @@ public class Notification : MonoBehaviour {
         StartCoroutine(Stop(duration));
     }
 
+    public void DisplaySmallNotification(string text)
+    {
+		if (notification_Small.gameObject.activeSelf)
+		{
+			StopAllCoroutines();
+		}
+
+        notification_Small.gameObject.SetActive(true);
+        notification_Small.text = text;
+        StartCoroutine(NotificationSmall());
+    }
+
     IEnumerator Stop (float duration)
     {
         yield return new WaitForSeconds(duration);
@@ -61,5 +79,12 @@ public class Notification : MonoBehaviour {
     {
         yield return new WaitForSeconds(finish.length);
         notification.SetActive(false);
+    }
+
+    IEnumerator NotificationSmall ()
+    {
+        yield return new WaitForSeconds(2);
+        notification_Small.text = "";
+        notification_Small.gameObject.SetActive(false);
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
-    private float playerHealth = 100.0f;
+    private float baseMaxPlayerHealth = 100.0f;
+    private float currentPlayerHealth = 100.0f;
     [HideInInspector]
     public float maxPlayerHealth = 100.0f;
     private Slider slider_Health;
@@ -20,15 +21,15 @@ public class PlayerHealth : MonoBehaviour {
 	void Awake () 
     {
         slider_Health = GameObject.Find("Slider_Health").GetComponent<Slider>();
-        slider_Health.value = playerHealth / 100;
+        slider_Health.value = currentPlayerHealth / 100;
         spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     public void PlayerTakeDamage(float damage)
     {
-        playerHealth = playerHealth - damage;
-        slider_Health.value = playerHealth / 100;
-        if (playerHealth <= 0)
+        currentPlayerHealth = currentPlayerHealth - damage;
+        slider_Health.value = currentPlayerHealth / 100;
+        if (currentPlayerHealth <= 0)
         {
             SceneManager.LoadScene("SafeZoneGreybox");
             Destroy(gameObject);
@@ -60,31 +61,41 @@ public class PlayerHealth : MonoBehaviour {
 
     public void PlayerReceiveHealth (float health)
     {
-        playerHealth = playerHealth + health;
-        slider_Health.value = playerHealth / maxPlayerHealth;
-        if (playerHealth > maxPlayerHealth)
+        currentPlayerHealth = currentPlayerHealth + health;
+        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+        if (currentPlayerHealth > maxPlayerHealth)
         {
-            playerHealth = maxPlayerHealth;
+            currentPlayerHealth = maxPlayerHealth;
         }
     }
 
 	public void PlayerSetHealth(float health)
 	{
-		playerHealth = health;
-		slider_Health.value = playerHealth / maxPlayerHealth;
-		if (playerHealth > maxPlayerHealth)
+		currentPlayerHealth = health;
+		slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+		if (currentPlayerHealth > maxPlayerHealth)
 		{
-			playerHealth = maxPlayerHealth;
+			currentPlayerHealth = maxPlayerHealth;
 		}
 	}
 
     public void IncreaseMaxHealth (float amountToIncreaseBy)
     {
         maxPlayerHealth = maxPlayerHealth + amountToIncreaseBy;
-        slider_Health.value = playerHealth / maxPlayerHealth;
-		if (playerHealth > maxPlayerHealth)
+		if (currentPlayerHealth > maxPlayerHealth)
 		{
-			playerHealth = maxPlayerHealth;
+			currentPlayerHealth = maxPlayerHealth;
 		}
+        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
     }
+
+	public void ResetMaxHealth()
+	{
+		maxPlayerHealth = baseMaxPlayerHealth;
+		if (currentPlayerHealth > maxPlayerHealth)
+		{
+			currentPlayerHealth = maxPlayerHealth;
+		}
+        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+	}
 }

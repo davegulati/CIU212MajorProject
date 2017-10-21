@@ -147,12 +147,12 @@ public class ItemsManager : MonoBehaviour {
 	{
 		if (item.itemID == 0)
 		{
-			DropPowerup_Potion();
+			DropPowerup_Potion(item);
 		}
 
 		if (item.itemID == 1)
 		{
-			DropPowerup_Stopwatch();
+			DropPowerup_Stopwatch(item);
 		}
 
 		if (item.itemID == 2)
@@ -162,55 +162,58 @@ public class ItemsManager : MonoBehaviour {
 
 		if (item.itemID == 3)
 		{
-			DropPowerup_VitaminC_Pill();
+			DropPowerup_VitaminC_Pill(item);
 		}
 
 		if (item.itemID == 4)
 		{
-			DropPowerup_Health();
+			DropPowerup_Health(item);
 		}
 
 		if (item.itemID == 5)
 		{
-			DropPowerup_MaxHealth();
+			DropPowerup_MaxHealth(item);
 		}
 
 		if (item.itemID == 6)
 		{
-			DropPowerup_ArrowPowder();
+			DropPowerup_ArrowPowder(item);
 		}
 
 		if (item.itemID == 7)
 		{
-			DropPowerup_MechanicalBoots();
+			DropPowerup_MechanicalBoots(item);
 		}
 
 		if (item.itemID == 8)
 		{
-			DropPowerup_PowerAura();
+			DropPowerup_PowerAura(item);
 		}
 
 		if (item.itemID == 9)
 		{
-			DropPowerup_HSP();
+			DropPowerup_HSP(item);
 		}
 
 		if (item.itemID == 10)
 		{
-			DropPowerup_SteelShot();
+			DropPowerup_SteelShot(item);
 		}
 	}
 
 	private void UsePowerup_Potion(Item item)
 	{
+        item.beingUsed = true;
 		powerup_Potion_HealthAwarded = sen.GetComponent<PlayerHealth>().maxPlayerHealth / powerup_Potion_HealthDivider;
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Potion_HealthAwarded);
 	}
 
-    private void DropPowerup_Potion ()
+    private void DropPowerup_Potion (Item item)
     {
-        
-    }
+        item.beingUsed = false;
+        Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
+	}
 
 	IEnumerator UsePowerup_Stopwatch(Item item)
 	{
@@ -224,9 +227,12 @@ public class ItemsManager : MonoBehaviour {
         }
 	}
 
-    private void DropPowerup_Stopwatch ()
+    private void DropPowerup_Stopwatch (Item item)
     {
         Time.timeScale = powerup_Stopwatch_NormalTimeScale;
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
 	IEnumerator UsePowerup_VitaminC_Pill(Item item)
@@ -243,70 +249,97 @@ public class ItemsManager : MonoBehaviour {
         }
 	}
 
-    private void DropPowerup_VitaminC_Pill ()
+    private void DropPowerup_VitaminC_Pill (Item item)
     {
-        
+		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
+		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void UsePowerup_Health (Item item)
     {
+        item.beingUsed = true;
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(powerup_Health_HealthAwarded);
 	}
 
-    private void DropPowerup_Health ()
+    private void DropPowerup_Health (Item item)
     {
-        
+		item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void UsePowerup_MaxHealth (Item item)
     {
+        item.beingUsed = true;
 		sen.GetComponent<PlayerHealth>().PlayerReceiveHealth(sen.GetComponent<PlayerHealth>().maxPlayerHealth);
 	}
 
-    private void DropPowerup_MaxHealth ()
+    private void DropPowerup_MaxHealth (Item item)
     {
-        
+		item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
 	private void UsePowerup_ArrowPowder (Item item)
 	{
+        item.beingUsed = true;
 		sen.transform.Find("Bow").GetComponent<Bow>().explosiveArrowsUnlocked = true;
 	}
 
-	private void DropPowerup_ArrowPowder()
+	private void DropPowerup_ArrowPowder(Item item)
 	{
-
+        sen.transform.Find("Bow").GetComponent<Bow>().explosiveArrowsUnlocked = false;
+		item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
 	}
 
     private void UsePowerup_MechanicalBoots (Item item)
     {
+        item.beingUsed = true;
         sen.GetComponent<PlayerCharacterController>().movementSpeed = powerup_MechanicalBoots_SpeedBoost;
     }
 
-    private void DropPowerup_MechanicalBoots ()
+    private void DropPowerup_MechanicalBoots (Item item)
     {
-        
+		sen.GetComponent<PlayerCharacterController>().movementSpeed = sen.GetComponent<PlayerCharacterController>().baseMovementSpeed;
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void UsePowerup_PowerAura (Item item)
     {
+        item.beingUsed = true;
         sen.transform.Find("Bow").GetComponent<Bow>().EnhanceWeaponStats_PowerAura(powerup_PowerAura_DamageMultiplier);
         sen.transform.Find("Axe").GetComponent<Axe>().EnhanceWeaponStats_PowerAura(powerup_PowerAura_DamageMultiplier);
     }
 
-    private void DropPowerup_PowerAura ()
+    private void DropPowerup_PowerAura (Item item)
     {
-        
+		sen.transform.Find("Bow").GetComponent<Bow>().ResetWeaponStats();
+		sen.transform.Find("Axe").GetComponent<Axe>().ResetWeaponStats();
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void UsePowerup_HSP (Item item)
     {
+        item.beingUsed = true;
         sen.GetComponent<PlayerHealth>().IncreaseMaxHealth(powerup_HSP_HealthToIncreaseBy);
     }
 
-    private void DropPowerup_HSP ()
+    private void DropPowerup_HSP (Item item)
     {
-        
+        sen.GetComponent<PlayerHealth>().ResetMaxHealth();
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void UsePowerup_SteelShot (Item item)
@@ -314,9 +347,12 @@ public class ItemsManager : MonoBehaviour {
 		sen.transform.Find("Bow").GetComponent<Bow>().steelShotArrowsUnlocked = true;
 	}
 
-    private void DropPowerup_SteelShot ()
+    private void DropPowerup_SteelShot (Item item)
     {
-        
+        sen.transform.Find("Bow").GetComponent<Bow>().steelShotArrowsUnlocked = false;
+        item.beingUsed = false;
+		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
     private void ActivateActiveAbility (Item item)
@@ -326,38 +362,4 @@ public class ItemsManager : MonoBehaviour {
             activeItemPopup2.InitiateActiveAbility(item);
         }
     }
-
-  //  IEnumerator StartActiveAbilityUseTimer (Item item)
-  //  {
-  //      float useTime = 0;
-		//activeItemPopup_Icon.gameObject.transform.parent.gameObject.SetActive(true);
-		//activeItemPopup_Icon.sprite = item.itemSprite;
-  //      activeItemPopup_Radial.sprite = item.itemSprite;
-  //      activeItemPopup_Radial.fillAmount = 0;
-  //      activeItemPopup_Radial.color = useColor;
-  //      while (useTime < item.useTime)
-  //      {
-  //          useTime = useTime + 1;
-  //          activeItemPopup_Radial.fillAmount = useTime / item.useTime;
-  //          yield return new WaitForSeconds(1);
-  //      }
-
-  //      StartCoroutine(StartActiveAbilityCooldownTimer(item));
-  //  }
-
-  //  IEnumerator StartActiveAbilityCooldownTimer (Item item)
-  //  {
-		//float cooldownTime = item.cooldownTime;
-		//activeItemPopup_Radial.fillAmount = 1;
-  //      activeItemPopup_Radial.color = cooldownColor;
-		//while (cooldownTime > 0)
-		//{
-		//	cooldownTime = cooldownTime - 1;
-  //          // Update UI
-  //          activeItemPopup_Radial.fillAmount = cooldownTime / item.cooldownTime;
-		//	yield return new WaitForSeconds(1);
-		//}
-
-    //    item.beingUsed = false;
-    //}
 }

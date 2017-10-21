@@ -64,9 +64,20 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (item != null)
         {
-            if (item.consumableItem)
+            if (item.passiveItem)
+			{
+				item.Use();
+				itemButton.interactable = false;
+				//removeButton.gameObject.SetActive(false);
+				itemInfoPopup.SetActive(false);
+				itemNameText.gameObject.SetActive(false);
+				itemDescriptionText.gameObject.SetActive(false);
+				//itemButton.interactable = false;
+				InventorySystem.instance.Use(item);
+			}
+
+            else if (item.consumableItem)
             {
-				Notification.instance.Display("!", "ITEM USED", item.itemName, item.onUseDialogue, null, 3.0f);
 				item.Use();
                 itemInfoPopup.SetActive(false);
                 itemNameText.gameObject.SetActive(false);
@@ -74,7 +85,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 InventorySystem.instance.Remove(item);
             }
 
-			if (item.activeItem)
+			else if (item.activeItem)
 			{
 				item.Use();
                 itemButton.interactable = false;
@@ -115,15 +126,32 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
 		if (item != null)
 		{
-			if (item.beingUsed)
+            if (item.passiveItem)
+            {
+				if (item.beingUsed)
+				{
+					itemButton.interactable = false;
+					removeButton.gameObject.SetActive(true);
+				}
+				else if (!item.beingUsed)
+				{
+					itemButton.interactable = true;
+					removeButton.gameObject.SetActive(true);
+				}
+            }
+
+			else if (item.activeItem)
 			{
-				itemButton.interactable = false;
-				removeButton.gameObject.SetActive(false);
-			}
-			else if (!item.beingUsed)
-			{
-				itemButton.interactable = true;
-				removeButton.gameObject.SetActive(true);
+				if (item.beingUsed)
+				{
+					itemButton.interactable = false;
+					removeButton.gameObject.SetActive(false);
+				}
+				else if (!item.beingUsed)
+				{
+					itemButton.interactable = true;
+					removeButton.gameObject.SetActive(true);
+				}
 			}
 		}
     }

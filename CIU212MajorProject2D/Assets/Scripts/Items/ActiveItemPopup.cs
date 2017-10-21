@@ -72,5 +72,6 @@ public class ActiveItemPopup : MonoBehaviour {
         {
             activeInventorySlot.UpdateSlot();
         }
+        gameObject.transform.Find("ActiveItemPopup").gameObject.SetActive(false);
 	}
 }
