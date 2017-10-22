@@ -9,11 +9,15 @@ public class ItemsManager : MonoBehaviour {
 
     protected GameObject sen;
 
+    [HideInInspector]
+    public int playerCurrency_Gold = 0;
+    [HideInInspector]
+    public int playerCurrency_Dye = 0;
+
     // LIVE SHOP VARIABLES:
-	public GameObject[] allItemsArray;
-	public List<GameObject> allItemsList;
+	public List<Item> allItemsList;
 	private GameObject[] itemSlots = new GameObject[4];
-	private GameObject generatedItem;
+	private Item generatedItem;
 	private int index;
 
     // ITEM VARIABLES:

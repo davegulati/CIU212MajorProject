@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private GameObject itemInfoPopup;
     [HideInInspector]
-    public GameObject generatedItem;
+    public Item generatedItem;
 
     private void Awake()
     {
@@ -16,13 +16,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         itemInfoPopup.SetActive(false);
     }
 
-    public void AddItem (GameObject item)
+    public void AddItem (Item item)
     {
         generatedItem = item;
         gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = "$" + Random.Range(1, 10).ToString();
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = item.name;
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.name + " description";
-        gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = item.itemName;
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.itemName + " description";
+        gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = item.itemSprite;
     }
 
     public void OnPointerEnter(PointerEventData eventData) // On mouseover enter
@@ -44,9 +44,18 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	private void BuyItem()
     {
-		Notification.instance.Display("!", "ITEM PURCHASED", generatedItem.name, generatedItem.name + " description", "Press 'I' to access your inventory", 3.0f);
-		// Add to inventory
-		RemoveItemFromSlot();
+        if (ItemsManager.instance.playerCurrency_Gold >= generatedItem.itemPrice)
+        {
+			if (InventorySystem.instance.Add(generatedItem))
+			{
+				Notification.instance.Display("!", "ITEM PURCHASED", generatedItem.name, generatedItem.name + " description", "Press 'I' to access your inventory", 3.0f);
+				RemoveItemFromSlot();
+			}
+        }
+        else
+        {
+			Notification.instance.Display("!", "INSUFFICIENT FUNDS!", "Not enough gold!", "You do not have enough gold!", "", 3.0f);
+		}
     }
 
     private void RemoveItemFromSlot()

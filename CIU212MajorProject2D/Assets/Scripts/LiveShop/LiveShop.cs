@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class LiveShop : MonoBehaviour {
     
     public GameObject[] allItems;
-    public List<GameObject> allItemsList;
+    public List<Item> allItemsList;
     private GameObject[] itemSlots = new GameObject[4];
 
-    private GameObject generatedItem;
+    private Item generatedItem;
     private int index;
 
     private void Awake()

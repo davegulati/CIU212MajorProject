@@ -7,7 +7,7 @@ public class Item : ScriptableObject
     public int itemID = 0;
 	public string itemName = "New item";
     public string itemDescription = "Item description";
-    public Sprite itemSprite = null;
+	public Sprite itemSprite = null;
     public GameObject itemPrefab;
 
     [Header("Item Type - Select ONLY one.")]
@@ -26,6 +26,11 @@ public class Item : ScriptableObject
 
 	[Header("Inventory Settings")]
 	public bool canBeStored = true;
+
+    [Header("Shop Settings")]
+    public bool purchasedWithGold = false;
+    public bool purchasedWithDye = false;
+    public int itemPrice = 10;
 
 	private void OnEnable()
 	{
