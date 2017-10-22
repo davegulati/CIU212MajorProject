@@ -37,9 +37,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void AddItem (Item newItem)
     {
         item = newItem;
-        icon.sprite = item.itemSprite;
-        icon.enabled = true;
-        removeButton.interactable = true;
+		icon.sprite = item.itemSprite;
+		icon.enabled = true;
+		removeButton.interactable = true;
+
+        if (item.passiveItem)
+        {
+            item.Use();
+        }
+
+        UpdateSlot();
     }
 
     public void ClearSlot ()

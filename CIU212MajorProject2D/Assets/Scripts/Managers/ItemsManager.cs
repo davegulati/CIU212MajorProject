@@ -330,8 +330,11 @@ public class ItemsManager : MonoBehaviour {
 
     private void UsePowerup_HSP (Item item)
     {
-        item.beingUsed = true;
-        sen.GetComponent<PlayerHealth>().IncreaseMaxHealth(powerup_HSP_HealthToIncreaseBy);
+        if (!item.beingUsed)
+        {
+			item.beingUsed = true;
+			sen.GetComponent<PlayerHealth>().IncreaseMaxHealth(powerup_HSP_HealthToIncreaseBy);
+        }
     }
 
     private void DropPowerup_HSP (Item item)
