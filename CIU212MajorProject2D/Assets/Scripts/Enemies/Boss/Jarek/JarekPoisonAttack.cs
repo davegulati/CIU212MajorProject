@@ -12,6 +12,11 @@ public class JarekPoisonAttack : MonoBehaviour
         sen = GameObject.Find("Sen");
     }
 
+    void Update()
+    {
+        Destroy(gameObject, 2.0f);
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")

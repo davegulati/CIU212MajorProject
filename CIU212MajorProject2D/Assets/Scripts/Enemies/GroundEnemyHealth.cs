@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GroundEnemyHealth : MonoBehaviour {
 
+    public GameObject coin;
+
     private float currentHealth = 100;
     private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -28,6 +30,7 @@ public class GroundEnemyHealth : MonoBehaviour {
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            Instantiate(coin, transform.position, transform.rotation);
         }
         else
         {
