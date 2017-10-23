@@ -29,8 +29,9 @@ public class Item : ScriptableObject
 
     [Header("Shop Settings")]
     public bool purchasedWithGold = false;
+    public int itemPriceInGold = 10;
     public bool purchasedWithDye = false;
-    public int itemPrice = 10;
+    public int itemPriceInDye = 0;
 
 	private void OnEnable()
 	{

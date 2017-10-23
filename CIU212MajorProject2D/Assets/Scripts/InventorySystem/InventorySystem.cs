@@ -61,6 +61,11 @@ public class InventorySystem : MonoBehaviour {
 				return true;
 			}
         }
+        else if (item.consumableItem)
+        {
+            item.Use();
+            return true;
+        }
         return false;
     }
 
