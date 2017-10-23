@@ -10,9 +10,9 @@ public class bossAttack : MonoBehaviour
 
     //place holder boss health for testing
     private float Jarek_BossHealth = 100;
-    public float attackCooldown = 6.0f;
+    public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
-    public float attackDelay = 2.0f;
+    public float attackDelay = 1.5f;
     public float attackDuration = 0.3f;
 
     public GameObject Poison_Launcher;
@@ -101,7 +101,8 @@ public class bossAttack : MonoBehaviour
         Rigidbody2D Temporary_RigidBody;
         Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
 
-        Temporary_RigidBody.AddForce(transform.right * Poison_Forward_Force);
+        //transform.right for a directional shot
+        Temporary_RigidBody.AddForce(sen.transform.position * Poison_Forward_Force);
 
         Destroy(Temporary_Bullet_Handler, 3.0f);
 

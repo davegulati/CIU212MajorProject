@@ -19,7 +19,10 @@ public class bossTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
             boss.GetComponent<bossAttack>().enabled = true;
             boss.GetComponent<bossMovementController>().enabled = false;
+        }
     }
 }

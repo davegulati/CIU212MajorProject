@@ -19,9 +19,10 @@ public class JarekPoisonAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
+            Destroy(gameObject);
         }
     }
 
