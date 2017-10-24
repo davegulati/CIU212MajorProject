@@ -21,7 +21,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         generatedItem = item;
         gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = generatedItem.itemPriceInGold.ToString();
         gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = item.itemName;
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.itemName + " description";
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.itemDescription;
         gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = item.itemSprite;
     }
 
