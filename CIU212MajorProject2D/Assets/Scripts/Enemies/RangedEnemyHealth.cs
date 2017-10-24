@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RangedEnemyHealth : MonoBehaviour
 {
+    public GameObject coin;
+
 	private float currentHealth = 100;
 	private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -28,7 +30,8 @@ public class RangedEnemyHealth : MonoBehaviour
 		if (currentHealth <= 0)
 		{
 			Destroy(gameObject);
-		}
+            Instantiate(coin, transform.position, transform.rotation);
+        }
 		else
 		{
 			StartCoroutine(TimerDamageColor());

@@ -10,13 +10,14 @@ public class bossAttack : MonoBehaviour
 
     //place holder boss health for testing
     private float Jarek_BossHealth = 100;
-    public float attackCooldown = 6.0f;
+    public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
-    public float attackDelay = 2.0f;
+    public float attackDelay = 1.5f;
+    public float attackDuration = 0.3f;
 
     public GameObject Poison_Launcher;
     public GameObject Poison;
-    public float Poison_Forward_Force = 90.0f;
+    public float Poison_Forward_Force = 1200.0f;
 
     // Use this for initialization
     void Start()
@@ -46,7 +47,7 @@ public class bossAttack : MonoBehaviour
                     yield return new WaitForSeconds(attackDelay);
                     StabAttack();
                     yield return new WaitForSeconds(attackCooldown);
-            }
+                }
 
                 if (Jarek_BossHealth > 50.0f)
                 {
@@ -85,18 +86,23 @@ public class bossAttack : MonoBehaviour
 
     void SlashAttack()
     {
+        //add attack animation
         attackHitbox1.SetActive(true);
+        new WaitForSeconds(attackDuration);
+        attackHitbox1.SetActive(false);
     }
 
     void PoisonLaunch()
     {
+        //add attack animation
         GameObject Temporary_Bullet_Handler;
         Temporary_Bullet_Handler = Instantiate(Poison, Poison_Launcher.transform.position, Poison_Launcher.transform.rotation) as GameObject;
 
-        Rigidbody Temporary_RigidBody;
-        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+        Rigidbody2D Temporary_RigidBody;
+        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
 
-        Temporary_RigidBody.AddForce(transform.forward * Poison_Forward_Force);
+        //transform.right for a directional shot
+        Temporary_RigidBody.AddForce(sen.transform.position * Poison_Forward_Force);
 
         Destroy(Temporary_Bullet_Handler, 3.0f);
 
@@ -104,7 +110,10 @@ public class bossAttack : MonoBehaviour
 
     void StabAttack()
     {
+        //add attack animation
         attackHitbox2.SetActive(true);
+        new WaitForSeconds(attackDuration);
+        attackHitbox2.SetActive(false);
     }
 
     void OnCollisionEnter2D(Collision2D other)

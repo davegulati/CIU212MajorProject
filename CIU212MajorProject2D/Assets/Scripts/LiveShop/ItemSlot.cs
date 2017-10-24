@@ -19,9 +19,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void AddItem (Item item)
     {
         generatedItem = item;
-        gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = "$" + Random.Range(1, 10).ToString();
+        gameObject.transform.Find("ItemButton").transform.Find("Icon").transform.Find("Text_Price").GetComponent<Text>().text = generatedItem.itemPriceInGold.ToString();
         gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Name").GetComponent<Text>().text = item.itemName;
-        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.itemName + " description";
+        gameObject.transform.Find("ItemInfoPopup").transform.Find("Text_Description").GetComponent<Text>().text = item.itemDescription;
         gameObject.transform.Find("ItemButton").transform.Find("Icon").GetComponent<Image>().sprite = item.itemSprite;
     }
 
@@ -44,10 +44,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	private void BuyItem()
     {
-        if (ItemsManager.instance.playerCurrency_Gold >= generatedItem.itemPrice)
+        if (ItemsManager.instance.playerCurrency_Gold >= generatedItem.itemPriceInGold)
         {
 			if (InventorySystem.instance.Add(generatedItem))
 			{
+                ItemsManager.instance.playerCurrency_Gold = ItemsManager.instance.playerCurrency_Gold - generatedItem.itemPriceInGold;
 				Notification.instance.Display("!", "ITEM PURCHASED", generatedItem.name, generatedItem.name + " description", "Press 'I' to access your inventory", 3.0f);
 				RemoveItemFromSlot();
 			}
