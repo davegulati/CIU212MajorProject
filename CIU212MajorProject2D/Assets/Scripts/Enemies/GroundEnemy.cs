@@ -67,6 +67,26 @@ public class GroundEnemy : MonoBehaviour {
                     currentPatrolPoint = 0;
                 }
             }
+
+            // The commented code underneath flips the sprite to face the movement of the gameobject. IT WORKS!!
+
+			//Vector2 direction = currentWPPosition - position;
+			//if (direction.x < 0)
+			//{
+			//	gameObject.GetComponent<SpriteRenderer>().flipX = true;
+			//}
+			//else if (direction.x > 0)
+			//{
+			//	gameObject.GetComponent<SpriteRenderer>().flipX = false;
+			//}
+
+
+            // The code underneath aims to rotate the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
+			Vector3 vectorToTarget = currentWPPosition - position;
+			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+
 		}
 
         if (senNoticed && !isStunned)
@@ -76,6 +96,12 @@ public class GroundEnemy : MonoBehaviour {
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
 
+			Vector3 vectorToTarget = senPosition - position;
+			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+
+			
             // Attack Sen
 			if (distanceToSen < attackDistance)
 			{
