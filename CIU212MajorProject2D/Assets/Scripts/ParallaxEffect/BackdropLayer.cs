@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollingBackground : MonoBehaviour
+public class BackdropLayer : MonoBehaviour
 {
     public bool scrolling = true;
     public bool parallax = true;
@@ -58,19 +58,6 @@ public class ScrollingBackground : MonoBehaviour
                 ScrollRight();
             }
         }
-
-        //     if (freezeVerticalAspect)
-        //     {
-        //         if (cameraTransform.position.y > (layers[rightIndex].transform.position.y) || cameraTransform.position.y < (layers[rightIndex].transform.position.y))
-        //         {
-        //             AlignVerticalAspect();
-        //         }
-
-        //if (cameraTransform.position.y > (layers[leftIndex].transform.position.y) || cameraTransform.position.y < (layers[leftIndex].transform.position.y))
-        //{
-        //	AlignVerticalAspect();
-        //}
-        //}
     }
 
     private void ScrollLeft()
@@ -97,12 +84,10 @@ public class ScrollingBackground : MonoBehaviour
         }  
     }
 
-    private void AlignVerticalAspect ()
+    public void LoadLayer (Sprite layer)
     {
-        float indexLeft = layers[leftIndex].position.y;
-        indexLeft = cameraTransform.position.y;
-        float indexRight = layers[rightIndex].position.y;
-        indexRight = cameraTransform.position.y;
-        Debug.Log("test");
+        transform.Find("Left").GetComponent<SpriteRenderer>().sprite = layer;
+		transform.Find("Middle").GetComponent<SpriteRenderer>().sprite = layer;
+		transform.Find("Right").GetComponent<SpriteRenderer>().sprite = layer;
 	}
 }
