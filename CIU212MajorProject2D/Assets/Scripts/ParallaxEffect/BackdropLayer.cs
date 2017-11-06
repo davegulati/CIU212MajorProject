@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollingBackground : MonoBehaviour
+public class BackdropLayer : MonoBehaviour
 {
-    public bool scrolling, parallax;
+    public bool scrolling = true;
+    public bool parallax = true;
+    public bool freezeVerticalAspect = true;
 
     public float backgroundSize;
     public float parallaxSpeed;
@@ -15,15 +17,19 @@ public class ScrollingBackground : MonoBehaviour
     private int leftIndex;
     private int rightIndex;
     private float lastCameraX;
+    private float lastCameraY;
 
 
     private void Start()
     {
         cameraTransform = Camera.main.transform;
         lastCameraX = cameraTransform.position.x;
+        lastCameraY = cameraTransform.position.y;
         layers = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
+        {
             layers[i] = transform.GetChild(i);
+        }
 
         leftIndex = 0;
         rightIndex = layers.Length - 1;
@@ -38,14 +44,19 @@ public class ScrollingBackground : MonoBehaviour
         }
 
         lastCameraX = cameraTransform.position.x;
+        //lastCameraY = cameraTransform.position.y;
 
         if (scrolling)
         {
             if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone))
+            {
                 ScrollLeft();
+            }
 
             if (cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone))
+            {
                 ScrollRight();
+            }
         }
     }
 
@@ -56,8 +67,10 @@ public class ScrollingBackground : MonoBehaviour
         leftIndex = rightIndex;
         rightIndex--;
         if (rightIndex < 0)
+        {
             rightIndex = layers.Length - 1;
-    }
+        }
+	}
 
     private void ScrollRight()
     {
@@ -66,6 +79,15 @@ public class ScrollingBackground : MonoBehaviour
         rightIndex = leftIndex;
         leftIndex++;
         if (leftIndex == layers.Length)
+        {
             leftIndex = 0;
+        }  
     }
+
+    public void LoadLayer (Sprite layer)
+    {
+        transform.Find("Left").GetComponent<SpriteRenderer>().sprite = layer;
+		transform.Find("Middle").GetComponent<SpriteRenderer>().sprite = layer;
+		transform.Find("Right").GetComponent<SpriteRenderer>().sprite = layer;
+	}
 }
