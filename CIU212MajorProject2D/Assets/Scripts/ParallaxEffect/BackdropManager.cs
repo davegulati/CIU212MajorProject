@@ -8,10 +8,15 @@ public class BackdropManager : MonoBehaviour {
 
     private void Awake()
     {
-        transform.Find("Layer1").GetComponent<BackdropLayer>().LoadLayer(layers[0]);
-        transform.Find("Layer2").GetComponent<BackdropLayer>().LoadLayer(layers[1]);
-        transform.Find("Layer3").GetComponent<BackdropLayer>().LoadLayer(layers[2]);
-        transform.Find("Layer4").GetComponent<BackdropLayer>().LoadLayer(layers[3]);
+        LoadLayers();
+    }
+
+    private void LoadLayers()
+    {
+		transform.Find("Layer1").GetComponent<BackdropLayer>().LoadLayer(layers[0]);
+		transform.Find("Layer2").GetComponent<BackdropLayer>().LoadLayer(layers[1]);
+		transform.Find("Layer3").GetComponent<BackdropLayer>().LoadLayer(layers[2]);
+		transform.Find("Layer4").GetComponent<BackdropLayer>().LoadLayer(layers[3]);
     }
 
     private void FixedUpdate () 
