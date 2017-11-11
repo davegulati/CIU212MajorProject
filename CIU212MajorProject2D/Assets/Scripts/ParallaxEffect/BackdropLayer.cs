@@ -17,14 +17,12 @@ public class BackdropLayer : MonoBehaviour
     private int leftIndex;
     private int rightIndex;
     private float lastCameraX;
-    private float lastCameraY;
 
 
     private void Start()
     {
         cameraTransform = Camera.main.transform;
         lastCameraX = cameraTransform.position.x;
-        lastCameraY = cameraTransform.position.y;
         layers = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {

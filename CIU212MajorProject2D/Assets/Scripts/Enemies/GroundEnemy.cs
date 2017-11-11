@@ -81,11 +81,12 @@ public class GroundEnemy : MonoBehaviour {
 			//}
 
 
-            // The code underneath aims to rotate the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
+            // The code underneath rotates the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
 			Vector3 vectorToTarget = currentWPPosition - position;
 			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+            //gameObject.GetComponent<GroundEnemyHealth>().FlipHealthBarCanvas();
 
 		}
 
