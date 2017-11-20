@@ -9,8 +9,10 @@ public class LoadSafeZone : MonoBehaviour
 	public GameObject ui;
 	private float activationRange = 3.5f;
 
-	// Use this for initialization
-	void Start ()
+    private GameManager gameManager;
+
+    // Use this for initialization
+    void Start ()
 	{
 		sen = GameObject.Find("Sen");
 //		ui = GameObject.Find("LoadSafeZone");
@@ -32,7 +34,7 @@ public class LoadSafeZone : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{			
-			SceneManager.LoadScene("SafeZoneGreybox");
+			gameManager.LoadScene("SafeZoneGreybox");
 		}
 	}
 }

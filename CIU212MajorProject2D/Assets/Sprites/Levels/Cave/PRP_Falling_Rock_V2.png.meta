@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: cd85bc7cd0c2d8e489c47f46abc77fa8
-timeCreated: 1501415208
+guid: 0600565eb79e9ca4d97c73fb91d32019
+timeCreated: 1511162036
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: coin_0
-    21300002: coin_1
-    21300004: coin_2
-    21300006: coin_3
+    21300000: PRP_Falling_Rock_V2_0
+    21300002: PRP_Falling_Rock_V2_1
+    21300004: PRP_Falling_Rock_V2_2
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -16,6 +16,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -23,7 +25,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -31,10 +33,13 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    serializedVersion: 2
+    filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -56,6 +61,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -64,6 +70,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -72,6 +79,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: iPhone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -80,6 +88,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Android
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -90,58 +99,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coin_0
+      name: PRP_Falling_Rock_V2_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 61
-        width: 128
-        height: 128
+        x: 0
+        y: 0
+        width: 58
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: coin_1
+      name: PRP_Falling_Rock_V2_1
       rect:
         serializedVersion: 2
-        x: 238
-        y: 61
-        width: 112
-        height: 128
+        x: 58
+        y: 0
+        width: 58
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: coin_2
+      name: PRP_Falling_Rock_V2_2
       rect:
         serializedVersion: 2
-        x: 422
-        y: 61
-        width: 64
-        height: 128
+        x: 116
+        y: 0
+        width: 58
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: coin_3
-      rect:
-        serializedVersion: 2
-        x: 598
-        y: 61
-        width: 32
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      physicsShape: []
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

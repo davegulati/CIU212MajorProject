@@ -9,6 +9,8 @@ public class LoadCave : MonoBehaviour
 	public GameObject ui;
 	private float activationRange = 3.5f;
 
+    private GameManager gameManager;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -32,7 +34,7 @@ public class LoadCave : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			SceneManager.LoadScene("CaveGreybox");
+			gameManager.LoadScene("CaveGreybox");
 		}
 	}
 }

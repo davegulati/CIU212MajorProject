@@ -1,14 +1,35 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: dc99e811420bde942b11eedafbae0f07
-timeCreated: 1508144845
-=======
-guid: cee55cdbc66f13e41be8897df22e072f
-timeCreated: 1508138615
->>>>>>> fd804691b5567e3899931831a482e6da4d77a286
+timeCreated: 1511142343
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: PRP_Stump_V_00_0
+    21300002: PRP_Stump_V_00_1
+    21300004: PRP_Stump_V_00_2
+    21300006: PRP_Stump_V_00_3
+    21300008: PRP_Stump_V_00_4
+    21300010: PRP_Stump_V_00_5
+    21300012: PRP_Stump_V_00_6
+    21300014: PRP_Stump_V_00_7
+    21300016: PRP_Stump_V_00_8
+    21300018: PRP_Stump_V_00_9
+    21300020: PRP_Stump_V_00_10
+    21300022: PRP_Stump_V_00_11
+    21300024: PRP_Stump_V_00_12
+    21300026: PRP_Stump_V_00_13
+    21300028: PRP_Stump_V_00_14
+    21300030: PRP_Stump_V_00_15
+    21300032: PRP_Stump_V_00_16
+    21300034: PRP_Stump_V_00_17
+    21300036: PRP_Stump_V_00_18
+    21300038: PRP_Stump_V_00_19
+    21300040: PRP_Stump_V_00_20
+    21300042: PRP_Stump_V_00_21
+    21300044: PRP_Stump_V_00_22
+    21300046: PRP_Stump_V_00_23
+    21300048: PRP_Stump_V_00_24
+    21300050: PRP_Stump_V_00_25
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -41,11 +62,11 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +91,400 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_2
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_3
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_4
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_5
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_6
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_7
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_8
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 208
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_10
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_11
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_12
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_13
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_14
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_15
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_16
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_17
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 108
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_18
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_19
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_20
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_21
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_22
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_23
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_24
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PRP_Stump_V_00_25
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 8
+        width: 137
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

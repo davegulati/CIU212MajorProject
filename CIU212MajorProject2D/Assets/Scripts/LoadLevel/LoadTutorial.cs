@@ -9,8 +9,10 @@ public class LoadTutorial : MonoBehaviour
 	public GameObject ui;
 	private float activationRange = 3.5f;
 
-	// Use this for initialization
-	void Start ()
+    private GameManager gameManager;
+
+    // Use this for initialization
+    void Start ()
 	{
 		sen = GameObject.Find("Sen");
 //		ui = GameObject.Find("LoadTutorial");
@@ -32,7 +34,7 @@ public class LoadTutorial : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{			
-			SceneManager.LoadScene("TutorialGreybox");
+			gameManager.LoadScene("TutorialGreybox");
 		}
 	}
 }
