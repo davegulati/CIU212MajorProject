@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b8d3eea5965ba58469b21bb05f6e72ab
-timeCreated: 1511181368
+guid: 806309516461e6e40a5f935f03596983
+timeCreated: 1511183445
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: idle
+    21300000: cave_leviathan3_idle_spritesheet_0
     21300002: idle 1
     21300004: idle 2
     21300006: idle 3
@@ -12,6 +12,9 @@ TextureImporter:
     21300010: idle 5
     21300012: idle 6
     21300014: idle 7
+    21300016: idle 8
+    21300018: idle 9
+    21300020: idle 10
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,13 +89,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle
+      name: cave_leviathan3_idle_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 8
-        width: 121
-        height: 118
+        x: 8
+        y: 180
+        width: 132
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,10 +106,10 @@ TextureImporter:
       name: idle 1
       rect:
         serializedVersion: 2
-        x: 161
-        y: 8
-        width: 121
-        height: 118
+        x: 158
+        y: 180
+        width: 132
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,10 +120,10 @@ TextureImporter:
       name: idle 2
       rect:
         serializedVersion: 2
-        x: 311
-        y: 8
-        width: 121
-        height: 112
+        x: 308
+        y: 180
+        width: 132
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +134,10 @@ TextureImporter:
       name: idle 3
       rect:
         serializedVersion: 2
-        x: 461
-        y: 8
-        width: 121
-        height: 112
+        x: 458
+        y: 180
+        width: 135
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,10 +148,10 @@ TextureImporter:
       name: idle 4
       rect:
         serializedVersion: 2
-        x: 611
-        y: 8
-        width: 121
-        height: 111
+        x: 608
+        y: 180
+        width: 135
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +162,10 @@ TextureImporter:
       name: idle 5
       rect:
         serializedVersion: 2
-        x: 761
-        y: 8
-        width: 121
-        height: 111
+        x: 758
+        y: 180
+        width: 136
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +176,10 @@ TextureImporter:
       name: idle 6
       rect:
         serializedVersion: 2
-        x: 909
-        y: 8
-        width: 123
-        height: 112
+        x: 8
+        y: 30
+        width: 136
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +190,52 @@ TextureImporter:
       name: idle 7
       rect:
         serializedVersion: 2
-        x: 1059
-        y: 8
-        width: 123
-        height: 112
+        x: 158
+        y: 30
+        width: 135
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle 8
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 30
+        width: 135
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle 9
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 30
+        width: 134
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle 10
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 30
+        width: 134
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

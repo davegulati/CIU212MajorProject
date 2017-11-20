@@ -1,17 +1,19 @@
 fileFormatVersion: 2
-guid: b8d3eea5965ba58469b21bb05f6e72ab
-timeCreated: 1511181368
+guid: 2fb766188048ff04584cfbe3ffdb6a7e
+timeCreated: 1511186729
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: idle
-    21300002: idle 1
-    21300004: idle 2
-    21300006: idle 3
-    21300008: idle 4
-    21300010: idle 5
-    21300012: idle 6
-    21300014: idle 7
+    21300000: CHR_DyeShopkeeper_Idle_0
+    21300002: CHR_DyeShopkeeper_Idle_1
+    21300004: CHR_DyeShopkeeper_Idle_2
+    21300006: CHR_DyeShopkeeper_Idle_3
+    21300008: CHR_DyeShopkeeper_Idle_4
+    21300010: CHR_DyeShopkeeper_Idle_5
+    21300012: CHR_DyeShopkeeper_Idle_6
+    21300014: CHR_DyeShopkeeper_Idle_7
+    21300016: CHR_DyeShopkeeper_Idle_8
+    21300018: CHR_DyeShopkeeper_Idle_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -65,19 +67,19 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle
+      name: CHR_DyeShopkeeper_Idle_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 8
-        width: 121
-        height: 118
+        x: 2
+        y: 177
+        width: 315
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,13 +102,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 1
+      name: CHR_DyeShopkeeper_Idle_1
       rect:
         serializedVersion: 2
-        x: 161
-        y: 8
-        width: 121
-        height: 118
+        x: 332
+        y: 177
+        width: 315
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +116,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 2
+      name: CHR_DyeShopkeeper_Idle_2
       rect:
         serializedVersion: 2
-        x: 311
-        y: 8
-        width: 121
-        height: 112
+        x: 663
+        y: 177
+        width: 314
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,13 +130,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 3
+      name: CHR_DyeShopkeeper_Idle_3
       rect:
         serializedVersion: 2
-        x: 461
-        y: 8
-        width: 121
-        height: 112
+        x: 993
+        y: 177
+        width: 314
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +144,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 4
+      name: CHR_DyeShopkeeper_Idle_4
       rect:
         serializedVersion: 2
-        x: 611
-        y: 8
-        width: 121
-        height: 111
+        x: 1322
+        y: 177
+        width: 315
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,13 +158,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 5
+      name: CHR_DyeShopkeeper_Idle_5
       rect:
         serializedVersion: 2
-        x: 761
-        y: 8
-        width: 121
-        height: 111
+        x: 1183
+        y: 161
+        width: 6
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,13 +172,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 6
+      name: CHR_DyeShopkeeper_Idle_6
       rect:
         serializedVersion: 2
-        x: 909
-        y: 8
-        width: 123
-        height: 112
+        x: 2
+        y: 7
+        width: 315
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,13 +186,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 7
+      name: CHR_DyeShopkeeper_Idle_7
       rect:
         serializedVersion: 2
-        x: 1059
-        y: 8
-        width: 123
-        height: 112
+        x: 333
+        y: 7
+        width: 314
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_DyeShopkeeper_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 7
+        width: 314
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_DyeShopkeeper_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 7
+        width: 315
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

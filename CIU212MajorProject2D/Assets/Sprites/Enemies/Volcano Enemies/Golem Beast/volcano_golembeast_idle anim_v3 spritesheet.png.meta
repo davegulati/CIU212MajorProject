@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: b8d3eea5965ba58469b21bb05f6e72ab
-timeCreated: 1511181368
+guid: 409804dd13a88094c922b34b590a9f81
+timeCreated: 1511184033
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: idle
-    21300002: idle 1
-    21300004: idle 2
-    21300006: idle 3
-    21300008: idle 4
-    21300010: idle 5
-    21300012: idle 6
-    21300014: idle 7
+    21300000: volcano_golembeast_idle anim_v3 spritesheet_0
+    21300002: volcano_golembeast_idle anim_v3 spritesheet_1
+    21300004: volcano_golembeast_idle anim_v3 spritesheet_2
+    21300006: volcano_golembeast_idle anim_v3 spritesheet_3
+    21300008: volcano_golembeast_idle anim_v3 spritesheet_4
+    21300010: volcano_golembeast_idle anim_v3 spritesheet_5
+    21300012: volcano_golembeast_idle anim_v3 spritesheet_6
+    21300014: volcano_golembeast_idle anim_v3 spritesheet_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,13 +86,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle
+      name: volcano_golembeast_idle anim_v3 spritesheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 8
-        width: 121
-        height: 118
+        x: 9
+        y: 12
+        width: 136
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,13 +100,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 1
+      name: volcano_golembeast_idle anim_v3 spritesheet_1
       rect:
         serializedVersion: 2
-        x: 161
-        y: 8
-        width: 121
-        height: 118
+        x: 159
+        y: 12
+        width: 136
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +114,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 2
+      name: volcano_golembeast_idle anim_v3 spritesheet_2
       rect:
         serializedVersion: 2
-        x: 311
-        y: 8
-        width: 121
-        height: 112
+        x: 308
+        y: 12
+        width: 137
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,13 +128,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 3
+      name: volcano_golembeast_idle anim_v3 spritesheet_3
       rect:
         serializedVersion: 2
-        x: 461
-        y: 8
-        width: 121
-        height: 112
+        x: 458
+        y: 12
+        width: 137
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +142,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 4
+      name: volcano_golembeast_idle anim_v3 spritesheet_4
       rect:
         serializedVersion: 2
-        x: 611
-        y: 8
-        width: 121
-        height: 111
+        x: 609
+        y: 12
+        width: 137
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,13 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 5
+      name: volcano_golembeast_idle anim_v3 spritesheet_5
       rect:
         serializedVersion: 2
-        x: 761
-        y: 8
-        width: 121
-        height: 111
+        x: 759
+        y: 12
+        width: 137
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,13 +170,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 6
+      name: volcano_golembeast_idle anim_v3 spritesheet_6
       rect:
         serializedVersion: 2
-        x: 909
-        y: 8
-        width: 123
-        height: 112
+        x: 910
+        y: 12
+        width: 135
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,13 +184,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: idle 7
+      name: volcano_golembeast_idle anim_v3 spritesheet_7
       rect:
         serializedVersion: 2
-        x: 1059
-        y: 8
-        width: 123
-        height: 112
+        x: 1060
+        y: 12
+        width: 135
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
