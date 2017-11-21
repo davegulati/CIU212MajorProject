@@ -40,24 +40,19 @@ public class PlayerCharacterController : MonoBehaviour
     private GameObject axe;
     private BoxCollider2D axeBC2D;
     private GameObject bow;
-    [HideInInspector]
-    public bool stunUnlocked = false;
 
     //Sen's dodge variables.
+    private float reactivateColliderAfterTime = 0.1f;
     private Vector2 dodgeRightForce = new Vector2(6000, 0);
     private Vector2 dodgeLeftForce = new Vector2(-6000, 0);
-
-    // Enemy variables.
-    private GameObject[] groundEnemies;
-    private GameObject[] rangedEnemies;
-    private GameObject closestEnemy;
-    private GameObject closestGE;
-    private GameObject closestRE;
-    private float stunRange = 6.0f;
 
     // Sen's inventory variables.
     private InventorySlot activeInventorySlot1;
     private InventorySlot activeInventorySlot2;
+
+    // Item variables.
+    [HideInInspector]
+    public bool pocketSniperUnlocked = false;
 
     private void Awake()
     {
@@ -74,8 +69,6 @@ public class PlayerCharacterController : MonoBehaviour
         axeBC2D.enabled = false;
         bow = gameObject.transform.Find("Bow").gameObject;
         bow.SetActive(false);
-        groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
-		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
         activeInventorySlot1 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot1").GetComponent<InventorySlot>();
 		activeInventorySlot2 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot2").GetComponent<InventorySlot>();
 	}
@@ -210,14 +203,6 @@ public class PlayerCharacterController : MonoBehaviour
 			}
         }
 
-		if (Input.GetKeyDown(KeyCode.G))
-		{
-            if (stunUnlocked)
-            {
-                FindAndStunClosestEnemy();
-            }
-		}
-
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
             bow.SetActive(false);
@@ -277,16 +262,26 @@ public class PlayerCharacterController : MonoBehaviour
     // Sen's dodge (right) mechanic.
     private void DodgeRight()
     {
+        senCollider.enabled = false;
         senRigidbody.AddForce(dodgeRightForce);
+        StartCoroutine(ReactivateDamageCollider());
         //anim.SetTrigger("Dodge");
     }
 
 	// Sen's dodge (left) mechanic.
 	private void DodgeLeft()
 	{
+        senCollider.enabled = false;
         senRigidbody.AddForce(dodgeLeftForce);
+        StartCoroutine(ReactivateDamageCollider());
 		//anim.SetTrigger("Dodge");
 	}
+
+    IEnumerator ReactivateDamageCollider ()
+    {
+        yield return new WaitForSeconds(reactivateColliderAfterTime);
+        senCollider.enabled = true;
+    }
 
     // Sen's interaction mechanic.
     private void Interact()
@@ -312,66 +307,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     }
 
-	private void FindAndStunClosestEnemy()
-	{
-		closestEnemy = null;
-        FindClosestGroundEnemy();
-        FindClosestRangedEnemy();
-        float distanceGE = Vector2.Distance(transform.position, closestGE.transform.position);
-        float distanceRE = Vector2.Distance(transform.position, closestRE.transform.position);
-        if (distanceGE < distanceRE)
-        {
-            closestEnemy = closestGE;
-            if (distanceGE <= stunRange)
-            {
-                closestEnemy.GetComponent<GroundEnemy>().Stun();
-            }
-        }
-        else if (distanceRE < distanceGE)
-        {
-			closestEnemy = closestRE;
-			if (distanceRE <= stunRange)
-			{
-				closestEnemy.GetComponent<RangedEnemy>().Stun();
-			}
-        }
-	}
-
-	private GameObject FindClosestGroundEnemy()
-	{
-		groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject groundEnemy in groundEnemies)
-		{
-			Vector3 diff = groundEnemy.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance)
-			{
-				closestGE = groundEnemy;
-				distance = curDistance;
-			}
-		}
-		return closestGE;
-	}
-
-	private GameObject FindClosestRangedEnemy()
-	{
-		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject rangedEnemy in rangedEnemies)
-		{
-			Vector3 diff = rangedEnemy.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance)
-			{
-				closestRE = rangedEnemy;
-				distance = curDistance;
-			}
-		}
-		return closestRE;
-	}
+	
 
     // When Sen collides with something.
     private void OnCollisionEnter2D(Collision2D collision)

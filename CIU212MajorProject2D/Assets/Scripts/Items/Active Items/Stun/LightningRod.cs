@@ -36,7 +36,7 @@ public class LightningRod : MonoBehaviour
 
 	private void UnlockStunning()
 	{
-        sen.GetComponent<PlayerCharacterController>().stunUnlocked = true;
+        //sen.GetComponent<PlayerCharacterController>().stunUnlocked = true;
 		Destroy(gameObject);
 	}
 }

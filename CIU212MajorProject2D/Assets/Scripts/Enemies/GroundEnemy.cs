@@ -18,7 +18,7 @@ public class GroundEnemy : MonoBehaviour {
 
     // Stun variables
     private bool isStunned = false;
-    private float stunTime = 1.5f;
+    private float stunTime = 2.0f;
     private Color normalColor = new Color(255, 255, 255);
     private Color stunnedColor = new Color(0, 0, 255);
 
