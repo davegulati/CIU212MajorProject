@@ -345,4 +345,24 @@ public class PlayerCharacterController : MonoBehaviour
             senCollider.isTrigger = false;
         }
     }
+
+    public void RepairWeapons ()
+    {
+        if (axe.activeSelf)
+        {
+            axe.GetComponent<Axe>().RepairWeapon();
+            bow.SetActive(true);
+            bow.GetComponent<Bow>().RepairWeapon();
+            bow.SetActive(false);
+        }
+        else if (bow.activeSelf)
+        {
+            bow.GetComponent<Bow>().RepairWeapon();
+            axe.SetActive(true);
+            axe.GetComponent<Axe>().RepairWeapon();
+            axe.SetActive(false);
+        }
+
+        Notification.instance.Display("!", "WEAPONS REPAIRED", "All weapons repaired!", "All weapons have been restored.", "Weapon damage restored to original amounts.", 3.0f);
+    }
 }

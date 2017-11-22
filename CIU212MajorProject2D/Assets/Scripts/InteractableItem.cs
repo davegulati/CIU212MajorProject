@@ -21,7 +21,6 @@ public class InteractableItem : MonoBehaviour {
 			itemCanvas.SetActive(true);
 			if (Input.GetButtonDown("Interact"))
 			{
-                Debug.Log("Interacting...");
                 Interact();
 			}
 		}
