@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour {
     private float currentPlayerHealth = 100.0f;
     [HideInInspector]
     public float maxPlayerHealth = 100.0f;
-    private Slider slider_Health;
+    private Image healthFill;
     private SpriteRenderer spriteRenderer;
     private bool isHurting = false;
     private int hurtTime = 2;
@@ -20,15 +20,15 @@ public class PlayerHealth : MonoBehaviour {
 
 	void Awake () 
     {
-        slider_Health = GameObject.Find("Slider_Health").GetComponent<Slider>();
-        slider_Health.value = currentPlayerHealth / 100;
+        healthFill = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("HealthFill").GetComponent<Image>();
+        healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     public void PlayerTakeDamage(float damage)
     {
         currentPlayerHealth = currentPlayerHealth - damage;
-        slider_Health.value = currentPlayerHealth / 100;
+        healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
         if (currentPlayerHealth <= 0)
         {
             SceneManager.LoadScene("SafeZoneGreybox");
@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour {
     public void PlayerReceiveHealth (float health)
     {
         currentPlayerHealth = currentPlayerHealth + health;
-        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+        healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
         if (currentPlayerHealth > maxPlayerHealth)
         {
             currentPlayerHealth = maxPlayerHealth;
@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour {
 	public void PlayerSetHealth(float health)
 	{
 		currentPlayerHealth = health;
-		slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+		healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
 		if (currentPlayerHealth > maxPlayerHealth)
 		{
 			currentPlayerHealth = maxPlayerHealth;
@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour {
 		{
 			currentPlayerHealth = maxPlayerHealth;
 		}
-        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+        healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
     }
 
 	public void ResetMaxHealth()
@@ -96,6 +96,6 @@ public class PlayerHealth : MonoBehaviour {
 		{
 			currentPlayerHealth = maxPlayerHealth;
 		}
-        slider_Health.value = currentPlayerHealth / maxPlayerHealth;
+        healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
 	}
 }

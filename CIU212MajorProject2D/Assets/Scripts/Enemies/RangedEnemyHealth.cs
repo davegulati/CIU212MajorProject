@@ -7,6 +7,7 @@ public class RangedEnemyHealth : MonoBehaviour
 {
     public GameObject coin;
 
+    private Animator anim;
 	private float currentHealth = 100;
 	private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -18,6 +19,7 @@ public class RangedEnemyHealth : MonoBehaviour
 
 	private void Awake()
 	{
+        anim = gameObject.GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
         healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
         healthSlider.value = 100;
@@ -29,6 +31,7 @@ public class RangedEnemyHealth : MonoBehaviour
         healthSlider.value = currentHealth / 100;
 		if (currentHealth <= 0)
 		{
+            //anim.SetTrigger("DIE TRIGGER NAME");
 			Destroy(gameObject);
             Instantiate(coin, transform.position, transform.rotation);
         }

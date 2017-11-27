@@ -40,6 +40,8 @@ public class PlayerCharacterController : MonoBehaviour
     private GameObject axe;
     private BoxCollider2D axeBC2D;
     private GameObject bow;
+    private GameObject currentWeapon;
+    private WeaponSlot weaponSlot;
 
     //Sen's dodge variables.
     private float reactivateColliderAfterTime = 0.1f;
@@ -71,6 +73,9 @@ public class PlayerCharacterController : MonoBehaviour
         bow.SetActive(false);
         activeInventorySlot1 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot1").GetComponent<InventorySlot>();
 		activeInventorySlot2 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot2").GetComponent<InventorySlot>();
+        weaponSlot = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("WeaponSlot").GetComponent<WeaponSlot>();
+        currentWeapon = axe;
+        weaponSlot.UpdateWeaponSlotImage(currentWeapon);
 	}
 
     void Update()
@@ -207,12 +212,16 @@ public class PlayerCharacterController : MonoBehaviour
 		{
             bow.SetActive(false);
             axe.SetActive(true);
+            currentWeapon = axe;
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
+            axe.SetActive(false);
 			bow.SetActive(true);
-			axe.SetActive(false);
+            currentWeapon = bow;
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Q))

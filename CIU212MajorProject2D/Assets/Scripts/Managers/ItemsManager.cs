@@ -23,8 +23,8 @@ public class ItemsManager : MonoBehaviour {
     // ITEM VARIABLES:
 
     // Item UI Variables
-    private ActiveItemPopup activeItemPopup1;
-    private ActiveItemPopup activeItemPopup2;
+    private ActiveItemPopup activeItem1;
+    private ActiveItemPopup activeItem2;
 
     // Powerup_Stopwatch (Active)
     private float powerup_Stopwatch_NormalTimeScale = 1.0f;
@@ -77,8 +77,8 @@ public class ItemsManager : MonoBehaviour {
 		itemSlots[3] = GameObject.Find("LiveShop").transform.Find("Canvas_LiveShop").transform.Find("BG").transform.Find("ItemSlotsBG").transform.Find("ItemSlot4").gameObject;
         AddItemsToSlots();
 
-        activeItemPopup1 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1_Parent").GetComponent<ActiveItemPopup>();
-		activeItemPopup2 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup2_Parent").GetComponent<ActiveItemPopup>();
+        activeItem1 = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem1").GetComponent<ActiveItemPopup>();
+        activeItem2 = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem2").GetComponent<ActiveItemPopup>();
 	}
 
     public void AddItemsToSlots()
@@ -497,9 +497,9 @@ public class ItemsManager : MonoBehaviour {
 
     private void ActivateActiveAbility (Item item)
     {
-        if (!activeItemPopup1.InitiateActiveAbility(item))
+        if (!activeItem1.InitiateActiveAbility(item))
         {
-            activeItemPopup2.InitiateActiveAbility(item);
+            activeItem2.InitiateActiveAbility(item);
         }
     }
 }

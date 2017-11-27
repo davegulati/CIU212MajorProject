@@ -51,8 +51,8 @@ public class Bow : MonoBehaviour {
         firePoint = gameObject.transform.Find("FirePoint");
         currentDurability = maxDurability;
 	}
-	
-	void Update () 
+
+    void Update () 
     {
         if (Input.GetMouseButtonDown(0))
         {
