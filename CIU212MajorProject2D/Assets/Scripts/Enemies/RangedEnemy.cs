@@ -6,6 +6,7 @@ public class RangedEnemy : MonoBehaviour
 {
 
 	private GameObject sen;
+    private Animator anim;
     private float fleeRange = 2.5f;
 	private float speed = 3.0f;
 
@@ -21,7 +22,7 @@ public class RangedEnemy : MonoBehaviour
 
 	// Stun variables
 	private bool isStunned = false;
-	private float stunTime = 1.5f;
+	private float stunTime = 2.0f;
 	private Color normalColor = new Color(255, 255, 255);
 	private Color stunnedColor = new Color(0, 0, 255);
 
@@ -35,6 +36,7 @@ public class RangedEnemy : MonoBehaviour
 	void Awake()
 	{
 		sen = GameObject.Find("Sen");
+        anim = gameObject.GetComponent<Animator>();
         Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
         firePoint = gameObject.transform.Find("FirePoint");
 
@@ -91,7 +93,7 @@ public class RangedEnemy : MonoBehaviour
 
 	private void Attack()
 	{
-		// TODO: Attack animation.
+		//anim.SetTrigger("ATTACK TRIGGER NAME");
 		canAttack = false;
 		Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
 		Instantiate(arrow, firePointPosition, firePoint.rotation);

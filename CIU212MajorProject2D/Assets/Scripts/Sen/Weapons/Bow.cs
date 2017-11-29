@@ -12,6 +12,12 @@ public class Bow : MonoBehaviour {
     private float timeToFire = 0;
     private Transform firePoint;
 
+    // Durability
+    private float maxDurability = 100.0f;
+    private float currentDurability;
+    private float minDurability = 5.0f;
+    private float deductDurabilityAmount = 3.0f;
+
     // Normal arrow
     [SerializeField]
     private Transform normalArrow;
@@ -43,9 +49,10 @@ public class Bow : MonoBehaviour {
 	private void Awake () 
     {
         firePoint = gameObject.transform.Find("FirePoint");
+        currentDurability = maxDurability;
 	}
-	
-	void Update () 
+
+    void Update () 
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -66,27 +73,28 @@ public class Bow : MonoBehaviour {
 
     private void ShootArrow ()
     {
-        //Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        //RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 200, whatToHit);
-        if (explosiveArrowsUnlocked)
+        if (explosiveArrowsUnlocked) // Explosive arrows
         {
             explosionChance = Random.Range(explosionChanceMin, explosionChanceMax);
 			if (explosionChance == 6)
 			{
 				Transform spawmedArrow = Instantiate(explosiveArrow, firePoint.position, firePoint.rotation);
 				spawmedArrow.GetComponent<ExplosiveArrow>().current_DamageAmount = current_DamageAmount;
+                DeductDurability(deductDurabilityAmount);
 			}
             else
             {
 				Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
 				spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+                DeductDurability(deductDurabilityAmount);
             }
         }
-        else 
+        else  // Normal arrows
         {
 			Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
 			spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
+            DeductDurability(deductDurabilityAmount);
         }
     }
 
@@ -106,4 +114,32 @@ public class Bow : MonoBehaviour {
         GetComponent<SpriteRenderer>().color = normalColor;
         current_DamageAmount = base_DamageAmount;
 	}
+
+    private void DeductDurability(float amount)
+    {
+        currentDurability = currentDurability - amount;
+        // Update weapon durability UI
+        current_DamageAmount *= currentDurability / 100;
+        if (currentDurability > maxDurability)
+        {
+            currentDurability = maxDurability;
+        }
+
+        if (currentDurability < minDurability)
+        {
+            currentDurability = minDurability;
+        }
+    }
+
+    public void RepairWeapon()
+    {
+        currentDurability = maxDurability;
+        current_DamageAmount = base_DamageAmount;
+        // Play repair sound
+        // Update weapon durability UI
+        if (currentDurability > maxDurability)
+        {
+            currentDurability = maxDurability;
+        }
+    }
 }

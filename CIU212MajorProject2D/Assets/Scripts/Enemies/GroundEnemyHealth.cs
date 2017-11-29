@@ -7,6 +7,7 @@ public class GroundEnemyHealth : MonoBehaviour {
 
     public GameObject coin;
 
+    private Animator anim;
     private float currentHealth = 100;
     private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -20,6 +21,7 @@ public class GroundEnemyHealth : MonoBehaviour {
 
 	private void Awake () 
     {
+        anim = gameObject.GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         //healthBarCanvas = gameObject.transform.Find("HealthBarCanvas").gameObject;
 		healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
@@ -39,6 +41,7 @@ public class GroundEnemyHealth : MonoBehaviour {
         healthSlider.value = currentHealth / 100;
         if (currentHealth <= 0)
         {
+            //anim.SetTrigger("DIE TRIGGER NAME");
             Destroy(gameObject);
             Instantiate(coin, transform.position, transform.rotation);
         }

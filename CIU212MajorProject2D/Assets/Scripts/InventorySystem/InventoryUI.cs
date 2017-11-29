@@ -7,9 +7,11 @@ public class InventoryUI : MonoBehaviour {
     InventorySystem inventorySystem;
     InventorySlot[] activeItemSlots;
 	InventorySlot[] passiveItemSlots;
+    ActiveItemPopup[] activeItemPopups = new ActiveItemPopup[2];
 
     // Use this for initialization
-	void Start () {
+	void Start () 
+    {
         inventory = transform.Find("Inventory").gameObject;
         inventorySystem = InventorySystem.instance;
         inventorySystem.onItemChangedCallback += UpdateUI;
@@ -17,6 +19,8 @@ public class InventoryUI : MonoBehaviour {
         activeItemSlots = itemsParent.transform.Find("ActiveItemSlots").GetComponentsInChildren<InventorySlot>();
 		passiveItemSlots = itemsParent.transform.Find("PassiveItemSlots").GetComponentsInChildren<InventorySlot>();
 		inventory.SetActive(false);
+        activeItemPopups[0] = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem1").GetComponent<ActiveItemPopup>();
+        activeItemPopups[1] = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem2").GetComponent<ActiveItemPopup>();
 	}
 	
 	// Update is called once per frame
@@ -35,10 +39,12 @@ public class InventoryUI : MonoBehaviour {
             if (i < inventorySystem.activeItems.Count)
             {
                 activeItemSlots[i].AddItem(inventorySystem.activeItems[i]);
+                activeItemPopups[i].AddItem(inventorySystem.activeItems[i]);
             }
             else
             {
                 activeItemSlots[i].ClearSlot();
+                activeItemPopups[i].RemoveItem();
             }
         }
 

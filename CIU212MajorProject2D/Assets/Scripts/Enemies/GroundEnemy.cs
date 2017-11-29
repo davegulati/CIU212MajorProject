@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroundEnemy : MonoBehaviour {
 
     private GameObject sen;
+    private Animator anim;
     private float chaseRange = 5.0f;
     private float speed = 3.0f;
 
@@ -18,7 +19,7 @@ public class GroundEnemy : MonoBehaviour {
 
     // Stun variables
     private bool isStunned = false;
-    private float stunTime = 1.5f;
+    private float stunTime = 2.0f;
     private Color normalColor = new Color(255, 255, 255);
     private Color stunnedColor = new Color(0, 0, 255);
 
@@ -32,6 +33,7 @@ public class GroundEnemy : MonoBehaviour {
 	void Awake () 
     {   
         sen = GameObject.Find("Sen");
+        anim = gameObject.GetComponent<Animator>();
 		Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
 		foreach (GameObject rangedEnemy in rangedEnemies)
@@ -55,7 +57,8 @@ public class GroundEnemy : MonoBehaviour {
 
 		if (inZone && !senNoticed && !isStunned)
 		{
-			// Patrol
+            // Patrol
+            //anim.SetBool("WALK BOOL NAME", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
@@ -93,6 +96,7 @@ public class GroundEnemy : MonoBehaviour {
         if (senNoticed && !isStunned)
         {
             // Chase Sen
+            anim.SetBool("CHASE BOOL NAME", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
@@ -116,7 +120,7 @@ public class GroundEnemy : MonoBehaviour {
 
     private void Attack ()
     {
-        // TODO: Attack animation.
+        //anim.SetTrigger("ATTACK TRIGGER NAME");
         canAttack = false;
         sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
         StartCoroutine(AttackCooldown());

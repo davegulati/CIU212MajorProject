@@ -23,12 +23,20 @@ public class ItemsManager : MonoBehaviour {
     // ITEM VARIABLES:
 
     // Item UI Variables
-    private ActiveItemPopup activeItemPopup1;
-    private ActiveItemPopup activeItemPopup2;
+    private ActiveItemPopup activeItem1;
+    private ActiveItemPopup activeItem2;
 
     // Powerup_Stopwatch (Active)
     private float powerup_Stopwatch_NormalTimeScale = 1.0f;
     private float powerup_Stopwatch_SlowMotionTimeScale = 0.4f;
+
+    // Powerup_LightningRod (Active)
+    private GameObject[] groundEnemies;
+    private GameObject[] rangedEnemies;
+    private GameObject closestEnemy;
+    private GameObject closestGE;
+    private GameObject closestRE;
+    private float stunRange = 6.0f;
 
 	// Powerup_Potion (Active)
     private float powerup_Potion_HealthAwarded;
@@ -69,8 +77,8 @@ public class ItemsManager : MonoBehaviour {
 		itemSlots[3] = GameObject.Find("LiveShop").transform.Find("Canvas_LiveShop").transform.Find("BG").transform.Find("ItemSlotsBG").transform.Find("ItemSlot4").gameObject;
         AddItemsToSlots();
 
-        activeItemPopup1 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup1_Parent").GetComponent<ActiveItemPopup>();
-		activeItemPopup2 = GameObject.Find("Canvas").transform.Find("ActiveItemPopup2_Parent").GetComponent<ActiveItemPopup>();
+        activeItem1 = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem1").GetComponent<ActiveItemPopup>();
+        activeItem2 = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("ActiveItem2").GetComponent<ActiveItemPopup>();
 	}
 
     public void AddItemsToSlots()
@@ -103,7 +111,7 @@ public class ItemsManager : MonoBehaviour {
 
 		if (item.itemID == 2)
 		{
-			// LIGHTING ROD
+			UsePowerup_LightningRod(item);
 		}
 
 		if (item.itemID == 3)
@@ -161,7 +169,7 @@ public class ItemsManager : MonoBehaviour {
 
 		if (item.itemID == 2)
 		{
-			// DROP LIGHTING ROD
+			DropPowerup_LightningRod(item);
 		}
 
 		if (item.itemID == 3)
@@ -237,6 +245,117 @@ public class ItemsManager : MonoBehaviour {
         item.beingUsed = false;
 		Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
 		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
+    }
+
+    private void UsePowerup_LightningRod (Item item)
+    {
+        if (!item.beingUsed)
+        {
+            FindAndStunClosestEnemy(item);
+        }
+    }
+
+    private void FindAndStunClosestEnemy(Item item)
+    {
+        closestEnemy = null;
+        FindClosestGroundEnemy();
+        FindClosestRangedEnemy();
+        if (closestGE != null && closestRE != null)
+        {
+            float distanceGE = Vector2.Distance(sen.transform.position, closestGE.transform.position);
+            float distanceRE = Vector2.Distance(sen.transform.position, closestRE.transform.position);
+            if (distanceGE < distanceRE)
+            {
+                closestEnemy = closestGE;
+                if (distanceGE <= stunRange)
+                {
+                    closestEnemy.GetComponent<GroundEnemy>().Stun();
+                    ActivateActiveAbility(item);
+                    item.beingUsed = true;
+                }
+            }
+            else if (distanceRE < distanceGE)
+            {
+                closestEnemy = closestRE;
+                if (distanceRE <= stunRange)
+                {
+                    closestEnemy.GetComponent<RangedEnemy>().Stun();
+                    ActivateActiveAbility(item);
+                    item.beingUsed = true;
+                }
+            }
+        }
+        else if (closestGE == null && closestRE != null) // If only RE can be found.
+        {
+            float distanceRE = Vector2.Distance(sen.transform.position, closestRE.transform.position);
+            closestEnemy = closestRE;
+            if (distanceRE <= stunRange)
+            {
+                closestEnemy.GetComponent<RangedEnemy>().Stun();
+                ActivateActiveAbility(item);
+                item.beingUsed = true;
+            }
+        }
+
+        else if (closestRE == null && closestGE != null) // If only GE can be found.
+        {
+            float distanceGE = Vector2.Distance(sen.transform.position, closestGE.transform.position);
+            closestEnemy = closestGE;
+            if (distanceGE <= stunRange)
+            {
+                closestEnemy.GetComponent<GroundEnemy>().Stun();
+                ActivateActiveAbility(item);
+                item.beingUsed = true;
+            }
+        }
+
+        else if (closestGE == null & closestRE == null) // If neither can be found.
+        {
+            Debug.Log("Could not stun any enemies because no enemies were found!");
+        }
+    }
+
+    private GameObject FindClosestGroundEnemy()
+    {
+        groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
+        float distance = Mathf.Infinity;
+        Vector3 position = sen.transform.position;
+        foreach (GameObject groundEnemy in groundEnemies)
+        {
+            Vector3 diff = groundEnemy.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closestGE = groundEnemy;
+                distance = curDistance;
+            }
+        }
+        return closestGE;
+    }
+
+    private GameObject FindClosestRangedEnemy()
+    {
+        rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
+        float distance = Mathf.Infinity;
+        Vector3 position = sen.transform.position;
+        foreach (GameObject rangedEnemy in rangedEnemies)
+        {
+            Vector3 diff = rangedEnemy.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closestRE = rangedEnemy;
+                distance = curDistance;
+            }
+        }
+        return closestRE;
+    }
+
+    private void DropPowerup_LightningRod(Item item)
+    {
+        item.beingUsed = false;
+        Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+        Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
 	IEnumerator UsePowerup_VitaminC_Pill(Item item)
@@ -362,11 +481,25 @@ public class ItemsManager : MonoBehaviour {
 		Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
     }
 
+    private void UsePowerup_PocketSniper(Item item)
+    {
+        item.beingUsed = true;
+        sen.GetComponent<PlayerCharacterController>().pocketSniperUnlocked = true;
+    }
+
+    private void DropPowerup_PocketSniper(Item item)
+    {
+        sen.GetComponent<PlayerCharacterController>().pocketSniperUnlocked = false;
+        item.beingUsed = false;
+        Instantiate(item.itemPrefab, sen.transform.position, Quaternion.identity);
+        Notification.instance.DisplaySmallNotification("Item dropped: " + item.itemName);
+    }
+
     private void ActivateActiveAbility (Item item)
     {
-        if (!activeItemPopup1.InitiateActiveAbility(item))
+        if (!activeItem1.InitiateActiveAbility(item))
         {
-            activeItemPopup2.InitiateActiveAbility(item);
+            activeItem2.InitiateActiveAbility(item);
         }
     }
 }

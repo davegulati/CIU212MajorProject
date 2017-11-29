@@ -10,6 +10,13 @@ public class Axe : MonoBehaviour {
     [HideInInspector]
     public float current_DamageAmount = 40;
 
+    // Durability
+    private float maxDurability = 100.0f;
+    private float currentDurability;
+    private float minDurability = 5.0f;
+    private float groundEnemyDurability = 1.0f;
+    private float rangedEnemyDurability = 1.0f;
+
 	// Colors
 	private Color normalColor = new Color(255, 255, 255);
 	private Color enhancedColor = new Color(0, 255, 0);
@@ -38,6 +45,8 @@ public class Axe : MonoBehaviour {
 		{
 			Physics2D.IgnoreCollision(dropPlatform.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		}
+
+        currentDurability = maxDurability;
     }
 
     public void EnhanceWeaponStats_VitaminC_Pill (float multiplier)
@@ -64,7 +73,45 @@ public class Axe : MonoBehaviour {
 			if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
 			{
 				collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(current_DamageAmount);
+                DeductDurability(groundEnemyDurability);
 			}
+        }
+
+        if (collision.gameObject.tag == "RangedEnemy")
+        {
+            if (collision.gameObject.GetComponent<RangedEnemyHealth>() != null)
+            {
+                collision.gameObject.GetComponent<RangedEnemyHealth>().DamageEnemy(current_DamageAmount);
+                DeductDurability(rangedEnemyDurability);
+            }
+        }
+    }
+
+    private void DeductDurability (float amount)
+    {
+        currentDurability = currentDurability - amount;
+        // Update weapon durability UI
+        current_DamageAmount *= currentDurability / 100;
+        if (currentDurability > maxDurability)
+        {
+            currentDurability = maxDurability;
+        }
+
+        if (currentDurability < minDurability)
+        {
+            currentDurability = minDurability;
+        }
+    }
+
+    public void RepairWeapon ()
+    {
+        currentDurability = maxDurability;
+        current_DamageAmount = base_DamageAmount;
+        // Play repair sound
+        // Update weapon durability UI
+        if (currentDurability > maxDurability)
+        {
+            currentDurability = maxDurability;
         }
     }
 }
