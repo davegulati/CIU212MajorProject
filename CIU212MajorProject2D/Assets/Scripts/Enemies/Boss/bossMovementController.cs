@@ -13,6 +13,8 @@ public class bossMovementController : MonoBehaviour
     public float force;
 
     private GameObject target;
+    //private AudioSource source;
+    //public AudioClip[] sfx;
 
     // Use this for initialization
     void Start()
@@ -24,22 +26,19 @@ public class bossMovementController : MonoBehaviour
         target = GameObject.FindWithTag("Player");
     }
 
+    void Awake()
+    {
+       // source = GetComponent<AudioSource>(); 
+    }
+
     // Update is called once per frame
     void Update()
     {
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.localScale.x * Vector2.right, sight);
         if (hit.collider != null && hit.collider.tag == "Player")
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * force + (hit.collider.transform.position - transform.position) * force);
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
-
-        if (distance < 1f)
-        {
-           // yield return StopCoroutine("Patrol");
-            Attack();
-        }
-
     }
 
 
@@ -74,11 +73,6 @@ public class bossMovementController : MonoBehaviour
 
 
         }
-    }
-
-    void Attack()
-    {     
-            gameObject.transform.position += transform.forward * speed * Time.deltaTime;
     }
 
 

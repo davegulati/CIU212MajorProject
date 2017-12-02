@@ -21,6 +21,7 @@ public class bossTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            StopCoroutine("Patrol");
             boss.GetComponent<bossAttack>().enabled = true;
             boss.GetComponent<bossMovementController>().enabled = false;
         }
