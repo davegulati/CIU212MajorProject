@@ -58,7 +58,7 @@ public class GroundEnemy : MonoBehaviour {
 		if (inZone && !senNoticed && !isStunned)
 		{
             // Patrol
-            //anim.SetBool("WALK BOOL NAME", true);
+            anim.SetBool("EnemyWalk", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
@@ -96,7 +96,7 @@ public class GroundEnemy : MonoBehaviour {
         if (senNoticed && !isStunned)
         {
             // Chase Sen
-            anim.SetBool("CHASE BOOL NAME", true);
+            anim.SetBool("EnemyWalk", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
@@ -120,7 +120,7 @@ public class GroundEnemy : MonoBehaviour {
 
     private void Attack ()
     {
-        //anim.SetTrigger("ATTACK TRIGGER NAME");
+        anim.SetTrigger("EnemyAttack");
         canAttack = false;
         sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
         StartCoroutine(AttackCooldown());

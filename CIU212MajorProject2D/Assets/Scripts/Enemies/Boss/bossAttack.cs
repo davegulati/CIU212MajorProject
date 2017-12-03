@@ -19,6 +19,12 @@ public class bossAttack : MonoBehaviour
     public GameObject Poison;
     public float Poison_Forward_Force = 1200.0f;
 
+    private AudioSource source;
+    public AudioClip slashAttack;
+    public AudioClip poisonLaunch;
+    public AudioClip stabAttack;
+
+
     // Use this for initialization
     void Start()
     {
@@ -28,9 +34,9 @@ public class bossAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-
+        source = GetComponent<AudioSource>();
     }
 
     IEnumerator AttackPattern()
@@ -87,6 +93,7 @@ public class bossAttack : MonoBehaviour
     void SlashAttack()
     {
         //add attack animation
+        source.PlayOneShot(slashAttack);
         attackHitbox1.SetActive(true);
         new WaitForSeconds(attackDuration);
         attackHitbox1.SetActive(false);
@@ -96,6 +103,7 @@ public class bossAttack : MonoBehaviour
     {
         //add attack animation
         GameObject Temporary_Bullet_Handler;
+        source.PlayOneShot(poisonLaunch);
         Temporary_Bullet_Handler = Instantiate(Poison, Poison_Launcher.transform.position, Poison_Launcher.transform.rotation) as GameObject;
 
         Rigidbody2D Temporary_RigidBody;
@@ -111,6 +119,7 @@ public class bossAttack : MonoBehaviour
     void StabAttack()
     {
         //add attack animation
+        source.PlayOneShot(stabAttack);
         attackHitbox2.SetActive(true);
         new WaitForSeconds(attackDuration);
         attackHitbox2.SetActive(false);
