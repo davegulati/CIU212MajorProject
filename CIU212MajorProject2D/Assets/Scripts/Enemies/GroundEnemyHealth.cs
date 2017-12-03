@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GroundEnemyHealth : MonoBehaviour {
-
-    public GameObject coin;
-
+    
     private Animator anim;
     private float currentHealth = 100;
     private bool isHurting = false;
@@ -41,14 +39,19 @@ public class GroundEnemyHealth : MonoBehaviour {
         healthSlider.value = currentHealth / 100;
         if (currentHealth <= 0)
         {
-            //anim.SetTrigger("DIE TRIGGER NAME");
-            Destroy(gameObject);
-            Instantiate(coin, transform.position, transform.rotation);
+            anim.SetTrigger("EnemyDeath");
         }
         else
         {
+            anim.SetTrigger("EnemyTakeDamage");
             StartCoroutine(TimerDamageColor());
         }
+    }
+
+    public void DestroyEnemy ()
+    {
+        ItemsManager.instance.InstantiateGoldCoin(gameObject.transform.position);
+        Destroy(gameObject);
     }
 
 	private IEnumerator TimerDamageColor()

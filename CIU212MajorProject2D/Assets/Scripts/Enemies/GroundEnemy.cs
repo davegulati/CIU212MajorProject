@@ -7,11 +7,14 @@ public class GroundEnemy : MonoBehaviour {
     private GameObject sen;
     private Animator anim;
     private float chaseRange = 5.0f;
+    private float rotationRange = 6.0f;
     private float speed = 3.0f;
 
     private GameObject[] rangedEnemies;
 
     // Attack variables
+    private GameObject attackAlert;
+    private float attackDelay = 1.0f;
     private float attackDamage = 20.0f;
     private float attackDistance = 2.5f;
     private bool canAttack = true;
@@ -40,6 +43,8 @@ public class GroundEnemy : MonoBehaviour {
 		{
 			Physics2D.IgnoreCollision(rangedEnemy.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		}
+        attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
+        attackAlert.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -93,7 +98,12 @@ public class GroundEnemy : MonoBehaviour {
 
 		}
 
-        if (senNoticed && !isStunned)
+        if (!inZone && !senNoticed && !isStunned)
+        {
+            anim.SetBool("EnemyWalk", false);
+        }
+
+        if (senNoticed && !isStunned && distanceToSen > attackDistance)
         {
             // Chase Sen
             anim.SetBool("EnemyWalk", true);
@@ -101,29 +111,47 @@ public class GroundEnemy : MonoBehaviour {
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
 			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
 
-			Vector3 vectorToTarget = senPosition - position;
-			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+            if (distanceToSen > rotationRange)
+            {
+                Vector3 vectorToTarget = senPosition - position;
+                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+            }
+        }
 
-			
-            // Attack Sen
-			if (distanceToSen < attackDistance)
-			{
-				if (canAttack)
-				{
-					Attack();
-				}
-			}
+        // Attack Sen
+        if (distanceToSen < attackDistance)
+        {
+            Attack();
         }
 	}
 
     private void Attack ()
     {
-        anim.SetTrigger("EnemyAttack");
-        canAttack = false;
-        sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
-        StartCoroutine(AttackCooldown());
+        if (canAttack)
+        {
+            attackAlert.SetActive(true);
+            Vector2 position = new Vector2(transform.position.x, transform.position.y);
+            Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
+            Vector3 vectorToTarget = senPosition - position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+            anim.SetTrigger("EnemyAttack");
+            canAttack = false;
+            StartCoroutine(AttackCooldown());
+        }
+    }
+
+    public void InflictDamage ()
+    {
+        attackAlert.SetActive(false);
+        float distanceToSen = Vector2.Distance(transform.position, sen.transform.position);
+        if (distanceToSen < attackDistance)
+        {
+            sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
+        }
     }
 
     IEnumerator AttackCooldown ()

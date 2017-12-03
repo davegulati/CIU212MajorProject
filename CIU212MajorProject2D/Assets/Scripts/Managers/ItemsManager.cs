@@ -9,6 +9,8 @@ public class ItemsManager : MonoBehaviour {
 
     protected GameObject sen;
 
+    // CURRENCY VARIABLES:
+    public GameObject goldCoin;
     [HideInInspector]
     public int playerCurrency_Gold = 0;
     [HideInInspector]
@@ -501,5 +503,16 @@ public class ItemsManager : MonoBehaviour {
         {
             activeItem2.InitiateActiveAbility(item);
         }
+    }
+
+    public void InstantiateGoldCoin (Vector3 position)
+    {
+        Instantiate (goldCoin, position, transform.rotation);
+    }
+
+    public void ReceiveGold (int amount)
+    {
+        playerCurrency_Gold = playerCurrency_Gold + amount;
+        GameObject.Find("Canvas").transform.Find("Currency").transform.Find("Image_Coin").transform.Find("Text").GetComponent<Text>().text = playerCurrency_Gold.ToString();
     }
 }
