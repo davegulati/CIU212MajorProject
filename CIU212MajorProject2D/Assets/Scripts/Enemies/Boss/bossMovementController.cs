@@ -13,7 +13,7 @@ public class bossMovementController : MonoBehaviour
     public float force;
 
     private GameObject target;
-    //private AudioSource source;
+    private AudioSource source;
     //public AudioClip[] sfx;
 
     // Use this for initialization
@@ -28,7 +28,7 @@ public class bossMovementController : MonoBehaviour
 
     void Awake()
     {
-       // source = GetComponent<AudioSource>(); 
+        source = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame

@@ -33,8 +33,15 @@ public class RangedEnemy : MonoBehaviour
 	private int currentPatrolPoint = 0;
 	private float patrolFinishDistance = 1.0f;
 
+    //sound
+    private AudioSource source;
+    public AudioClip attackSound;
+    public AudioClip stunSound;
+
 	void Awake()
 	{
+        source = GetComponent<AudioSource>();
+
 		sen = GameObject.Find("Sen");
         anim = gameObject.GetComponent<Animator>();
         Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
@@ -93,7 +100,8 @@ public class RangedEnemy : MonoBehaviour
 
 	private void Attack()
 	{
-		//anim.SetTrigger("ATTACK TRIGGER NAME");
+        //anim.SetTrigger("ATTACK TRIGGER NAME");
+        source.PlayOneShot(attackSound);
 		canAttack = false;
 		Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
 		Instantiate(arrow, firePointPosition, firePoint.rotation);
@@ -110,6 +118,7 @@ public class RangedEnemy : MonoBehaviour
 	{
 		isStunned = true;
 		GetComponent<SpriteRenderer>().color = stunnedColor;
+        source.PlayOneShot(stunSound);
 		StartCoroutine(StunTimer());
 	}
 

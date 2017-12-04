@@ -5,6 +5,8 @@ using UnityEngine;
 public class bossAttack : MonoBehaviour
 {
     private GameObject sen;
+
+    //hitboxes
     public GameObject attackHitbox1;
     public GameObject attackHitbox2;
 
@@ -19,16 +21,21 @@ public class bossAttack : MonoBehaviour
     public GameObject Poison;
     public float Poison_Forward_Force = 1200.0f;
 
+    //sound
     private AudioSource source;
     public AudioClip slashAttack;
     public AudioClip poisonLaunch;
     public AudioClip stabAttack;
+
+    //animation
+    public Animation anim;
 
 
     // Use this for initialization
     void Start()
     {
         sen = GameObject.Find("Sen");
+        anim = GetComponent<Animation>();
 
         StartCoroutine("AttackPattern");
     }
@@ -78,6 +85,7 @@ public class bossAttack : MonoBehaviour
 
                     yield return new WaitForSeconds(attackDelay);
                     PoisonLaunch();
+                    PoisonLaunch();
                     yield return new WaitForSeconds(attackCooldown);
             }
 
@@ -119,8 +127,8 @@ public class bossAttack : MonoBehaviour
     void StabAttack()
     {
         //add attack animation
-        source.PlayOneShot(stabAttack);
         attackHitbox2.SetActive(true);
+        source.PlayOneShot(stabAttack);
         new WaitForSeconds(attackDuration);
         attackHitbox2.SetActive(false);
     }

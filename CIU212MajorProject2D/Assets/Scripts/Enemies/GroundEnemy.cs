@@ -33,8 +33,15 @@ public class GroundEnemy : MonoBehaviour {
     private int currentPatrolPoint = 0;
     private float patrolFinishDistance = 1.0f;
 
+    // sound 
+    private AudioSource source;
+    public AudioClip attackSound;
+    public AudioClip stunSound;
+
 	void Awake () 
-    {   
+    {
+        source = GetComponent<AudioSource>();
+
         sen = GameObject.Find("Sen");
         anim = gameObject.GetComponent<Animator>();
 		Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
@@ -141,6 +148,7 @@ public class GroundEnemy : MonoBehaviour {
             anim.SetTrigger("EnemyAttack");
             canAttack = false;
             StartCoroutine(AttackCooldown());
+            source.PlayOneShot(attackSound);
         }
     }
 
@@ -165,6 +173,7 @@ public class GroundEnemy : MonoBehaviour {
         isStunned = true;
         GetComponent<SpriteRenderer>().color = stunnedColor;
         StartCoroutine(StunTimer());
+        source.PlayOneShot(stunSound);
     }
 
     IEnumerator StunTimer ()
