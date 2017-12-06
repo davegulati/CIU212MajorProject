@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyArrow : MonoBehaviour {
+public class EnemyProjectile : MonoBehaviour {
 
     private GameObject[] rangedEnemies;
     private GameObject[] groundEnemies;

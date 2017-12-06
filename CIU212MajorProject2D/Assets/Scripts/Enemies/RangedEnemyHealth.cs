@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RangedEnemyHealth : MonoBehaviour
-{
-    public GameObject coin;
+public class RangedEnemyHealth : MonoBehaviour {
 
     private Animator anim;
+    public float maxHealth;
 	private float currentHealth = 100;
 	private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -22,24 +21,29 @@ public class RangedEnemyHealth : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
         healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
-        healthSlider.value = 100;
+        healthSlider.value = currentHealth / maxHealth;
 	}
 
 	public void DamageEnemy(float damage)
 	{
 		currentHealth = currentHealth - damage;
-        healthSlider.value = currentHealth / 100;
-		if (currentHealth <= 0)
-		{
-            //anim.SetTrigger("DIE TRIGGER NAME");
-			Destroy(gameObject);
-            Instantiate(coin, transform.position, transform.rotation);
+        healthSlider.value = currentHealth / maxHealth;
+        if (currentHealth <= 0)
+        {
+            anim.SetTrigger("EnemyDeath");
         }
-		else
-		{
-			StartCoroutine(TimerDamageColor());
-		}
+        else
+        {
+            anim.SetTrigger("EnemyTakeDamage");
+            StartCoroutine(TimerDamageColor());
+        }
 	}
+
+    public void DestroyEnemy()
+    {
+        ItemsManager.instance.InstantiateGoldCoin(gameObject.transform.position);
+        Destroy(gameObject);
+    }
 
 	private IEnumerator TimerDamageColor()
 	{

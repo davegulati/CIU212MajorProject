@@ -13,6 +13,8 @@ public class RangedEnemy : MonoBehaviour
     private GameObject[] groundEnemies;
 
 	// Attack variables
+    private GameObject attackAlert;
+    private float attackDelay = 1.0f;
     private float attackRange = 8.0f;
 	private bool canAttack = true;
 	private float attackCooldown = 2.0f;
@@ -52,6 +54,9 @@ public class RangedEnemy : MonoBehaviour
 		{
 			Physics2D.IgnoreCollision(groundEnemy.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		}
+
+        attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
+        attackAlert.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -75,6 +80,7 @@ public class RangedEnemy : MonoBehaviour
 			if (inZone && !senNoticed && !isStunned)
 			{
 				// Patrol
+                anim.SetBool("EnemyWalk", true);
 				Vector2 position = new Vector2(transform.position.x, transform.position.y);
 				Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
 				transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
@@ -89,24 +95,35 @@ public class RangedEnemy : MonoBehaviour
 			}
         }
 
+        if (!inZone && !senNoticed && !isStunned)
+        {
+            anim.SetBool("EnemyWalk", false);
+        }
+
         if (senNoticed && !isStunned)// Attack Sen
 		{
-			if (canAttack)
-			{
-				Attack();
-			}
+			Attack();
 		}
 	}
 
 	private void Attack()
 	{
-        //anim.SetTrigger("ATTACK TRIGGER NAME");
-        source.PlayOneShot(attackSound);
-		canAttack = false;
-		Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
-		Instantiate(arrow, firePointPosition, firePoint.rotation);
-		StartCoroutine(AttackCooldown());
+        if (canAttack)
+        {
+            attackAlert.SetActive(true);
+            canAttack = false;
+            anim.SetTrigger("EnemyAttack");
+        }
 	}
+
+    public void LaunchProjectile()
+    {
+        attackAlert.SetActive(false);
+        Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
+        Instantiate(arrow, firePointPosition, firePoint.rotation);
+        source.PlayOneShot(attackSound);
+        StartCoroutine(AttackCooldown());
+    }
 
 	IEnumerator AttackCooldown()
 	{

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GroundEnemyHealth : MonoBehaviour {
     
     private Animator anim;
+    public float maxHealth;
     private float currentHealth = 100;
     private bool isHurting = false;
 	private SpriteRenderer spriteRenderer;
@@ -13,30 +14,20 @@ public class GroundEnemyHealth : MonoBehaviour {
     private float flashDelay = 0.1f;
 	private Color isHurtingColor = new Color(255, 0, 0);
 	private Color normalColor = new Color(255, 255, 255);
-
-    //private GameObject healthBarCanvas;
     private Slider healthSlider;
 
 	private void Awake () 
     {
         anim = gameObject.GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //healthBarCanvas = gameObject.transform.Find("HealthBarCanvas").gameObject;
 		healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
-        healthSlider.value = 100;
+        healthSlider.value = currentHealth / maxHealth;
 	}
-
-    public void FlipHealthBarCanvas ()
-    {
-        //Vector3 newScale = healthBarCanvas.transform.localScale;
-        //newScale.x *= -1;
-        //healthBarCanvas.transform.localScale = newScale;
-    }
 
     public void DamageEnemy (float damage)
     {
         currentHealth = currentHealth - damage;
-        healthSlider.value = currentHealth / 100;
+        healthSlider.value = currentHealth / maxHealth;
         if (currentHealth <= 0)
         {
             anim.SetTrigger("EnemyDeath");
