@@ -28,14 +28,14 @@ public class bossAttack : MonoBehaviour
     public AudioClip stabAttack;
 
     //animation
-    public Animation anim;
+     Animator anim;
 
 
     // Use this for initialization
     void Start()
     {
         sen = GameObject.Find("Sen");
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
 
         StartCoroutine("AttackPattern");
     }
@@ -100,11 +100,12 @@ public class bossAttack : MonoBehaviour
 
     void SlashAttack()
     {
-        //add attack animation
+        anim.SetBool("EnemyAttack", true);
         source.PlayOneShot(slashAttack);
         attackHitbox1.SetActive(true);
         new WaitForSeconds(attackDuration);
         attackHitbox1.SetActive(false);
+        anim.SetBool("EnemyAttack", false);
     }
 
     void PoisonLaunch()
@@ -126,11 +127,12 @@ public class bossAttack : MonoBehaviour
 
     void StabAttack()
     {
-        //add attack animation
+        anim.SetBool("EnemyAttack2", true);
         attackHitbox2.SetActive(true);
         source.PlayOneShot(stabAttack);
         new WaitForSeconds(attackDuration);
         attackHitbox2.SetActive(false);
+        anim.SetBool("EnemyAttack2", false);
     }
 
     void OnCollisionEnter2D(Collision2D other)
