@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bossMovementController : MonoBehaviour
 {
-    public Transform[] patrolpoints;
+    public Transform[] teleportPoints;
     int currentPoint;
     public float speed = 0.5f;
     public float timestill = 2f;
@@ -20,10 +20,12 @@ public class bossMovementController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        StartCoroutine("Patrol");
+        StartCoroutine("Teleport");
         anim.SetBool("walking", true);
         Physics2D.queriesStartInColliders = false;
         target = GameObject.FindWithTag("Player");
+
+        currentPoint = Random.Range(0, teleportPoints.Length);
     }
 
     void Awake()
@@ -42,30 +44,30 @@ public class bossMovementController : MonoBehaviour
     }
 
 
-    IEnumerator Patrol()
+    IEnumerator Teleport()
     {
         while (true)
         {
 
-            if (transform.position.x == patrolpoints[currentPoint].position.x)
+            if (transform.position.x == teleportPoints[currentPoint].position.x)
             {
-                currentPoint++;
-                anim.SetBool("walking", false);
+                currentPoint = (Random.Range(0, teleportPoints.Length));
+                anim.SetTrigger("Teleport");
                 yield return new WaitForSeconds(timestill);
-                anim.SetBool("walking", true);
+                anim.SetTrigger("Teleport");
             }
 
 
-            if (currentPoint >= patrolpoints.Length)
+            if (currentPoint >= teleportPoints.Length)
             {
                 currentPoint = 0;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(patrolpoints[currentPoint].position.x, transform.position.y), speed);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(teleportPoints[currentPoint].position.x, transform.position.y), speed);
 
-            if (transform.position.x > patrolpoints[currentPoint].position.x)
+            if (transform.position.x > teleportPoints[currentPoint].position.x)
                 transform.localScale = new Vector3(-1, 1, 1);
-            else if (transform.position.x < patrolpoints[currentPoint].position.x)
+            else if (transform.position.x < teleportPoints[currentPoint].position.x)
                 transform.localScale = Vector3.one;
 
 
