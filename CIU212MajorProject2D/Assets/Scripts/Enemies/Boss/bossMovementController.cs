@@ -52,9 +52,9 @@ public class bossMovementController : MonoBehaviour
             if (transform.position.x == teleportPoints[currentPoint].position.x)
             {
                 currentPoint = (Random.Range(0, teleportPoints.Length));
-                anim.SetBool("Teleport", false);
+                anim.SetTrigger("Teleport");
                 yield return new WaitForSeconds(timestill);
-                anim.SetBool("Teleport", true);
+                anim.SetTrigger("Teleport");
             }
 
 
