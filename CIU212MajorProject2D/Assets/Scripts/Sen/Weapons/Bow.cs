@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour {
 
+    // Animation variables
+    private Animator anim;
+
     [HideInInspector]
     public float fireRate = 1;
     [SerializeField]
@@ -48,30 +51,31 @@ public class Bow : MonoBehaviour {
 
 	private void Awake () 
     {
+        anim = gameObject.transform.parent.GetComponent<Animator>();
         firePoint = gameObject.transform.Find("FirePoint");
         currentDurability = maxDurability;
 	}
 
-    void Update () 
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (fireRate == 0)
-            {
-                ShootArrow();
-            }
-        }
-        else
-        {
-            if (Input.GetMouseButton(0) && Time.time > timeToFire)
-            {
-				timeToFire = Time.time + 1 / fireRate;
-                ShootArrow();
-            }
-        }
-	}
+ //   void Update () 
+ //   {
+ //       if (Input.GetMouseButtonDown(0))
+ //       {
+ //           if (fireRate == 0)
+ //           {
+ //               anim.SetTrigger("BowAttack");
+ //           }
+ //       }
+ //       else
+ //       {
+ //           if (Input.GetMouseButton(0) && Time.time > timeToFire)
+ //           {
+	//			timeToFire = Time.time + 1 / fireRate;
+ //               anim.SetTrigger("BowAttack");
+ //           }
+ //       }
+	//}
 
-    private void ShootArrow ()
+    public void ShootArrow ()
     {
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
         if (explosiveArrowsUnlocked) // Explosive arrows
