@@ -6,9 +6,10 @@ public class GroundEnemy : MonoBehaviour {
 
     private GameObject sen;
     private Animator anim;
+    private Rigidbody2D rb;
     private float chaseRange = 5.0f;
     private float rotationRange = 6.0f;
-    private float speed = 3.0f;
+    private float speed = 8.0f;
 
     private GameObject[] rangedEnemies;
 
@@ -44,6 +45,7 @@ public class GroundEnemy : MonoBehaviour {
 
         sen = GameObject.Find("Sen");
         anim = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
 		Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
 		foreach (GameObject rangedEnemy in rangedEnemies)
@@ -55,11 +57,12 @@ public class GroundEnemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	private void Update () 
+	private void FixedUpdate () 
     {
         float distanceToSen = Vector2.Distance(transform.position, sen.transform.position);
 		if (distanceToSen < chaseRange && !isStunned)
 		{
+            rb.velocity = Vector3.zero;
             senNoticed = true;
 		}
         else if (distanceToSen > chaseRange)
@@ -73,10 +76,18 @@ public class GroundEnemy : MonoBehaviour {
             anim.SetBool("EnemyWalk", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
-			transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+            //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+            Vector2 direction = currentWPPosition - position;
+            direction.Normalize();
+            rb.AddForce((direction) * speed);
 			if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
             {
                 currentPatrolPoint++;
+                rb.velocity = Vector3.zero;
+                //Vector3 vectorToTarget = currentWPPosition - position;
+                //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                //Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
                 if (currentPatrolPoint >= patrolPoints.Length)
                 {
                     currentPatrolPoint = 0;
@@ -85,18 +96,18 @@ public class GroundEnemy : MonoBehaviour {
 
             // The commented code underneath flips the sprite to face the movement of the gameobject. IT WORKS!!
 
-			//Vector2 direction = currentWPPosition - position;
-			//if (direction.x < 0)
+			//Vector2 spriteDirection = currentWPPosition - position;
+			//if (spriteDirection.x < 0)
 			//{
 			//	gameObject.GetComponent<SpriteRenderer>().flipX = true;
 			//}
-			//else if (direction.x > 0)
+			//else if (spriteDirection.x > 0)
 			//{
 			//	gameObject.GetComponent<SpriteRenderer>().flipX = false;
 			//}
 
 
-            // The code underneath rotates the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
+             //The code underneath rotates the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
 			Vector3 vectorToTarget = currentWPPosition - position;
 			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
@@ -108,6 +119,7 @@ public class GroundEnemy : MonoBehaviour {
         if (!inZone && !senNoticed && !isStunned)
         {
             anim.SetBool("EnemyWalk", false);
+            //anim.SetBool("EnemyIdle", true);
         }
 
         if (senNoticed && !isStunned && distanceToSen > attackDistance)
@@ -116,7 +128,10 @@ public class GroundEnemy : MonoBehaviour {
             anim.SetBool("EnemyWalk", true);
 			Vector2 position = new Vector2(transform.position.x, transform.position.y);
 			Vector2 senPosition = new Vector2(sen.transform.position.x, 0);
-			transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+            Vector2 chaseDirection = senPosition - position;
+            chaseDirection.Normalize();
+			//transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+            rb.AddForce((chaseDirection) * speed);
 
             if (distanceToSen > rotationRange)
             {
@@ -130,6 +145,7 @@ public class GroundEnemy : MonoBehaviour {
         // Attack Sen
         if (distanceToSen < attackDistance)
         {
+            rb.velocity = Vector3.zero;
             Attack();
         }
 	}
