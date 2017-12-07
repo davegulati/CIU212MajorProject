@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7ba5f92c1618d94db864e2034a847e4
-timeCreated: 1512366834
+timeCreated: 1512635031
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -112,10 +112,10 @@ TextureImporter:
       name: ShopKeeper_V1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 121
-        height: 174
+        x: 0
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,10 +126,10 @@ TextureImporter:
       name: ShopKeeper_V1_1
       rect:
         serializedVersion: 2
-        x: 152
-        y: 2
-        width: 135
-        height: 174
+        x: 150
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: ShopKeeper_V1_2
       rect:
         serializedVersion: 2
-        x: 302
-        y: 2
-        width: 135
-        height: 173
+        x: 300
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,10 +154,10 @@ TextureImporter:
       name: ShopKeeper_V1_3
       rect:
         serializedVersion: 2
-        x: 452
-        y: 2
-        width: 138
-        height: 173
+        x: 450
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: ShopKeeper_V1_4
       rect:
         serializedVersion: 2
-        x: 602
-        y: 2
-        width: 138
-        height: 174
+        x: 600
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: ShopKeeper_V1_5
       rect:
         serializedVersion: 2
-        x: 752
-        y: 2
-        width: 121
-        height: 173
+        x: 750
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +196,10 @@ TextureImporter:
       name: ShopKeeper_V1_6
       rect:
         serializedVersion: 2
-        x: 902
-        y: 2
-        width: 121
-        height: 173
+        x: 900
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: ShopKeeper_V1_7
       rect:
         serializedVersion: 2
-        x: 1052
-        y: 2
-        width: 121
-        height: 174
+        x: 1050
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: ShopKeeper_V1_8
       rect:
         serializedVersion: 2
-        x: 1202
-        y: 2
-        width: 121
-        height: 174
+        x: 1200
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,10 +238,10 @@ TextureImporter:
       name: ShopKeeper_V1_9
       rect:
         serializedVersion: 2
-        x: 1352
-        y: 2
-        width: 121
-        height: 174
+        x: 1350
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +252,10 @@ TextureImporter:
       name: ShopKeeper_V1_10
       rect:
         serializedVersion: 2
-        x: 1502
-        y: 2
-        width: 121
-        height: 174
+        x: 1500
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: ShopKeeper_V1_11
       rect:
         serializedVersion: 2
-        x: 1652
-        y: 2
-        width: 121
-        height: 174
+        x: 1650
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,10 +280,10 @@ TextureImporter:
       name: ShopKeeper_V1_12
       rect:
         serializedVersion: 2
-        x: 1802
-        y: 2
-        width: 121
-        height: 174
+        x: 1800
+        y: 0
+        width: 150
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
