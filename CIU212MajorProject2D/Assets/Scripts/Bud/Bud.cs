@@ -8,12 +8,12 @@ public class Bud : MonoBehaviour {
     private float budSpeed;
     private float maxDistanceFromSen = 2.0f;
 
-    //private Animator anim;
+    private Animator anim;
 
     private void Awake()
     {
         sen = GameObject.Find("Sen");
-        //anim = gameobject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
@@ -24,9 +24,9 @@ public class Bud : MonoBehaviour {
 		{
 			BudFollowSen();
 		}
-        else if (distance < maxDistanceFromSen)
+        else if (distance <= maxDistanceFromSen)
         {
-            //anim.SetBool ("Float", true);
+            anim.SetBool ("BudFloat", false);
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -42,18 +42,13 @@ public class Bud : MonoBehaviour {
 
     public void BudFollowSen ()
     {
+        anim.SetBool("BudFloat", true);
 		transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), sen.transform.position, budSpeed * Time.deltaTime);
-        //anim.SetBool ("Fly", true);
     }
-
-	public void SetActiveAbility()
-	{
-
-	}
 
     public void UseActiveAbility ()
     {
-        Debug.Log("Bud's active ability not set!"); // For now. 
+        anim.SetTrigger("BudActivateAbility");
     }
 
     public void BudDespawn ()
