@@ -9,6 +9,7 @@ public class ItemPickUp : InteractableItem {
     private void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = item.itemSprite;
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     public override void Interact()
