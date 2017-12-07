@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: 954f8962b8d4a7c4a87116e38c34f2a5
-timeCreated: 1512649034
+guid: e81b8720d0f942c4e99cdc226e25a069
+timeCreated: 1512649485
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: CHR_ShadowSen_TakeDamage_0
-    21300002: CHR_ShadowSen_TakeDamage_1
-    21300004: CHR_ShadowSen_TakeDamage_2
+    21300000: vfx_fireball_v2_spritesheet_0
+    21300002: vfx_fireball_v2_spritesheet_1
+    21300004: vfx_fireball_v2_spritesheet_2
+    21300006: vfx_fireball_v2_spritesheet_3
+    21300008: vfx_fireball_v2_spritesheet_4
+    21300010: vfx_fireball_v2_spritesheet_5
+    21300012: vfx_fireball_v2_spritesheet_6
+    21300014: vfx_fireball_v2_spritesheet_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -99,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_0
+      name: vfx_fireball_v2_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 14
-        width: 81
-        height: 175
+        x: 0
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,13 +118,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_1
+      name: vfx_fireball_v2_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 179
-        y: 14
-        width: 81
-        height: 175
+        x: 50
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,13 +132,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_2
+      name: vfx_fireball_v2_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 329
-        y: 14
-        width: 81
-        height: 175
+        x: 100
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: vfx_fireball_v2_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: vfx_fireball_v2_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: vfx_fireball_v2_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: vfx_fireball_v2_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: vfx_fireball_v2_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

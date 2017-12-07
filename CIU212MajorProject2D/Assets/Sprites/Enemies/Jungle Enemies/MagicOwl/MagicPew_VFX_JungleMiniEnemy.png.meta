@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 42f3fb019c6ff9d40853d4bbe9838a05
-timeCreated: 1512626164
+guid: fac9ff9b35f250743abf5a1d0e2c18cd
+timeCreated: 1512651663
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MagicPew_VFX_JungleMiniEnemy_0
+    21300002: MagicPew_VFX_JungleMiniEnemy_1
+    21300004: MagicPew_VFX_JungleMiniEnemy_2
+    21300006: MagicPew_VFX_JungleMiniEnemy_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -94,7 +98,63 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MagicPew_VFX_JungleMiniEnemy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MagicPew_VFX_JungleMiniEnemy_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MagicPew_VFX_JungleMiniEnemy_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MagicPew_VFX_JungleMiniEnemy_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

@@ -1,12 +1,16 @@
 fileFormatVersion: 2
-guid: 954f8962b8d4a7c4a87116e38c34f2a5
-timeCreated: 1512649034
+guid: a65b3a7691c5150449146726f92b8cbf
+timeCreated: 1512649015
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: CHR_ShadowSen_TakeDamage_0
-    21300002: CHR_ShadowSen_TakeDamage_1
-    21300004: CHR_ShadowSen_TakeDamage_2
+    21300000: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_0
+    21300002: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_1
+    21300004: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_2
+    21300006: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_3
+    21300008: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_4
+    21300010: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_5
+    21300012: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -99,12 +103,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_0
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 14
-        width: 81
+        x: 18
+        y: 221
+        width: 112
         height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -113,12 +117,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_1
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_1
       rect:
         serializedVersion: 2
-        x: 179
-        y: 14
-        width: 81
+        x: 198
+        y: 221
+        width: 112
         height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -127,12 +131,68 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CHR_ShadowSen_TakeDamage_2
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_2
       rect:
         serializedVersion: 2
-        x: 329
-        y: 14
-        width: 81
+        x: 378
+        y: 221
+        width: 112
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_3
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 221
+        width: 112
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 11
+        width: 112
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 11
+        width: 112
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_ShadowSen_Shuriken_f7_Spritesheet_AL_6
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 11
+        width: 112
         height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
