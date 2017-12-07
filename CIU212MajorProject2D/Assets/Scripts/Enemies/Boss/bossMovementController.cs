@@ -40,7 +40,7 @@ public class bossMovementController : MonoBehaviour
         if (hit.collider != null && hit.collider.tag == "Player")
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * force + (hit.collider.transform.position - transform.position) * force);
 
-        float distance = Vector3.Distance(transform.position, target.transform.position);
+        float distance = Vector2.Distance(transform.position, target.transform.position);
     }
 
 
@@ -62,8 +62,9 @@ public class bossMovementController : MonoBehaviour
             {
                 currentPoint = 0;
             }
-
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(teleportPoints[currentPoint].position.x, transform.position.y), speed);
+            
+            //transform.position = Vector2.MoveTowards(transform.position, new Vector2(teleportPoints[currentPoint].position.x, transform.position.y), speed);
+            transform.position = Vector3.MoveTowards(transform.position, teleportPoints[currentPoint].position , speed);
 
             if (transform.position.x > teleportPoints[currentPoint].position.x)
                 transform.localScale = new Vector3(-1, 1, 1);
