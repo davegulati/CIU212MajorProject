@@ -7,8 +7,9 @@ public class RangedEnemy : MonoBehaviour
 
 	private GameObject sen;
     private Animator anim;
+    private Rigidbody2D rb;
     private float fleeRange = 2.5f;
-	private float speed = 3.0f;
+	private float speed = 8.0f;
 
     private GameObject[] groundEnemies;
 
@@ -46,6 +47,8 @@ public class RangedEnemy : MonoBehaviour
 
 		sen = GameObject.Find("Sen");
         anim = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = 4;
         Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
         firePoint = gameObject.transform.Find("FirePoint");
 
@@ -74,26 +77,56 @@ public class RangedEnemy : MonoBehaviour
             senNoticed = true;
 		}
 
-        if (distanceToSen > attackRange) // Patrol
+        if (inZone && !senNoticed && !isStunned)
         {
-            senNoticed = false;
-			if (inZone && !senNoticed && !isStunned)
-			{
-				// Patrol
+            if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) > patrolFinishDistance)
+            {
+                // Patrol
                 anim.SetBool("EnemyWalk", true);
-				Vector2 position = new Vector2(transform.position.x, transform.position.y);
-				Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
-				transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
-				if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
-				{
-					currentPatrolPoint++;
-					if (currentPatrolPoint >= patrolPoints.Length)
-					{
-						currentPatrolPoint = 0;
-					}
-				}
-			}
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+                //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+                Vector2 direction = currentWPPosition - position;
+                direction.Normalize();
+                rb.AddForce((direction) * speed);
+            }
+            else if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+            {
+                // Rotate
+                rb.velocity = Vector3.zero;
+                currentPatrolPoint++;
+                if (currentPatrolPoint >= patrolPoints.Length)
+                {
+                    currentPatrolPoint = 0;
+                }
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+                Vector3 vectorToTarget = currentWPPosition - position;
+                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, 360 * Time.deltaTime);
+            }
         }
+   //     if (distanceToSen > attackRange) // Patrol
+   //     {
+   //         senNoticed = false;
+			//if (inZone && !senNoticed && !isStunned)
+			//{
+			//	// Patrol
+   //             anim.SetBool("EnemyWalk", true);
+			//	Vector2 position = new Vector2(transform.position.x, transform.position.y);
+			//	Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+			//	transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+			//	if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+			//	{
+			//		currentPatrolPoint++;
+			//		if (currentPatrolPoint >= patrolPoints.Length)
+			//		{
+			//			currentPatrolPoint = 0;
+			//		}
+			//	}
+			//}
+        //}
 
         if (!inZone && !senNoticed && !isStunned)
         {
