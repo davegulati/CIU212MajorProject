@@ -100,12 +100,12 @@ public class bossAttack : MonoBehaviour
 
     void SlashAttack()
     {
-        anim.SetBool("EnemyAttack", true);
+        anim.SetTrigger("EnemyAttack");
         source.PlayOneShot(slashAttack);
         attackHitbox1.SetActive(true);
         new WaitForSeconds(attackDuration);
         attackHitbox1.SetActive(false);
-        anim.SetBool("EnemyAttack", false);
+        anim.SetTrigger("EnemyAttack");
     }
 
     void PoisonLaunch()
@@ -127,12 +127,12 @@ public class bossAttack : MonoBehaviour
 
     void StabAttack()
     {
-        anim.SetBool("EnemyAttack2", true);
+        anim.SetTrigger("EnemyAttack2");
         attackHitbox2.SetActive(true);
         source.PlayOneShot(stabAttack);
         new WaitForSeconds(attackDuration);
         attackHitbox2.SetActive(false);
-        anim.SetBool("EnemyAttack2", false);
+        anim.SetTrigger("EnemyAttack2");
     }
 
     void OnCollisionEnter2D(Collision2D other)
