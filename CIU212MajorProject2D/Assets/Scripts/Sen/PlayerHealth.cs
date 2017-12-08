@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
+    private Animator anim;
     private float baseMaxPlayerHealth = 100.0f;
     private float currentPlayerHealth = 100.0f;
     [HideInInspector]
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	void Awake () 
     {
+        anim = gameObject.GetComponent<Animator>();
         healthFill = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("HealthFill").GetComponent<Image>();
         healthFill.fillAmount = currentPlayerHealth / maxPlayerHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,6 +38,7 @@ public class PlayerHealth : MonoBehaviour {
         }
         else
         {
+            anim.SetTrigger("TakeDamage");
             StartCoroutine(TimerDamageColor());
         }
     }
@@ -67,6 +70,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             currentPlayerHealth = maxPlayerHealth;
         }
+        anim.SetTrigger("Heal");
     }
 
 	public void PlayerSetHealth(float health)

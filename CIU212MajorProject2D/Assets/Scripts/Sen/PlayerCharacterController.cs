@@ -40,6 +40,7 @@ public class PlayerCharacterController : MonoBehaviour
     private GameObject axe;
     private BoxCollider2D axeBC2D;
     private GameObject bow;
+    private Bow bowScript;
     private GameObject currentWeapon;
     private WeaponSlot weaponSlot;
 
@@ -56,6 +57,9 @@ public class PlayerCharacterController : MonoBehaviour
     [HideInInspector]
     public bool pocketSniperUnlocked = false;
 
+    // Bud variables.
+    private Bud bud;
+
     private void Awake()
     {
         instance = this;
@@ -66,16 +70,19 @@ public class PlayerCharacterController : MonoBehaviour
         senRigidbody = GetComponent<Rigidbody2D>(); // Get Sen's Rigidbody2D component.
         facingRight = true;
         senCollider = GetComponent<Collider2D>(); // Get Sen's BoxCollider2D component.
+        anim = gameObject.GetComponent<Animator>();
         axe = gameObject.transform.Find("Axe").gameObject;
         axeBC2D = axe.GetComponent<BoxCollider2D>();
         axeBC2D.enabled = false;
         bow = gameObject.transform.Find("Bow").gameObject;
+        bowScript = bow.GetComponent<Bow>();
         bow.SetActive(false);
         activeInventorySlot1 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot1").GetComponent<InventorySlot>();
 		activeInventorySlot2 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot2").GetComponent<InventorySlot>();
         weaponSlot = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("WeaponSlot").GetComponent<WeaponSlot>();
         currentWeapon = axe;
         weaponSlot.UpdateWeaponSlotImage(currentWeapon);
+        bud = GameObject.Find("Bud").gameObject.GetComponent<Bud>();
 	}
 
     void Update()
@@ -86,7 +93,7 @@ public class PlayerCharacterController : MonoBehaviour
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
-
+        anim.SetFloat("Walk", Mathf.Abs(horizontal));
         isGrounded = IsGrounded(); // Checks if Sen is grounded.
 
         HandleMovement(horizontal); // Handles player movement.
@@ -110,7 +117,7 @@ public class PlayerCharacterController : MonoBehaviour
             {
                 isGrounded = false;
                 senRigidbody.AddForce(new Vector2(0, jumpForce));
-                //anim.SetTrigger("Jump");
+                anim.SetTrigger("Jump");
             }
             else if (!isGrounded)
             {
@@ -120,7 +127,7 @@ public class PlayerCharacterController : MonoBehaviour
                     {
                         senRigidbody.velocity = Vector2.zero;
 						senRigidbody.AddForce(new Vector2(0, jumpForce / doubleJumpForceDivider));
-                        //anim.SetTrigger("Jump");
+                        anim.SetTrigger("DoubleJump");
                         doubleJump = doubleJump + 1;
 					}
                 }
@@ -171,6 +178,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && axe.activeSelf & isGrounded)
         {
+            anim.SetTrigger("MeleeAttack");
             axeBC2D.enabled = true;
         }
 
@@ -178,6 +186,11 @@ public class PlayerCharacterController : MonoBehaviour
 		{
             axeBC2D.enabled = false;
 		}
+
+        if (Input.GetMouseButtonDown(0) && bow.activeSelf & isGrounded)
+        {
+            anim.SetTrigger("BowAttack");
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -188,7 +201,7 @@ public class PlayerCharacterController : MonoBehaviour
         {
             if (isGrounded)
             {
-                DodgeRight();
+                anim.SetTrigger("DodgeRight");
             }
         }
 
@@ -196,7 +209,7 @@ public class PlayerCharacterController : MonoBehaviour
 		{
             if (isGrounded)
             {
-                DodgeLeft();
+                anim.SetTrigger("DodgeLeft");
             }
 		}
 
@@ -227,11 +240,13 @@ public class PlayerCharacterController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
             activeInventorySlot1.UseItem();
+            bud.UseActiveAbility();
 		}
 
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			activeInventorySlot2.UseItem();
+            bud.UseActiveAbility();
 		}
     }
 
@@ -280,6 +295,7 @@ public class PlayerCharacterController : MonoBehaviour
 	// Sen's dodge (left) mechanic.
 	private void DodgeLeft()
 	{
+        anim.SetTrigger("Dodge");
         senCollider.enabled = false;
         senRigidbody.AddForce(dodgeLeftForce);
         StartCoroutine(ReactivateDamageCollider());
@@ -373,5 +389,10 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         Notification.instance.Display("!", "WEAPONS REPAIRED", "All weapons repaired!", "All weapons have been restored.", "Weapon damage restored to original amounts.", 3.0f);
+    }
+
+    private void ShootArrow ()
+    {
+        bowScript.ShootArrow();
     }
 }

@@ -1,9 +1,18 @@
 fileFormatVersion: 2
-guid: 4b7d60fa79471c84cb837f50e7bbcc0e
-timeCreated: 1512626122
+guid: 4c85a7391c343be4fb276cb0ec0a2dbc
+timeCreated: 1512661021
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: CHR_Sen_HealthVFX_NoColour_0
+    21300002: CHR_Sen_HealthVFX_NoColour_1
+    21300004: CHR_Sen_HealthVFX_NoColour_2
+    21300006: CHR_Sen_HealthVFX_NoColour_3
+    21300008: CHR_Sen_HealthVFX_NoColour_4
+    21300010: CHR_Sen_HealthVFX_NoColour_5
+    21300012: CHR_Sen_HealthVFX_NoColour_6
+    21300014: CHR_Sen_HealthVFX_NoColour_7
+    21300016: CHR_Sen_HealthVFX_NoColour_8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,9 +74,162 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 434
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_1
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 434
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_2
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 434
+        width: 108
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 224
+        width: 108
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_4
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 224
+        width: 108
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 224
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 14
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_7
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 14
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHR_Sen_HealthVFX_NoColour_8
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 14
+        width: 108
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
