@@ -6,7 +6,7 @@ VideoClipImporter:
   externalObjects: {}
   serializedVersion: 2
   useLegacyImporter: 1
-  quality: 0.5
+  quality: 1
   isColorLinear: 0
   originalWidth: 1920
   originalHeight: 1080

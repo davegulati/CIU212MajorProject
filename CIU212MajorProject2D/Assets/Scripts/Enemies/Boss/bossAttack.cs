@@ -1,17 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class bossAttack : MonoBehaviour
 {
     private GameObject sen;
+    private GameManager gameManager;
 
     //hitboxes
     public GameObject attackHitbox1;
     public GameObject attackHitbox2;
 
     //place holder boss health for testing
+<<<<<<< HEAD
     private float bossHealth = 100;
+=======
+    private float maxHealth = 100;
+    private float Jarek_BossHealth = 100;
+    private Slider healthSlider;
+>>>>>>> 7f106d755ff8ef10b63073a91e209468b467e568
     public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
     public float attackDelay = 1.5f;
@@ -36,6 +45,15 @@ public class bossAttack : MonoBehaviour
     {
         sen = GameObject.Find("Sen");
         anim = GetComponent<Animator>();
+        healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
+        Jarek_BossHealth = maxHealth;
+        if (gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject != null)
+        {
+            Destroy(gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject);
+        }
+
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Background").gameObject.GetComponent<Image>().color = Color.red;
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Fill Area").transform.Find("Fill").gameObject.GetComponent<Image>().color = Color.green;
 
         StartCoroutine("AttackPattern");
     }
@@ -142,5 +160,26 @@ public class bossAttack : MonoBehaviour
         {
             sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
         }
+    }
+
+    public void DamageEnemy(float damage)
+    {
+        Jarek_BossHealth = Jarek_BossHealth - damage;
+        healthSlider.value = Jarek_BossHealth / maxHealth;
+        if (Jarek_BossHealth <= 0)
+        {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            anim.SetTrigger("EnemyDeath");
+        }
+        else
+        {
+            anim.SetTrigger("EnemyTakeDamage");
+        }
+    }
+
+    public void LoadOutroCutscene()
+    {
+        gameManager.LoadScene("OutroCutscene");
     }
 }
