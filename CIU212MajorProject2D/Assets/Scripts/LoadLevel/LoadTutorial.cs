@@ -34,7 +34,7 @@ public class LoadTutorial : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{			
-			gameManager.LoadScene("TutorialGreybox");
+            SceneManager.LoadScene("TutorialGreybox");
 		}
 	}
 }

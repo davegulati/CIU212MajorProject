@@ -34,7 +34,7 @@ public class LoadVolcano : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			gameManager.LoadScene("VolcanoGreybox");
+            SceneManager.LoadScene("VolcanoGreybox");
 		}
 	}
 }

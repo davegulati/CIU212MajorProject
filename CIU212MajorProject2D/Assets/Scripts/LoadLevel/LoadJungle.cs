@@ -34,7 +34,7 @@ public class LoadJungle : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			gameManager.LoadScene("JungleGreybox1");
+            SceneManager.LoadScene("JungleGreybox1");
 		}
 	}
 }

@@ -34,7 +34,7 @@ public class LoadCave : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			gameManager.LoadScene("CaveGreybox");
+            SceneManager.LoadScene("CaveGreybox");
 		}
 	}
 }

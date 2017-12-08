@@ -34,7 +34,7 @@ public class LoadShadowCutscene : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			gameManager.LoadScene("CutsceneSenVsShadowSen");
+            SceneManager.LoadScene("CutsceneSenVsShadowSen");
 		}
 	}
 }

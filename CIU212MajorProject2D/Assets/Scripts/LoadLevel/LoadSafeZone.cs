@@ -34,7 +34,7 @@ public class LoadSafeZone : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{			
-			gameManager.LoadScene("SafeZoneGreybox");
+            SceneManager.LoadScene("SafeZoneGreybox");
 		}
 	}
 }

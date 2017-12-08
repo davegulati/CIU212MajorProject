@@ -34,7 +34,7 @@ public class LoadShadow : MonoBehaviour
 
 		if (distance < activationRange && Input.GetKeyDown(KeyCode.W))
 		{
-			gameManager.LoadScene("HamutalCastle");
+            SceneManager.LoadScene("HamutalCastle");
 		}
 	}
 }
