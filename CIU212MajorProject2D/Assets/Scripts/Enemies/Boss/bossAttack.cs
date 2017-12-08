@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class bossAttack : MonoBehaviour
 {
     private GameObject sen;
+    private GameManager gameManager;
 
     //hitboxes
     public GameObject attackHitbox1;
@@ -169,5 +171,10 @@ public class bossAttack : MonoBehaviour
         {
             anim.SetTrigger("EnemyTakeDamage");
         }
+    }
+
+    public void LoadOutroCutscene()
+    {
+        gameManager.LoadScene("OutroCutscene");
     }
 }
