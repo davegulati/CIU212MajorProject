@@ -11,21 +11,21 @@ public class bossAttack : MonoBehaviour
     public GameObject attackHitbox2;
 
     //place holder boss health for testing
-    private float Jarek_BossHealth = 100;
+    private float bossHealth = 100;
     public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
     public float attackDelay = 1.5f;
     public float attackDuration = 0.3f;
 
-    public GameObject Poison_Launcher;
-    public GameObject Poison;
-    public float Poison_Forward_Force = 1200.0f;
+    public GameObject projectileLauncher;
+    public GameObject projectile;
+    public float projectile_Forward_Force = 1200.0f;
 
     //sound
     private AudioSource source;
-    public AudioClip slashAttack;
-    public AudioClip poisonLaunch;
-    public AudioClip stabAttack;
+    public AudioClip meleeAttack1;
+    public AudioClip projectileLaunch;
+    public AudioClip meleeAttack2;
 
     //animation
      Animator anim;
@@ -50,47 +50,48 @@ public class bossAttack : MonoBehaviour
     {
         while (true)
         {
-                if (Jarek_BossHealth > 75.0f)
+                if (bossHealth > 75.0f)
                 {
                 Debug.Log("Started");
                     yield return new WaitForSeconds(attackDelay);
-                    SlashAttack();
+                    MeleeAttack1();
                     yield return new WaitForSeconds(attackCooldown);
 
                     yield return new WaitForSeconds(attackDelay);
-                    StabAttack();
+                    MeleeAttack2();
                     yield return new WaitForSeconds(attackCooldown);
                 }
 
-                if (Jarek_BossHealth > 50.0f)
+                if (bossHealth > 50.0f)
                 {
                     yield return new WaitForSeconds(attackDelay);
-                    PoisonLaunch();
+                    RangedAttack();
                     yield return new WaitForSeconds(attackCooldown);
 
                     yield return new WaitForSeconds(attackDelay);
-                    SlashAttack();
+                    MeleeAttack1();
                     yield return new WaitForSeconds(attackCooldown);
 
                     yield return new WaitForSeconds(attackDelay);
-                    SlashAttack();
+                    MeleeAttack1();
                     yield return new WaitForSeconds(attackCooldown);
             }
 
-                while (Jarek_BossHealth > 25.0f)
+                while (bossHealth > 25.0f)
                 {
                     yield return new WaitForSeconds(attackDelay);
-                    StabAttack();
+                    MeleeAttack2();
                     yield return new WaitForSeconds(attackCooldown);
 
                     yield return new WaitForSeconds(attackDelay);
-                    PoisonLaunch();
-                    PoisonLaunch();
+                    RangedAttack();
+                    RangedAttack();
                     yield return new WaitForSeconds(attackCooldown);
             }
 
-                if (Jarek_BossHealth <= 1.0f)
+                if (bossHealth <= 0.75f)
                 {
+                    anim.SetTrigger("EnemyDeath");
                     Destroy(this.gameObject);
                     yield return null;
                 }
@@ -98,38 +99,38 @@ public class bossAttack : MonoBehaviour
         }
     }
 
-    void SlashAttack()
+    void MeleeAttack1()
     {
         anim.SetTrigger("EnemyAttack");
-        source.PlayOneShot(slashAttack);
+        source.PlayOneShot(meleeAttack1);
         attackHitbox1.SetActive(true);
         new WaitForSeconds(attackDuration);
         attackHitbox1.SetActive(false);
         anim.SetTrigger("EnemyAttack");
     }
 
-    void PoisonLaunch()
+    void RangedAttack()
     {
         //add attack animation
         GameObject Temporary_Bullet_Handler;
-        source.PlayOneShot(poisonLaunch);
-        Temporary_Bullet_Handler = Instantiate(Poison, Poison_Launcher.transform.position, Poison_Launcher.transform.rotation) as GameObject;
+        source.PlayOneShot(projectileLaunch);
+        Temporary_Bullet_Handler = Instantiate(projectile, projectileLauncher.transform.position, projectileLauncher.transform.rotation) as GameObject;
 
         Rigidbody2D Temporary_RigidBody;
         Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
 
         //transform.right for a directional shot
-        Temporary_RigidBody.AddForce(sen.transform.position * Poison_Forward_Force);
+        Temporary_RigidBody.AddForce(sen.transform.position * projectile_Forward_Force);
 
         Destroy(Temporary_Bullet_Handler, 3.0f);
 
     }
 
-    void StabAttack()
+    void MeleeAttack2()
     {
         anim.SetTrigger("EnemyAttack2");
         attackHitbox2.SetActive(true);
-        source.PlayOneShot(stabAttack);
+        source.PlayOneShot(meleeAttack2);
         new WaitForSeconds(attackDuration);
         attackHitbox2.SetActive(false);
         anim.SetTrigger("EnemyAttack2");
