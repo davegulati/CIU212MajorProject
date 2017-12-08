@@ -30,6 +30,8 @@ public class GroundEnemyHealth : MonoBehaviour {
         healthSlider.value = currentHealth / maxHealth;
         if (currentHealth <= 0)
         {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             anim.SetTrigger("EnemyDeath");
         }
         else
