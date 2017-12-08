@@ -85,6 +85,15 @@ public class Axe : MonoBehaviour {
                 DeductDurability(rangedEnemyDurability);
             }
         }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            if (collision.gameObject.GetComponent<bossAttack>() != null)
+            {
+                collision.gameObject.GetComponent<bossAttack>().DamageEnemy(current_DamageAmount);
+                DeductDurability(rangedEnemyDurability);
+            }
+        }
     }
 
     private void DeductDurability (float amount)

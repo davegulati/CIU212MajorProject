@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bossAttack : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class bossAttack : MonoBehaviour
     public GameObject attackHitbox2;
 
     //place holder boss health for testing
+    private float maxHealth = 100;
     private float Jarek_BossHealth = 100;
+    private Slider healthSlider;
     public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
     public float attackDelay = 1.5f;
@@ -36,6 +39,15 @@ public class bossAttack : MonoBehaviour
     {
         sen = GameObject.Find("Sen");
         anim = GetComponent<Animator>();
+        healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
+        Jarek_BossHealth = maxHealth;
+        if (gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject != null)
+        {
+            Destroy(gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject);
+        }
+
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Background").gameObject.GetComponent<Image>().color = Color.red;
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Fill Area").transform.Find("Fill").gameObject.GetComponent<Image>().color = Color.green;
 
         StartCoroutine("AttackPattern");
     }
@@ -140,6 +152,22 @@ public class bossAttack : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             sen.GetComponent<PlayerHealth>().PlayerTakeDamage(attackDamage);
+        }
+    }
+
+    public void DamageEnemy(float damage)
+    {
+        Jarek_BossHealth = Jarek_BossHealth - damage;
+        healthSlider.value = Jarek_BossHealth / maxHealth;
+        if (Jarek_BossHealth <= 0)
+        {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            anim.SetTrigger("EnemyDeath");
+        }
+        else
+        {
+            anim.SetTrigger("EnemyTakeDamage");
         }
     }
 }
