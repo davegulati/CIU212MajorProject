@@ -22,6 +22,15 @@ public class GroundEnemyHealth : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 		healthSlider = transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").GetComponent<Slider>();
         healthSlider.value = currentHealth / maxHealth;
+        currentHealth = maxHealth;
+
+        if (gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject != null)
+        {
+            Destroy(gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Handle Slide Area").gameObject);
+        }
+
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Background").gameObject.GetComponent<Image>().color = Color.red;
+        gameObject.transform.Find("HealthBarCanvas").transform.Find("HealthBarSlider").transform.Find("Fill Area").transform.Find("Fill").gameObject.GetComponent<Image>().color = Color.green;
 	}
 
     public void DamageEnemy (float damage)
@@ -30,6 +39,8 @@ public class GroundEnemyHealth : MonoBehaviour {
         healthSlider.value = currentHealth / maxHealth;
         if (currentHealth <= 0)
         {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             anim.SetTrigger("EnemyDeath");
         }
         else

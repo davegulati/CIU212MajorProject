@@ -9,7 +9,7 @@ public class GroundEnemy : MonoBehaviour {
     private Rigidbody2D rb;
     private float chaseRange = 5.0f;
     private float rotationRange = 6.0f;
-    public float speed = 8.0f;
+    private float speed = 8.0f;
 
     private GameObject[] rangedEnemies;
 
@@ -46,6 +46,7 @@ public class GroundEnemy : MonoBehaviour {
         sen = GameObject.Find("Sen");
         anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = 4;
 		Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		rangedEnemies = GameObject.FindGameObjectsWithTag("RangedEnemy");
 		foreach (GameObject rangedEnemy in rangedEnemies)
@@ -70,29 +71,60 @@ public class GroundEnemy : MonoBehaviour {
             senNoticed = false;
         }
 
-		if (inZone && !senNoticed && !isStunned)
-		{
-            // Patrol
-            anim.SetBool("EnemyWalk", true);
-			Vector2 position = new Vector2(transform.position.x, transform.position.y);
-			Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
-            //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
-            Vector2 direction = currentWPPosition - position;
-            direction.Normalize();
-            rb.AddForce((direction) * speed);
-			if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+        if (inZone && !senNoticed && !isStunned)
+        {
+            if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) > patrolFinishDistance)
             {
-                currentPatrolPoint++;
+                // Patrol
+                anim.SetBool("EnemyWalk", true);
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+                //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+                Vector2 direction = currentWPPosition - position;
+                direction.Normalize();
+                rb.AddForce((direction) * speed);
+            }
+            else if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+            {
+                // Rotate
                 rb.velocity = Vector3.zero;
-                //Vector3 vectorToTarget = currentWPPosition - position;
-                //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-                //Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-                //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+                currentPatrolPoint++;
                 if (currentPatrolPoint >= patrolPoints.Length)
                 {
                     currentPatrolPoint = 0;
                 }
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+                Vector3 vectorToTarget = currentWPPosition - position;
+                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, 360 * Time.deltaTime);
             }
+        }
+
+		//if (inZone && !senNoticed && !isStunned)
+		//{
+   //         // Patrol
+   //         anim.SetBool("EnemyWalk", true);
+			//Vector2 position = new Vector2(transform.position.x, transform.position.y);
+			//Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
+   //         //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+   //         Vector2 direction = currentWPPosition - position;
+   //         direction.Normalize();
+   //         rb.AddForce((direction) * speed);
+			//if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
+            //{
+            //    currentPatrolPoint++;
+            //    rb.velocity = Vector3.zero;
+            //    //Vector3 vectorToTarget = currentWPPosition - position;
+            //    //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+            //    //Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+            //    //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+            //    if (currentPatrolPoint >= patrolPoints.Length)
+            //    {
+            //        currentPatrolPoint = 0;
+            //    }
+            //}
 
             // The commented code underneath flips the sprite to face the movement of the gameobject. IT WORKS!!
 
@@ -108,13 +140,13 @@ public class GroundEnemy : MonoBehaviour {
 
 
              //The code underneath rotates the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
-			Vector3 vectorToTarget = currentWPPosition - position;
-			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-			Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
+			//Vector3 vectorToTarget = currentWPPosition - position;
+			//float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+			//Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+			//transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
             //gameObject.GetComponent<GroundEnemyHealth>().FlipHealthBarCanvas();
 
-		}
+		//}
 
         if (!inZone && !senNoticed && !isStunned)
         {
