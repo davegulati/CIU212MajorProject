@@ -14,13 +14,11 @@ public class bossAttack : MonoBehaviour
     public GameObject attackHitbox2;
 
     //place holder boss health for testing
-<<<<<<< HEAD
     private float bossHealth = 100;
-=======
     private float maxHealth = 100;
     private float Jarek_BossHealth = 100;
     private Slider healthSlider;
->>>>>>> 7f106d755ff8ef10b63073a91e209468b467e568
+
     public float attackCooldown = 5.0f;
     public float attackDamage = 10.0f;
     public float attackDelay = 1.5f;
@@ -117,7 +115,7 @@ public class bossAttack : MonoBehaviour
         }
     }
 
-    void MeleeAttack1()
+   public void MeleeAttack1()
     {
         anim.SetTrigger("EnemyAttack");
         source.PlayOneShot(meleeAttack1);
@@ -127,7 +125,7 @@ public class bossAttack : MonoBehaviour
         anim.SetTrigger("EnemyAttack");
     }
 
-    void RangedAttack()
+    public void RangedAttack()
     {
         //add attack animation
         GameObject Temporary_Bullet_Handler;
@@ -144,7 +142,7 @@ public class bossAttack : MonoBehaviour
 
     }
 
-    void MeleeAttack2()
+   public void MeleeAttack2()
     {
         anim.SetTrigger("EnemyAttack2");
         attackHitbox2.SetActive(true);
@@ -154,7 +152,7 @@ public class bossAttack : MonoBehaviour
         anim.SetTrigger("EnemyAttack2");
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {
