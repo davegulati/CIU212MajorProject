@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
             }
             else if (gameObject.transform.Find("PauseMenu").gameObject.activeSelf)
             {
-                
+                UnpauseGame();
             }
         }
     }
@@ -40,6 +40,9 @@ public class PauseMenu : MonoBehaviour
     private void DisplayPauseMenu()
     {
         gameObject.transform.Find("PauseMenu").gameObject.SetActive(true);
+        gameObject.transform.Find("PauseMenu").transform.Find("ControlsBox").gameObject.SetActive(false);
+        gameObject.transform.Find("PauseMenu").transform.Find("ConfirmQuitBox").gameObject.SetActive(false);
+        gameObject.transform.Find("PauseMenu").transform.Find("Button_Back").gameObject.SetActive(false);
     }
 
     public void ResumeClicked()
@@ -50,13 +53,21 @@ public class PauseMenu : MonoBehaviour
     public void ControlsClicked()
     {
         gameObject.transform.Find("PauseMenu").transform.Find("PauseBox").gameObject.SetActive(false);
-        // Display controls
+        gameObject.transform.Find("PauseMenu").transform.Find("ControlsBox").gameObject.SetActive(true);
+        gameObject.transform.Find("PauseMenu").transform.Find("Button_Back").gameObject.SetActive(true);
+    }
+
+    public void BackClicked()
+    {
+        gameObject.transform.Find("PauseMenu").transform.Find("PauseBox").gameObject.SetActive(true);
+        gameObject.transform.Find("PauseMenu").transform.Find("ControlsBox").gameObject.SetActive(false);
+        gameObject.transform.Find("PauseMenu").transform.Find("Button_Back").gameObject.SetActive(false);
     }
 
     public void ExitClicked ()
     {
         gameObject.transform.Find("PauseMenu").transform.Find("PauseBox").gameObject.SetActive(false);
-        // Confirm exit box show
+        gameObject.transform.Find("PauseMenu").transform.Find("ConfirmQuitBox").gameObject.SetActive(true);
     }
 
     public void ExitYesClicked ()
@@ -66,7 +77,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitNoClicked ()
     {
-        // Confirm exit box hide
+        gameObject.transform.Find("PauseMenu").transform.Find("ConfirmQuitBox").gameObject.SetActive(false);
         gameObject.transform.Find("PauseMenu").transform.Find("PauseBox").gameObject.SetActive(true);
     }
 }
