@@ -13,10 +13,12 @@ public class Axe : MonoBehaviour
 
     // Durability
     private float maxDurability = 100.0f;
-    private float currentDurability;
-    private float minDurability = 5.0f;
+    [HideInInspector]
+    public float currentDurability;
+    private float minDurability = 10.0f;
     private float groundEnemyDurability = 1.0f;
     private float rangedEnemyDurability = 1.0f;
+    private WeaponSlot weaponSlot;
 
     // Colors
     private Color normalColor = new Color(255, 255, 255);
@@ -47,6 +49,7 @@ public class Axe : MonoBehaviour
             Physics2D.IgnoreCollision(dropPlatform.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
         }
 
+        weaponSlot = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("WeaponSlot").GetComponent<WeaponSlot>();
         currentDurability = maxDurability;
     }
 
@@ -100,7 +103,6 @@ public class Axe : MonoBehaviour
     private void DeductDurability(float amount)
     {
         currentDurability = currentDurability - amount;
-        // Update weapon durability UI
         current_DamageAmount *= currentDurability / 100;
         if (currentDurability > maxDurability)
         {
@@ -111,6 +113,7 @@ public class Axe : MonoBehaviour
         {
             currentDurability = minDurability;
         }
+        weaponSlot.UpdateWeaponDurabilityUI_Axe(currentDurability);
     }
 
     public void RepairWeapon()

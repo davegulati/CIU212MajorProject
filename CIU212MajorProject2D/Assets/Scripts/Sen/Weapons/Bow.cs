@@ -17,9 +17,11 @@ public class Bow : MonoBehaviour {
 
     // Durability
     private float maxDurability = 100.0f;
-    private float currentDurability;
-    private float minDurability = 5.0f;
-    private float deductDurabilityAmount = 3.0f;
+    [HideInInspector]
+    public float currentDurability;
+    private float minDurability = 10.0f;
+    private float deductDurabilityAmount = 1.0f;
+    private WeaponSlot weaponSlot;
 
     // Normal arrow
     [SerializeField]
@@ -53,6 +55,7 @@ public class Bow : MonoBehaviour {
     {
         anim = gameObject.transform.parent.GetComponent<Animator>();
         firePoint = gameObject.transform.Find("FirePoint");
+        weaponSlot = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("WeaponSlot").GetComponent<WeaponSlot>();
         currentDurability = maxDurability;
 	}
 
@@ -122,7 +125,6 @@ public class Bow : MonoBehaviour {
     private void DeductDurability(float amount)
     {
         currentDurability = currentDurability - amount;
-        // Update weapon durability UI
         current_DamageAmount *= currentDurability / 100;
         if (currentDurability > maxDurability)
         {
@@ -133,6 +135,7 @@ public class Bow : MonoBehaviour {
         {
             currentDurability = minDurability;
         }
+        weaponSlot.UpdateWeaponDurabilityUI_Bow(currentDurability);
     }
 
     public void RepairWeapon()

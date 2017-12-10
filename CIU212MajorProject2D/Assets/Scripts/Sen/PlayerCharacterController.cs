@@ -81,7 +81,16 @@ public class PlayerCharacterController : MonoBehaviour
 		activeInventorySlot2 = InventorySystem.instance.gameObject.transform.Find("Inventory").transform.Find("ItemsParent").transform.Find("ActiveItemSlots").transform.Find("InventorySlot2").GetComponent<InventorySlot>();
         weaponSlot = GameObject.Find("Canvas").transform.Find("HealthBar").transform.Find("Base").transform.Find("WeaponSlot").GetComponent<WeaponSlot>();
         currentWeapon = axe;
-        weaponSlot.UpdateWeaponSlotImage(currentWeapon);
+        if (currentWeapon == axe)
+        {
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon, axe.GetComponent<Axe>().currentDurability);
+
+        }
+        else if (currentWeapon == bow)
+        {
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon, bow.GetComponent<Bow>().currentDurability);
+
+        }
         bud = GameObject.Find("Bud").gameObject.GetComponent<Bud>();
 	}
 
@@ -226,7 +235,7 @@ public class PlayerCharacterController : MonoBehaviour
             bow.SetActive(false);
             axe.SetActive(true);
             currentWeapon = axe;
-            weaponSlot.UpdateWeaponSlotImage(currentWeapon);
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon, axe.GetComponent<Axe>().currentDurability);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -234,7 +243,7 @@ public class PlayerCharacterController : MonoBehaviour
             axe.SetActive(false);
 			bow.SetActive(true);
             currentWeapon = bow;
-            weaponSlot.UpdateWeaponSlotImage(currentWeapon);
+            weaponSlot.UpdateWeaponSlotImage(currentWeapon, bow.GetComponent<Bow>().currentDurability);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Q))
