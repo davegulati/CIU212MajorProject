@@ -61,6 +61,8 @@ public class GroundEnemy : MonoBehaviour
         }
         attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
         attackAlert.SetActive(false);
+
+        
     }
 
     // Update is called once per frame
@@ -100,12 +102,20 @@ public class GroundEnemy : MonoBehaviour
                 {
                     currentPatrolPoint = 0;
                 }
+
                 Vector2 position = new Vector2(transform.position.x, transform.position.y);
                 Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
                 Vector3 vectorToTarget = currentWPPosition - position;
-                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-                Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, 360 * Time.deltaTime);
+                
+                if(vectorToTarget.x < transform.position.x)
+                    {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    }
+                if (vectorToTarget.x > transform.position.x)
+                    {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    }
+
             }
         }
 
@@ -137,13 +147,6 @@ public class GroundEnemy : MonoBehaviour
             }
             rb.AddForce((chaseDirection) * speed);
 
-            if (distanceToSen > rotationRange)
-            {
-                Vector3 vectorToTarget = senPosition - position;
-                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-                Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
-            }
         }
 
         // Attack Sen
@@ -161,25 +164,18 @@ public class GroundEnemy : MonoBehaviour
             attackAlert.SetActive(true);
             Vector2 position = new Vector2(transform.position.x, transform.position.y); //find the enemies position
             Vector2 senPosition = new Vector2(sen.transform.position.x, 0);             //find Sens position
-            Vector3 vectorToTarget = senPosition - position;                            //get the direction in 3d space
-            Vector3 vectorToTargetFlattened = new Vector3(vectorToTarget.x, vectorToTarget.y, 0);   //flatten the 3d vector to 2d space
-            float angle = Mathf.Atan2(vectorToTargetFlattened.y, vectorToTargetFlattened.x) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
-            if(Vector2.Distance(position, senPosition) > 0)
+            
+            if (Vector2.Distance(position, senPosition) > 0)
             {
-                //Rotation fixer
-                if (angle <= -90)
+                if (senPosition.x < position.x)
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
-                else if (angle >= -90)
+                if (senPosition.x > position.x)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
-                
             }
-            
 
             anim.SetTrigger("EnemyAttack");
             canAttack = false;
@@ -239,52 +235,3 @@ public class GroundEnemy : MonoBehaviour
         inZone = false;
     }
 }
-
-
-
-
-//if (inZone && !senNoticed && !isStunned)
-//{
-//         // Patrol
-//         anim.SetBool("EnemyWalk", true);
-//Vector2 position = new Vector2(transform.position.x, transform.position.y);
-//Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
-//         //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
-//         Vector2 direction = currentWPPosition - position;
-//         direction.Normalize();
-//         rb.AddForce((direction) * speed);
-//if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPoint].transform.position) < patrolFinishDistance)
-//{
-//    currentPatrolPoint++;
-//    rb.velocity = Vector3.zero;
-//    //Vector3 vectorToTarget = currentWPPosition - position;
-//    //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-//    //Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-//    //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
-//    if (currentPatrolPoint >= patrolPoints.Length)
-//    {
-//        currentPatrolPoint = 0;
-//    }
-//}
-
-// The commented code underneath flips the sprite to face the movement of the gameobject. IT WORKS!!
-
-//Vector2 spriteDirection = currentWPPosition - position;
-//if (spriteDirection.x < 0)
-//{
-//	gameObject.GetComponent<SpriteRenderer>().flipX = true;
-//}
-//else if (spriteDirection.x > 0)
-//{
-//	gameObject.GetComponent<SpriteRenderer>().flipX = false;
-//}
-
-
-//The code underneath rotates the gameobject itself towards where its moving (not just flip the sprite). IT WORKS!
-//Vector3 vectorToTarget = currentWPPosition - position;
-//float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-//Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
-//transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
-//gameObject.GetComponent<GroundEnemyHealth>().FlipHealthBarCanvas();
-
-//}
