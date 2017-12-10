@@ -61,6 +61,8 @@ public class GroundEnemy : MonoBehaviour
         }
         attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
         attackAlert.SetActive(false);
+
+        
     }
 
     // Update is called once per frame
@@ -161,25 +163,19 @@ public class GroundEnemy : MonoBehaviour
             attackAlert.SetActive(true);
             Vector2 position = new Vector2(transform.position.x, transform.position.y); //find the enemies position
             Vector2 senPosition = new Vector2(sen.transform.position.x, 0);             //find Sens position
-            Vector3 vectorToTarget = senPosition - position;                            //get the direction in 3d space
-            Vector3 vectorToTargetFlattened = new Vector3(vectorToTarget.x, vectorToTarget.y, 0);   //flatten the 3d vector to 2d space
-            float angle = Mathf.Atan2(vectorToTargetFlattened.y, vectorToTargetFlattened.x) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+
             //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
-            if(Vector2.Distance(position, senPosition) > 0)
+            if (Vector2.Distance(position, senPosition) > 0)
             {
-                //Rotation fixer
-                if (angle <= -90)
+                if (senPosition.x < position.x)
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
-                else if (angle >= -90)
+                if (senPosition.x > position.x)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
-                
             }
-            
 
             anim.SetTrigger("EnemyAttack");
             canAttack = false;
