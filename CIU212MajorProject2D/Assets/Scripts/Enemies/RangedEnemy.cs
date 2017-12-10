@@ -9,7 +9,7 @@ public class RangedEnemy : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private float fleeRange = 2.5f;
-	private float speed = 8.0f;
+	private float speed = 2.0f;
 
     private GameObject[] groundEnemies;
 
@@ -43,23 +43,25 @@ public class RangedEnemy : MonoBehaviour
 
 	void Awake()
 	{
+        //Audio Source
         source = GetComponent<AudioSource>();
 
-		sen = GameObject.Find("Sen");
-        anim = gameObject.GetComponent<Animator>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.drag = 4;
-        Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
-        firePoint = gameObject.transform.Find("FirePoint");
+        //Establish the variables
+		sen = GameObject.Find("Sen");                   //Finds the player "Sen"
+        anim = gameObject.GetComponent<Animator>();     //Gets the animator component of the enemy
+        rb = gameObject.GetComponent<Rigidbody2D>();    //Gets the rigid body of the enemy
+        rb.drag = 4;                                    //Set drag to 4
+        Physics2D.IgnoreCollision(sen.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());    //ignore collisions on the player
+        firePoint = gameObject.transform.Find("FirePoint"); //Finds a game object called fire point...
 
-		groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");
+		groundEnemies = GameObject.FindGameObjectsWithTag("GroundEnemy");   //Ignores all collisions of other enemies...
 		foreach (GameObject groundEnemy in groundEnemies)
 		{
 			Physics2D.IgnoreCollision(groundEnemy.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
 		}
 
-        attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
-        attackAlert.SetActive(false);
+        attackAlert = gameObject.transform.Find("AttackAlert").gameObject;  //Alert game object on the enemy
+        attackAlert.SetActive(false);   //Turns it off at start untill found
 	}
 
 	// Update is called once per frame
@@ -85,7 +87,7 @@ public class RangedEnemy : MonoBehaviour
                 anim.SetBool("EnemyWalk", true);
                 Vector2 position = new Vector2(transform.position.x, transform.position.y);
                 Vector2 currentWPPosition = new Vector2(patrolPoints[currentPatrolPoint].transform.position.x, 0);
-                //transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(position, currentWPPosition, speed * Time.deltaTime);
                 Vector2 direction = currentWPPosition - position;
                 direction.Normalize();
                 rb.AddForce((direction) * speed);
@@ -105,6 +107,7 @@ public class RangedEnemy : MonoBehaviour
                 float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, q, 360 * Time.deltaTime);
+                              
             }
         }
    //     if (distanceToSen > attackRange) // Patrol
@@ -133,7 +136,7 @@ public class RangedEnemy : MonoBehaviour
             anim.SetBool("EnemyWalk", false);
         }
 
-        if (senNoticed && !isStunned)// Attack Sen
+        if (senNoticed && !isStunned && Vector2.Distance(transform.position, sen.transform.position) > 0.75f)// Attack Sen
 		{
 			Attack();
 		}
@@ -146,6 +149,7 @@ public class RangedEnemy : MonoBehaviour
             attackAlert.SetActive(true);
             canAttack = false;
             anim.SetTrigger("EnemyAttack");
+            transform.position = Vector2.MoveTowards(transform.position, sen.transform.position, speed * Time.deltaTime);
         }
 	}
 
