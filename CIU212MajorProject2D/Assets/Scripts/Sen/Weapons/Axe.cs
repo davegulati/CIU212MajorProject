@@ -77,7 +77,7 @@ public class Axe : MonoBehaviour
             if (collision.gameObject.GetComponent<GroundEnemyHealth>() != null)
             {
                 collision.gameObject.GetComponent<GroundEnemyHealth>().DamageEnemy(current_DamageAmount);
-                DeductDurability(groundEnemyDurability);
+                //DeductDurability(groundEnemyDurability);
             }
         }
 
@@ -86,7 +86,7 @@ public class Axe : MonoBehaviour
             if (collision.gameObject.GetComponent<RangedEnemyHealth>() != null)
             {
                 collision.gameObject.GetComponent<RangedEnemyHealth>().DamageEnemy(current_DamageAmount);
-                DeductDurability(rangedEnemyDurability);
+                //DeductDurability(rangedEnemyDurability);
             }
         }
 
@@ -95,36 +95,38 @@ public class Axe : MonoBehaviour
             if (collision.gameObject.GetComponent<bossAttack>() != null)
             {
                 collision.gameObject.GetComponent<bossAttack>().DamageEnemy(current_DamageAmount);
-                DeductDurability(rangedEnemyDurability);
+                //DeductDurability(rangedEnemyDurability);
             }
         }
     }
 
-    private void DeductDurability(float amount)
-    {
-        currentDurability = currentDurability - amount;
-        current_DamageAmount *= currentDurability / 100;
-        if (currentDurability > maxDurability)
-        {
-            currentDurability = maxDurability;
-        }
+    //private void DeductDurability(float amount)
+    //{
+    //    currentDurability = currentDurability - amount;
+    //    current_DamageAmount = current_DamageAmount *  (currentDurability / maxDurability);
+    //    if (currentDurability > maxDurability)
+    //    {
+    //        currentDurability = maxDurability;
+    //        current_DamageAmount = current_DamageAmount * (currentDurability / maxDurability);
+    //    }
 
-        if (currentDurability < minDurability)
-        {
-            currentDurability = minDurability;
-        }
-        weaponSlot.UpdateWeaponDurabilityUI_Axe(currentDurability);
-    }
+    //    if (currentDurability < minDurability)
+    //    {
+    //        currentDurability = minDurability;
+    //        current_DamageAmount = current_DamageAmount * (currentDurability / maxDurability);
+    //    }
+    //    weaponSlot.UpdateWeaponDurabilityUI_Axe(currentDurability);
+    //}
 
-    public void RepairWeapon()
-    {
-        currentDurability = maxDurability;
-        current_DamageAmount = base_DamageAmount;
-        // Play repair sound
-        // Update weapon durability UI
-        if (currentDurability > maxDurability)
-        {
-            currentDurability = maxDurability;
-        }
-    }
+    //public void RepairWeapon()
+    //{
+    //    currentDurability = maxDurability;
+    //    current_DamageAmount = base_DamageAmount;
+    //    // Play repair sound
+    //    // Update weapon durability UI
+    //    if (currentDurability > maxDurability)
+    //    {
+    //        currentDurability = maxDurability;
+    //    }
+    //}
 }

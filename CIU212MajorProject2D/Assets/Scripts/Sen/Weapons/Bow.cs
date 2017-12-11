@@ -88,20 +88,20 @@ public class Bow : MonoBehaviour {
 			{
 				Transform spawmedArrow = Instantiate(explosiveArrow, firePoint.position, firePoint.rotation);
 				spawmedArrow.GetComponent<ExplosiveArrow>().current_DamageAmount = current_DamageAmount;
-                DeductDurability(deductDurabilityAmount);
+                //DeductDurability(deductDurabilityAmount);
 			}
             else
             {
 				Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
 				spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
-                DeductDurability(deductDurabilityAmount);
+                //DeductDurability(deductDurabilityAmount);
             }
         }
         else  // Normal arrows
         {
 			Transform spawmedArrow = Instantiate(normalArrow, firePoint.position, firePoint.rotation);
 			spawmedArrow.GetComponent<Arrow>().current_DamageAmount = current_DamageAmount;
-            DeductDurability(deductDurabilityAmount);
+            //DeductDurability(deductDurabilityAmount);
         }
     }
 
@@ -122,31 +122,33 @@ public class Bow : MonoBehaviour {
         current_DamageAmount = base_DamageAmount;
 	}
 
-    private void DeductDurability(float amount)
-    {
-        currentDurability = currentDurability - amount;
-        current_DamageAmount *= currentDurability / 100;
-        if (currentDurability > maxDurability)
-        {
-            currentDurability = maxDurability;
-        }
+    //private void DeductDurability(float amount)
+    //{
+    //    currentDurability = currentDurability - amount;
+    //    current_DamageAmount = current_DamageAmount * (currentDurability / maxDurability);
+    //    if (currentDurability > maxDurability)
+    //    {
+    //        currentDurability = maxDurability;
+    //        current_DamageAmount = current_DamageAmount * (currentDurability / maxDurability);
+    //    }
 
-        if (currentDurability < minDurability)
-        {
-            currentDurability = minDurability;
-        }
-        weaponSlot.UpdateWeaponDurabilityUI_Bow(currentDurability);
-    }
+    //    if (currentDurability < minDurability)
+    //    {
+    //        currentDurability = minDurability;
+    //        current_DamageAmount = current_DamageAmount * (currentDurability / maxDurability);
+    //    }
+    //    weaponSlot.UpdateWeaponDurabilityUI_Bow(currentDurability);
+    //}
 
-    public void RepairWeapon()
-    {
-        currentDurability = maxDurability;
-        current_DamageAmount = base_DamageAmount;
-        // Play repair sound
-        // Update weapon durability UI
-        if (currentDurability > maxDurability)
-        {
-            currentDurability = maxDurability;
-        }
-    }
+    //public void RepairWeapon()
+    //{
+    //    currentDurability = maxDurability;
+    //    current_DamageAmount = base_DamageAmount;
+    //    // Play repair sound
+    //    // Update weapon durability UI
+    //    if (currentDurability > maxDurability)
+    //    {
+    //        currentDurability = maxDurability;
+    //    }
+    //}
 }

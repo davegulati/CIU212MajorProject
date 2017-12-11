@@ -6,6 +6,6 @@ public class Anvil : InteractableItem {
     
     public override void Interact ()
     {
-        sen.GetComponent<PlayerCharacterController>().RepairWeapons();
+        //sen.GetComponent<PlayerCharacterController>().RepairWeapons();
     }
 }
