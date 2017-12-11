@@ -20,7 +20,7 @@ public class GroundEnemy : MonoBehaviour
     private GameObject attackAlert;
     private float attackDelay = 1.0f;
     private float attackDamage = 10.0f;
-    private float attackDistance = 1.0f;
+    private float attackDistance = 5.0f;
     private float attackDistanceRanged = 5.0f;
     private bool canAttack = true;
     private float attackCooldown = 0.5f;
@@ -134,7 +134,7 @@ public class GroundEnemy : MonoBehaviour
 
         if (IsGroundEnemy)
         {
-            if (senNoticed && !isStunned && distanceToSen > attackDistance)
+            if (senNoticed && !isStunned && distanceToSen < attackDistance)
             {
                 // Chase Sen
                 anim.SetBool("EnemyWalk", true);
@@ -159,7 +159,7 @@ public class GroundEnemy : MonoBehaviour
 
         if (!IsGroundEnemy)
         {
-            if (senNoticed && !isStunned && distanceToSen > attackDistanceRanged)
+            if (senNoticed && !isStunned && distanceToSen < attackDistanceRanged)
             {
                 // Chase Sen
                 anim.SetBool("EnemyWalk", true);
@@ -170,12 +170,12 @@ public class GroundEnemy : MonoBehaviour
                 if (IsGroundEnemy == true)
                 {
                     transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
-
+                    canAttack = true;
                 }
                 if (IsGroundEnemy == false)
                 {
                     transform.position = Vector2.MoveTowards(position, sen.transform.position, speed * Time.deltaTime);
-
+                    canAttack = true;
                 }
                 rb.AddForce((chaseDirection) * speed);
 
