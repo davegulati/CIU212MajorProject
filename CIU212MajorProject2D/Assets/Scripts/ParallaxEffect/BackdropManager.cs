@@ -16,7 +16,16 @@ public class BackdropManager : MonoBehaviour {
 		transform.Find("Layer1").GetComponent<BackdropLayer>().LoadLayer(layers[0]);
 		transform.Find("Layer2").GetComponent<BackdropLayer>().LoadLayer(layers[1]);
 		transform.Find("Layer3").GetComponent<BackdropLayer>().LoadLayer(layers[2]);
-		transform.Find("Layer4").GetComponent<BackdropLayer>().LoadLayer(layers[3]);
+        if (layers.Length == 4)
+        {
+            transform.Find("Layer4").GetComponent<BackdropLayer>().LoadLayer(layers[3]);
+        }
+        else
+        {
+            transform.Find("Layer4").GetComponent<BackdropLayer>().DeactivateLayer();
+        }
+
+        //Debug.Log(layers.Length);
     }
 
     private void FixedUpdate () 

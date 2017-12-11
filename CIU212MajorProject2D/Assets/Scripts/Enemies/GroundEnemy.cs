@@ -20,9 +20,12 @@ public class GroundEnemy : MonoBehaviour
     private GameObject attackAlert;
     private float attackDelay = 1.0f;
     private float attackDamage = 10.0f;
-    private float attackDistance = 2.5f;
+    private float attackDistance = 1.0f;
+    private float attackDistanceRanged = 5.0f;
     private bool canAttack = true;
     private float attackCooldown = 0.5f;
+    public GameObject projectile;
+    private Transform firePoint;
 
     // Stun variables
     private bool isStunned = false;
@@ -61,8 +64,10 @@ public class GroundEnemy : MonoBehaviour
         }
         attackAlert = gameObject.transform.Find("AttackAlert").gameObject;
         attackAlert.SetActive(false);
-
-        
+        if (!IsGroundEnemy)
+        {
+            firePoint = gameObject.transform.Find("FirePoint");
+        }
     }
 
     // Update is called once per frame
@@ -127,37 +132,77 @@ public class GroundEnemy : MonoBehaviour
             //anim.SetBool("EnemyIdle", true);
         }
 
-        if (senNoticed && !isStunned && distanceToSen > attackDistance)
+        if (IsGroundEnemy)
         {
-            // Chase Sen
-            anim.SetBool("EnemyWalk", true);
-            Vector2 position = new Vector2(transform.position.x, transform.position.y);
-            Vector2 senPosition = new Vector2(sen.transform.position.x, transform.position.y);
-            Vector2 chaseDirection = senPosition - position;
-            chaseDirection.Normalize();
-            if(IsGroundEnemy == true)
+            if (senNoticed && !isStunned && distanceToSen > attackDistance)
             {
-                transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+                // Chase Sen
+                anim.SetBool("EnemyWalk", true);
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 senPosition = new Vector2(sen.transform.position.x, transform.position.y);
+                Vector2 chaseDirection = senPosition - position;
+                chaseDirection.Normalize();
+                if (IsGroundEnemy == true)
+                {
+                    transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+
+                }
+                if (IsGroundEnemy == false)
+                {
+                    transform.position = Vector2.MoveTowards(position, sen.transform.position, speed * Time.deltaTime);
+
+                }
+                rb.AddForce((chaseDirection) * speed);
 
             }
-            if (IsGroundEnemy == false)
+        }
+
+        if (!IsGroundEnemy)
+        {
+            if (senNoticed && !isStunned && distanceToSen > attackDistanceRanged)
             {
-                transform.position = Vector2.MoveTowards(position, sen.transform.position, speed * Time.deltaTime);
+                // Chase Sen
+                anim.SetBool("EnemyWalk", true);
+                Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                Vector2 senPosition = new Vector2(sen.transform.position.x, transform.position.y);
+                Vector2 chaseDirection = senPosition - position;
+                chaseDirection.Normalize();
+                if (IsGroundEnemy == true)
+                {
+                    transform.position = Vector2.MoveTowards(position, senPosition, speed * Time.deltaTime);
+
+                }
+                if (IsGroundEnemy == false)
+                {
+                    transform.position = Vector2.MoveTowards(position, sen.transform.position, speed * Time.deltaTime);
+
+                }
+                rb.AddForce((chaseDirection) * speed);
 
             }
-            rb.AddForce((chaseDirection) * speed);
-
         }
 
         // Attack Sen
-        if (distanceToSen < chaseRange) //attackDistance
+        if (distanceToSen < attackDistance)
         {
-            rb.velocity = Vector3.zero;
-            Attack();
+            if (IsGroundEnemy) //attackDistance
+            {
+                rb.velocity = Vector3.zero;
+                Attack_Ground();
+            }
+        }
+
+        if (distanceToSen < attackDistanceRanged)
+        {
+            if (!IsGroundEnemy)
+            {
+                rb.velocity = Vector3.zero;
+                Attack_Ranged();
+            }
         }
     }
 
-    private void Attack()
+    private void Attack_Ground()
     {
         if (canAttack)
         {
@@ -181,6 +226,43 @@ public class GroundEnemy : MonoBehaviour
             canAttack = false;
             StartCoroutine(AttackCooldown());
             source.PlayOneShot(attackSound);
+        }
+    }
+
+    private void Attack_Ranged()
+    {
+        if (canAttack)
+        {
+            attackAlert.SetActive(true);
+            Vector2 position = new Vector2(transform.position.x, transform.position.y); //find the enemies position
+            Vector2 senPosition = new Vector2(sen.transform.position.x, 0);             //find Sens position
+
+            if (Vector2.Distance(position, senPosition) > 0)
+            {
+                if (senPosition.x < position.x)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+                if (senPosition.x > position.x)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+
+            anim.SetTrigger("EnemyAttack");
+            canAttack = false;
+        }
+    }
+
+    public void LaunchProjectile()
+    {
+        attackAlert.SetActive(false);
+        Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
+        if (projectile != null)
+        {
+            Instantiate(projectile, firePointPosition, firePoint.rotation);
+            source.PlayOneShot(attackSound);
+            StartCoroutine(AttackCooldown());
         }
     }
 

@@ -142,6 +142,20 @@ public class RangedEnemy : MonoBehaviour
 		}
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	private void Attack()
 	{
         if (canAttack)

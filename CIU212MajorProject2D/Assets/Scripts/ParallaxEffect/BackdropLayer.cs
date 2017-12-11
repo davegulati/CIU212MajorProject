@@ -88,4 +88,9 @@ public class BackdropLayer : MonoBehaviour
 		transform.Find("Middle").GetComponent<SpriteRenderer>().sprite = layer;
 		transform.Find("Right").GetComponent<SpriteRenderer>().sprite = layer;
 	}
+
+    public void DeactivateLayer ()
+    {
+        gameObject.SetActive(false);
+    }
 }
